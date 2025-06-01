@@ -1,0 +1,137 @@
+.team-banner {
+    height: 640px;
+}
+
+.team-banner img {
+    height: 640px;
+}
+
+.ceo-section {
+    width: 80vw;
+    background-color: rgb(3, 58, 102);
+}
+
+.ceo-img {
+    width: 40%;
+}
+
+.ceo-info {
+    width: 60%;
+    padding: 30px 0px 0px 30px;
+    color: rgb(231, 231, 231);
+}
+
+.ceo-img img {
+    width: 100%;
+    height: auto;
+}
+
+.ceo-contact-info p {
+    font-size: 16px !important;
+    font-weight: 600;
+}
+
+.ceo-info .info p {
+    font-size: 13px !important;
+
+}
+
+@media only screen and (max-width:992px) {
+    .team-banner {
+        height: 420px;
+    }
+
+    .team-banner img {
+        height: 395px;
+    }
+
+    .info {
+        font-size: 13px;
+    }
+
+    .ceo-img {
+        width: 50%;
+    }
+
+    .ceo-info {
+        width: 50%;
+        padding: 10px;
+        color: rgb(231, 231, 231);
+    }
+
+}
+
+@media only screen and (max-width:576px) {
+    .ceo-section {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    .ceo-img {
+        width: 100%;
+        background-color: rgb(255, 255, 255);
+        height: auto;
+    }
+
+    .ceo-img img {
+        width: 100%;
+        height: auto;
+    }
+
+    .info {
+        font-size: 12px;
+    }
+
+    .ceo-info {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+    }
+}
+
+/* member  section */
+.member-image {
+    width: 100%;
+}
+
+.member-image img {
+    width: 100%;
+    height: 303px;
+}
+
+.member-info .member-name {
+    font-size: 17px;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.member-info .member-designation {
+    font-size: 13px;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.member-info-content {
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.memeber-social-icon img {
+    width: 24px;
+    /* or adjust as needed */
+    margin: 0;
+    display: block;
+}
+
+.member-column {
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.member-column:hover {
+    background-color: rgb(245, 245, 245);
+    text-shadow: 2px 2px 5px rgb(3, 58, 102);
+}

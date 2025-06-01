@@ -1,0 +1,40 @@
+.success-menu button {
+    background-color: rgb(3, 58, 102);
+    color: rgb(233, 231, 231);
+}
+
+.success-menu button:hover {
+    background-color: rgb(255, 255, 255);
+    color: rgb(61, 61, 61);
+    border: 1px solid rgb(3, 58, 102);
+}
+
+.tav-content {
+    width: 80vw;
+    margin: 0 auto;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.content img {
+    width: 95%;
+    height: 292px;
+}
+.displayprop{
+    display: none;
+}
+@media only screen and (max-width:600px) {
+    .success-menu button {
+        padding: 3px !important;
+        font-size: 12px !important;
+    }
+
+    .title {
+        text-shadow: 2px 2px 5px rgb(3, 58, 102);
+    }
+}

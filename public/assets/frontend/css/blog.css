@@ -1,0 +1,99 @@
+.blog-btn {
+    background-color: rgb(148, 1, 1) !important;
+    /* background-color: rgb(3, 58, 102) !important; */
+    color: white !important;
+    border-radius: 5px;
+    padding: 5px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.blog-btn:hover {
+    background-color: rgb(3, 58, 102) !important;
+    color: rgb(248, 248, 248) !important;
+    border: 1px solid rgb(3, 58, 102);
+}
+
+.blog-card {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.blog-card img {
+    width: 100%;
+    height: 250px;
+}
+
+.blog-card-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(10, 10, 10, 0.425);
+    color: #fff;
+    text-align: center;
+    padding: 8px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.blog-item-card {
+    border: 0px;
+}
+
+.blog-card-body {
+    padding-left: 6px !important;
+}
+
+.blog-item-card:hover .blog-card-title {
+    opacity: 1;
+    visibility: visible;
+    box-shadow: rgba(3, 58, 102, 0.2) 0px 8px 24px;
+}
+.blog-item-card:hover{
+    box-shadow: rgba(3, 58, 102, 0.2) 0px 8px 24px;
+}
+
+.blog-card-title h6 {
+    color: rgb(255, 255, 255);
+    text-align: left;
+    font-family: system-ui, 'Open Sans', 'Helvetica Neue', sans-serif;
+    /* color: rgb(148, 1, 1); */
+}
+
+.blog-card-text {
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+.blog-auther-icon {
+    color: rgb(3, 58, 102);
+    padding: 5px;
+    font-size: 18px;
+}
+
+.blog-inner-head {
+    font-size: 12px;
+    font-family: monospace;
+}
+
+.blog-card-text {
+    font-size: 13px;
+    font-family: system-ui, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* pagination */
+.page-item a{
+    background-color: rgb(3, 58, 102) !important;
+    color: rgb(233, 233, 233);
+}
+.page-item:hover a{
+    background-color: rgb(148, 1, 1) !important;
+    color: rgb(233, 233, 233);
+}
+.blog-title{
+        background-color: aliceblue;
+
+}

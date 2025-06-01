@@ -1,0 +1,120 @@
+.blog-details-banenr {
+    width: 80%;
+}
+
+.blog-details-banenr img {
+    width: 100%;
+    height: auto;
+}
+
+.blog-details-title h2 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 600;
+}
+
+.writer-name {
+    font-size: 16px;
+    font-family: monospace;
+}
+
+.blog-writer-icon {
+    color: rgb(1, 86, 143);
+    padding-right: 10px;
+}
+
+.blog-details {
+    font-family: emoji;
+}
+
+.blog-details h4 {
+    font-weight: 600;
+}
+
+.blog-content {
+    background-color: rgb(243, 244, 245);
+    padding: 20px;
+}
+
+.side-blog-item {
+    border: 0px;
+}
+
+.blog-item-image img {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+    border-radius: 0px !important;
+
+}
+
+.blog-details-btn {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 13px;
+    background-color: rgb(148, 1, 1);
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.blog-details-btn:hover {
+    background-color: rgb(3, 58, 102);
+}
+
+.blog-details-title {
+    font-size: 12px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 600;
+}
+
+.blog-content-image {
+    width: 100%;
+    height: auto;
+}
+
+.card-blog-details {
+    padding: 10px 0px 16px 16px;
+}
+
+@media only screen and (max-width: 1290px) {
+    .blog-details-row {
+        padding: 0px 0px;
+
+    }
+
+    .blog-writer {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        /* aligns items to the start (left) */
+        justify-content: flex-start !important;
+    }
+
+    .blog-writer-icon {
+        padding-left: 0px !important;
+    }
+}
+
+/* @media only screen and (min-width: 992px) and (max-width: 1290px) {
+    .blog-details-row {
+        padding: 0px 0px;
+
+    }
+
+    .blog-writer {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        justify-content: flex-start !important;
+    }
+
+    .blog-writer-icon {
+        padding-left: 0px !important;
+    }
+} */
+
+@media only screen and (min-width: 1400px) {
+    .blog-details-row {
+        padding: 20px 70px;
+    }
+}
