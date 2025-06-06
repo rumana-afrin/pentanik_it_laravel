@@ -11,6 +11,11 @@ use Illuminate\Validation\Rules\Password;
 
 class RegisterController extends Controller
 {
+   public function create()
+    {
+        return view('auth.register');
+    }
+
    public function store(Request $request){
         $request->validate([
          'name' => 'required|string',
@@ -30,6 +35,6 @@ class RegisterController extends Controller
         $user->status = 1;
 
         $user->save();
-        return redirect()->route('admin.dashboard')->with('success', CoreConstant::CREATED_SUCCESSFULLY);
+        return redirect()->route('login.create')->with('success', CoreConstant::CREATED_SUCCESSFULLY);
    }
 }

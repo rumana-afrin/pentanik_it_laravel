@@ -30,5 +30,9 @@
 <link rel="stylesheet" href="{{asset('assets/sweetalert/sweetalert2.css')}}">
 <link rel="stylesheet" href="{{asset('assets/sweetalert/sweetalert2.min.css')}}">
 <!-- Toastr CSS File -->
-<link rel="stylesheet" href="{{ asset('assets/css/toastr.min.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/css/image-preview.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/backend/css/toastr.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/backend/css/image-preview.css') }}">
+
+<!-- Template Main CSS File -->
+<link href="{{ asset('assets/backend/css/multi-select.css') }}" rel="stylesheet">
+<link href="{{ asset('assets/template/css/style.css') }}" rel="stylesheet">

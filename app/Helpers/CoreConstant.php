@@ -5,8 +5,10 @@ namespace App\Helpers;
 class CoreConstant
 {
 
-    public const ACTIVE = 1;
-    public const INACTIVE = 2;
+    public const ACTIVE = true;
+    public const INACTIVE = false;
+    public const FEATURED= 2;
+    public const REGULAR= 1;
 
     public const CREATED_SUCCESSFULLY = 'Created Successfully';
     public const UPDATED_SUCCESSFULLY = 'Updated Successfully';

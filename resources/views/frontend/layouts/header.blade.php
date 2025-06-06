@@ -78,7 +78,7 @@
                              <input class="search" type="search" placeholder="search...">
                          </div>
                          <div class="ms-3">
-                             <a class="text-decoration-none text-light" href="">
+                             <a class="text-decoration-none text-light" href="{{route('login.create')}}">
                                  <i class="fa-solid fa-user"></i>&nbsp login</a>
                          </div>
                      </div>

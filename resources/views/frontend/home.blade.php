@@ -84,6 +84,7 @@
                             <div class="card-right-side">
                                 <h5><a href="#">Search Engine Optimization (SEO)</a></h5>
                                 <p>The ultimate goal of digital marketing is to turn a visitor or a potential customer
+                                    towards a confirmed purchase The ultimate goal of digital marketing is to turn a visitor or a potential customer
                                     towards a confirmed purchase</p>
                                 <ul class="p-3" class="p-3">
                                     <li>Marketing</li>

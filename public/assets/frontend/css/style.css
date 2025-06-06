@@ -197,17 +197,29 @@
     .menus {
         display: none;
     }
-
     .right-nav {
         max-width: 500px;
     }
-
     .fa-bars {
         display: block;
     }
-
     .logo-image {
         display: none;
+    }
+    .right-nav a {
+        font-size: 12px;
+    }
+    .search-bar {
+        top: 31px;
+        left: -124px;
+    }
+    .search {
+        width: 250px;
+        padding: 3px 10px;
+    }
+    .header-icon {
+        padding: 6px;
+        font-size: 15px;
     }
 }
 

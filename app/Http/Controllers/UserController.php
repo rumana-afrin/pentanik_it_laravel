@@ -8,19 +8,23 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules\Password;
-use Illuminate\Validation\Rule; 
+use Illuminate\Validation\Rule;
 
 
 class UserController extends Controller
 {
     public function index()
     {
+         $data['userShowClass'] = 'show';
+        $data['allUserActiveClass'] = 'active';
         $data['users'] = User::all();
         return view('user.index')->with($data);
     }
     public function create()
     {
-        return view('user.create');
+        $data['userShowClass'] = 'show';
+        $data['userActiveClass'] = 'active';
+        return view('user.create')->with($data);
     }
     public function store(Request $request)
     {
@@ -52,7 +56,7 @@ class UserController extends Controller
             $file_name = preg_replace('/\s+/', '', $filename);
             $file_name = preg_replace('/[^A-Za-z0-9\-]/', '', $file_name);
             $file_name = $file_name . '.' . $extension;
-            $storage = $file->storeAs('upload', $file_name, 'public'); 
+            $storage = $file->storeAs('upload', $file_name, 'public');
             $data->image = $storage;
         }
 
@@ -71,7 +75,7 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|string',
             'designation' => 'string',
-            'email' => ['required','string','email', Rule::unique('users')->ignore($id),],
+            'email' => ['required', 'string', 'email', Rule::unique('users')->ignore($id),],
             'phone' => 'string',
             'role' => 'required|string|in:super admin, admin, manager, sales man, user',
 
@@ -79,7 +83,7 @@ class UserController extends Controller
 
         $user = User::findOrFail($id);
 
-       $data =  $request->only(['name','designation','email','phone','role']);
+        $data =  $request->only(['name', 'designation', 'email', 'phone', 'role']);
 
 
         if ($request->hasFile('image')) {
@@ -90,9 +94,9 @@ class UserController extends Controller
             $file_name = preg_replace('/\s+/', '', $filename);
             $file_name = preg_replace('/[^A-Za-z0-9\-]/', '', $file_name);
             $file_name = $file_name . '.' . $extension;
-            $storage = $file->storeAs('upload', $file_name, 'public'); 
+            $storage = $file->storeAs('upload', $file_name, 'public');
 
-            if($user->image && Storage::disk('public')->exists($user->image)){
+            if ($user->image && Storage::disk('public')->exists($user->image)) {
                 Storage::disk('public')->delete($user->image);
             }
             $data['image'] = $storage;
@@ -101,12 +105,11 @@ class UserController extends Controller
 
         $user->update($data);
         return redirect()->route('admin.all-user')->with('success', CoreConstant::UPDATED_SUCCESSFULLY);
-
     }
     public function destroy($id)
     {
         $user = User::findOrFail($id);
-        if($user->image && Storage::disk('public')->exists($user->image)){
+        if ($user->image && Storage::disk('public')->exists($user->image)) {
             Storage::disk('public')->delete($user->image);
         }
         $user->delete();

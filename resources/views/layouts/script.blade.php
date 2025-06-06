@@ -1,5 +1,5 @@
     <!-- External JS Files -->
-    <script src="{{ asset('assets/js/jquery.3.7.1.min.js') }}"></script>
+    <script src="{{ asset('assets/backend/js/jquery.3.7.1.min.js') }}"></script>
 
     <!-- Vendor JS Files -->
     <script src="{{ asset('assets/template/vendor/apexcharts/apexcharts.min.js') }}"></script>
@@ -21,9 +21,10 @@
     <script src="{{ asset('assets/sweetalert/sweetalert2.js') }}"></script>
     <script src="{{ asset('assets/sweetalert/sweetalert2.min.js') }}"></script>
     <!-- Toastr JS File -->
-    <script src="{{ asset('assets/js/image-preview.js') }}"></script>
-    <script src="{{ asset('assets/js/toastr.min.js') }}"></script>
-    <script src="{{ asset('assets/js/common.js') }}"></script>
+    <script src="{{ asset('assets/backend/js/image-preview.js') }}"></script>
+    <script src="{{ asset('assets/backend/js/toastr.min.js') }}"></script>
+    {{-- <script src="{{ asset('assets/backend/js/multi-select.js') }}"></script> --}}
+    <script src="{{ asset('assets/backend/js/common.js') }}"></script>
     <script>
         "use strict"
         @if (Session::has('success'))

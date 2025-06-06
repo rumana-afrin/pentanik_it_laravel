@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Pages / Register - NiceAdmin Bootstrap Template</title>
+    <title>Pages / Register</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
     @include('layouts.style')
@@ -71,7 +71,7 @@
                                 <div class="card-body">
                                     <div class="pt-2 pb-2">
                                         <h6 class="card-title text-center pb-0 fs-4">Create an Account</h6>
-                                        <p class="text-center register-subtitle">Enter your personal details to create
+                                        <p class="text-center register-subtitle">Enter your details to create
                                             account</p>
                                     </div>
 
