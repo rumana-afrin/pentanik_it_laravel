@@ -43,13 +43,13 @@
                                     value="{{ $blog->slug }}">
                             </div>
 
-                            
+
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="author_name" class="form-label">Author Name</label>
                                 <input type="text" class="form-control" name="author_name" id="author_name"
                                     placeholder="author name" value="{{ $blog->author_name }}">
                             </div>
-                            
+
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="sort_order" class="form-label">Thumbnail Image</label>
                                 <div class="upload-img-box">
@@ -128,8 +128,8 @@
                                     @if (count($blog->blogGallaryImage) > 0)
                                         <div class="d-flex justify-content-center" id="repeater">
                                             @foreach ($blog->blogGallaryImage as $item)
-                                            <div class="hello d-flex justify-content-center">
-                                                
+                                                <div class="hello d-flex justify-content-center">
+
                                                     <div class="repeater-item d-flex align-items-center me-3">
                                                         <div class="upload-img-box gallarybox">
                                                             <img id="updateImageUrl"
@@ -147,9 +147,9 @@
 
                                                         </div>
                                                     </div>
-                                               
-                                            </div>
-                                             @endforeach
+
+                                                </div>
+                                            @endforeach
 
                                         </div>
                                     @else
@@ -212,7 +212,8 @@
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="og_image" class="form-label">Og Image</label>
                                 <div class="upload-img-box">
-                                    <img id="updateImageUrl" src="{{ $blog->seoMetaTag?->og_image ? asset('storage/' . $blog->seoMetaTag?->og_image) : getDefaultImage() }}">
+                                    <img id="updateImageUrl"
+                                        src="{{ $blog->seoMetaTag?->og_image ? asset('storage/' . $blog->seoMetaTag?->og_image) : getDefaultImage() }}">
                                     <input class="form-control" type="file" name="og_image" id="image"
                                         accept="image/*" onchange="previewFile(this)">
                                     <div class="upload-img-box-icon">
@@ -246,7 +247,8 @@
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="twitter_image" class="form-label">Twitter Image</label>
                                 <div class="upload-img-box">
-                                    <img id="updateImageUrl" src="{{  $blog->seoMetaTag?->twitter_image ? asset('storage/' . $blog->seoMetaTag?->twitter_image) : getDefaultImage() }}">
+                                    <img id="updateImageUrl"
+                                        src="{{ $blog->seoMetaTag?->twitter_image ? asset('storage/' . $blog->seoMetaTag?->twitter_image) : getDefaultImage() }}">
                                     <input class="form-control" type="file" name="twitter_image" id="image"
                                         accept="image/*" onchange="previewFile(this)">
                                     <div class="upload-img-box-icon">
@@ -305,31 +307,48 @@
 
 @push('script')
     <script>
-        function addRepeaterItem() {
-            const newItem = document.createElement('div');
-            newItem.className = 'hello';
-            newItem.innerHTML = `
-                                <div class="repeater-item d-flex align-items-center me-3 position-relative">
-                                    <div class="upload-img-box gallarybox">
-                                        <img id="updateImageUrl" src="">
-                                        <input class="form-control" type="file" name="gallary_image[]" id="image" accept="image/*" onchange="previewFile(this)">
-                                        <div class="upload-img-box-icon">
-                                            <i class="bi bi-camera-fill"></i>
-                                            <p class="m-0"></p>
-                                        </div>
+       
+    function addRepeaterItem(event) {
+        event.preventDefault();
 
-                                        <button type="button" class="btn-close closebtn" aria-label="Close" onclick="removeRepeaterItem(this)"></button>
-                                    </div>
-                                    
-                                </div>
-                                `;
+        const repeater = document.getElementById('repeater'); // Correct container reference
 
-            repeater.appendChild(newItem);
+        const newItem = document.createElement('div');
+        newItem.className = 'hello d-flex justify-content-center';
+        newItem.innerHTML = `
+            <div class="repeater-item d-flex align-items-center me-3 position-relative">
+                <div class="upload-img-box gallarybox">
+                    <img src="" class="preview-img" />
+                    <input class="form-control" type="file" name="gallary_image[]" accept="image/*" onchange="previewFile(this)">
+                    <div class="upload-img-box-icon">
+                        <i class="bi bi-camera-fill"></i>
+                        <p class="m-0"></p>
+                    </div>
+                    <button type="button" class="btn-close closebtn" aria-label="Close" onclick="removeRepeaterItem(this)"></button>
+                </div>
+            </div>
+        `;
+
+        repeater.appendChild(newItem);
+    }
+
+    function removeRepeaterItem(button) {
+        const wrapper = button.closest('.hello');
+        if (wrapper) {
+            wrapper.remove();
         }
+    }
 
-        function removeRepeaterItem(button) {
-            button.closest('.hello').remove();
+    function previewFile(input) {
+        const file = input.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                input.closest('.upload-img-box').querySelector('.preview-img').src = e.target.result;
+            };
+            reader.readAsDataURL(file);
         }
+    }
         //start tag
         document.addEventListener('DOMContentLoaded', function() {
             const tagInput = document.getElementById('tagInput');

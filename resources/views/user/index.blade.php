@@ -42,11 +42,11 @@
                           <td>
                             <a href="{{route('admin.user-edit', $user->id)}}" class="mr-1"
                               title="Edit">
-                              <img src="{{ asset('assets/edit-2.svg') }}" alt="edit">
+                               <img src="{{ asset('assets/backend/edit-2.svg') }}" alt="edit">
                           </a>
                           <a href="#" class="ms-2 deleteItem "
                               data-formid="delete_row_form_{{ $user->id }}">
-                              <img src="{{ asset('assets/trash-2.svg') }}" alt="trash">
+                             <img src="{{ asset('assets/backend/trash-2.svg') }}" alt="trash">
                           </a>
                           <form action="{{route('admin.user-destroy', $user->id)}}" method="post"
                               id="delete_row_form_{{ $user->id }}">

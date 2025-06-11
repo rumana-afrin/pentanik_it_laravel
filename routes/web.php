@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\BlogController as AdminBlogController;
+use App\Http\Controllers\Admin\PageController;
+use App\Http\Controllers\Admin\PortfolioCategoryController;
+use App\Http\Controllers\Admin\PortfolioController as AdminPortfolioController;
 use App\Http\Controllers\Admin\ServiceCategoryController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\TeamController as AdminTeamController;
@@ -74,12 +77,36 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::get('edit-blog/{id}', [AdminBlogController::class, 'edit'])->name('edit-blog');
     Route::put('update-blog/{id}', [AdminBlogController::class, 'update'])->name('update-blog');
     Route::delete('delete-blog/{id}', [AdminBlogController::class, 'destroy'])->name('delete-blog');
+
+    //portfolio-category route
+    Route::get('all-portfolio-category', [PortfolioCategoryController::class, 'index'])->name('all-portfolio-category');
+    Route::get('create-portfolio-category', [PortfolioCategoryController::class, 'create'])->name('create-portfolio-category');
+    Route::post('store-portfolio-category', [PortfolioCategoryController::class, 'store'])->name('store-portfolio-category');
+    Route::get('edit-portfolio-category/{id}', [PortfolioCategoryController::class, 'edit'])->name('edit-portfolio-category');
+    Route::put('update-portfolio-category/{id}', [PortfolioCategoryController::class, 'update'])->name('update-portfolio-category');
+    Route::delete('delete-portfolio-category/{id}', [PortfolioCategoryController::class, 'destroy'])->name('delete-portfolio-category');
+    
+    //portfolio route
+    Route::get('all-portfolio', [AdminPortfolioController::class, 'index'])->name('all-portfolio');
+    Route::get('create-portfolio', [AdminPortfolioController::class, 'create'])->name('create-portfolio');
+    Route::post('store-portfolio', [AdminPortfolioController::class, 'store'])->name('store-portfolio');
+    Route::get('edit-portfolio/{id}', [AdminPortfolioController::class, 'edit'])->name('edit-portfolio');
+    Route::put('update-portfolio/{id}', [AdminPortfolioController::class, 'update'])->name('update-portfolio');
+    Route::delete('delete-portfolio/{id}', [AdminPortfolioController::class, 'destroy'])->name('delete-portfolio');
+    
+    //page route
+    Route::get('all-page', [PageController::class, 'index'])->name('all-page');
+    Route::get('create-page', [PageController::class, 'create'])->name('create-page');
+    Route::post('store-page', [PageController::class, 'store'])->name('store-page');
+    Route::get('edit-page/{id}', [PageController::class, 'edit'])->name('edit-page');
+    Route::put('update-page/{id}', [PageController::class, 'update'])->name('update-page');
+    Route::delete('delete-page/{id}', [PageController::class, 'destroy'])->name('delete-page');
 });
 
 //website route
 Route::get('/', [HomeController::class, 'home']);
 Route::get('about-us', [AboutUsController::class, 'aboutUs'])->name('about-us');
-Route::get('page', [AditionalPageController::class, 'aditionalPage'])->name('aditional-page');
+Route::get('page/{slug}', [AditionalPageController::class, 'aditionalPage'])->name('aditional-page');
 Route::get('blog', [BlogController::class, 'blog'])->name('blog');
 Route::get('blog-details', [BlogDetailsController::class, 'blogDetails'])->name('blog-details');
 Route::get('portfolio', [PortfolioController::class, 'portfolio'])->name('portfolio');

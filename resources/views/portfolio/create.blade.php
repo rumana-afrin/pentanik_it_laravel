@@ -6,6 +6,7 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html">Home</a></li>
                 <li class="breadcrumb-item">Dashboard</li>
+                <li class="breadcrumb-item">Portfolio</li>
                 <li class="breadcrumb-item active">{{ $pageTitle }}</li>
             </ol>
         </nav>
@@ -20,57 +21,50 @@
                         <h5 class="card-title">Create Service Category</h5>
 
                         <!-- Multi Columns Form -->
-                        <form class="row g-3" action="{{ route('admin.store-blog') }}" method="post"
+                        <form class="row g-3" action="{{ route('admin.store-portfolio') }}" method="post"
                             enctype="multipart/form-data">
                             @csrf
                             @method('POST')
+
+
+                            <div class="col-12 col-sm-12 col-md-6">
+                                <label for="portfolio_category_id" class="form-label">Portfolio Category</label>
+                                <select class="form-select" name="portfolio_category_id" id="portfolio_category_id"
+                                    aria-label="Default select example">
+                                    <option value="" disabled selected>Select option...</option>
+                                    @foreach ($category as $item)
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
 
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="title" class="form-label">Title</label>
                                 <input type="text" name="title" class="form-control" id="title"
                                     placeholder="title">
                             </div>
-
                             <div class="col-12 col-sm-12 col-md-6">
-                                <label for="subtitle" class="form-label">Subtitle</label>
-                                <input type="text" class="form-control" name="subtitle" id="subtitle"
-                                    placeholder="slug">
+                                <label for="subtitle" class="form-label">SubTitle</label>
+                                <input type="text" name="subtitle" class="form-control" id="subtitle"
+                                    placeholder="subtitle">
                             </div>
-
                             <div class="col-12 col-sm-12 col-md-6">
-                                <label for="slug" class="form-label">Slug</label>
+                                <label for="slug" class="form-label">slug</label>
                                 <input type="text" class="form-control" name="slug" id="slug" placeholder="slug">
                             </div>
-                            <div class="col-12 col-sm-12 col-md-6">
-                                <label for="phone" class="form-label">Phone</label>
-                                <input type="text" class="form-control" name="phone" id="phone"
-                                    placeholder="phone">
-                            </div>
-
 
                             <div class="col-12 col-sm-12 col-md-6">
-                                <label for="sort_order" class="form-label">Thumbnail Image</label>
-                                <div class="upload-img-box">
-                                    <img id="updateImageUrl" src="">
-                                    <input class="form-control" type="file" name="thumbnail_image" id="image"
-                                        accept="image/*" onchange="previewFile(this)">
-                                    <div class="upload-img-box-icon">
-                                        <i class="bi bi-camera-fill"></i>
-                                        <p class="m-0"></p>
-                                    </div>
-                                </div>
+                                <label for="short_description" class="form-label">Short Description</label>
+                                <textarea class="form-control" name="short_description" id="short_description" placeholder="short_description"
+                                    cols="30" rows="3"></textarea>
                             </div>
 
                             <div class="col-12 col-sm-12 col-md-6">
-                                <label for="excerpt" class="form-label">Excerpt</label>
-                                <textarea class="form-control" name="excerpt" id="excerpt" placeholder="excerpt" cols="30" rows="3"></textarea>
+                                <label for="client_name" class="form-label">Client Name</label>
+                                <input type="text" class="form-control" name="client_name" id="client_name"
+                                    placeholder="client_name">
                             </div>
 
-                            <div class="col-12 col-sm-12 col-md-6">
-                                <label for="author_name" class="form-label">Author Name</label>
-                                <input type="text" class="form-control" name="author_name" id="author_name"
-                                    placeholder="author name">
-                            </div>
 
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="sort_order" class="form-label">Order</label>
@@ -79,27 +73,9 @@
                             </div>
 
                             <div class="col-12 col-sm-12 col-md-6">
-                                <label for="sort_order" class="form-label">Tag</label>
-
-                                <div class="multi-input-container">
-                                    <div id="tags"></div>
-                                    <input type="text" id="tagInput"
-                                        placeholder="Type and press Enter..." />
-                                </div>
-
-                            </div>
-
-
-                            <div class="col-12 col-sm-12 col-md-6">
-                                <label for="status" class="form-label">Status</label>
-                                <select class="form-select" name="status" id="status"
-                                    aria-label="Default select example">
-                                    <option selected>selete status</option>
-                                    <option value="draft">Draft</option>
-                                    <option value="published">Published</option>
-                                    <option value="pending">Pending</option>
-
-                                </select>
+                                <label for="project_url" class="form-label">Project Url</label>
+                                <input type="url" class="form-control" name="project_url" id="project_url"
+                                    placeholder="project_url">
                             </div>
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="is_featured" class="form-label">Is Featured?</label>
@@ -111,37 +87,57 @@
                                 </select>
                             </div>
 
+                            <div class="col-12 col-sm-12 col-md-6">
+                                <label for="status" class="form-label">Is Active</label>
+                                <select class="form-select" name="is_active" id="status"
+                                    aria-label="Default select example">
+                                    <option selected>selete status</option>
+                                    <option value="1">Active</option>
+                                    <option value="0">Inactive</option>
 
-                            <div class="col-12 col-sm-12 col-md-12">
-                                <label for="content" class="form-label">Content</label>
-                                <textarea class="tinymce-editor @error('content') is-invalid @enderror" name="content" id="content"></textarea>
+                                </select>
                             </div>
 
 
-                            <div class="col-12 col-sm-12 col-md-12">
-                                <div class="repeater-container">
-                                    <label for="gallary_image" class="form-label">Gallary Image</label>
-
-                                    <div class="d-flex justify-content-center" id="repeater">
-                                        <div class="hello">
-                                            <div class="repeater-item d-flex align-items-center me-3">
-                                                <div class="upload-img-box gallarybox">
-                                                    <img id="updateImageUrl" src="">
-                                                    <input class="form-control" type="file" name="gallary_image[]"
-                                                        id="gallary_image" accept="image/*" onchange="previewFile(this)">
-                                                    <div class="upload-img-box-icon">
-                                                        <i class="bi bi-camera-fill"></i>
-                                                        <p class="m-0"></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        {{-- @endif --}}
+                            <div class="col-12 col-sm-12 col-md-6">
+                                <label for="featured_image" class="form-label">Image</label>
+                                <div class="upload-img-box">
+                                    <img id="updateImageUrl" src="">
+                                    <input class="form-control" type="file" name="featured_image" id="featured_image"
+                                        accept="image/*" onchange="previewFile(this)">
+                                    <div class="upload-img-box-icon">
+                                        <i class="bi bi-camera-fill"></i>
+                                        <p class="m-0"></p>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6">
+                                <div class="repeater-container">
+                                    <label for="technology" class="form-label">Technology</label>
+                                    <div class="repeater" id="repeater">
+                                        <div class="repeater-item d-flex align-items-center">
+                                            <input class="form-control image-input" type="text" name="technology[]"
+                                                placeholder="technology" />
+                                            <button type="button" class="remove-btn btn btn-primary ms-4"
+                                                onclick="removeItem(event, this)">
+                                                <a href="" class="mr-1" title="Edit">
+                                                    <img src="{{ asset('assets/backend/image/minus.png') }}"
+                                                        alt="">
+                                                </a>
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                    {{-- @endif --}}
 
                                     <button type="button" class="add-btn btn btn-primary mt-4"
-                                        onclick="addRepeaterItem(event)">Add Gallary</button>
+                                        onclick="addRepeaterItem(event)">Add Feature</button>
                                 </div>
+                            </div>
+
+                            <div class="col-12 col-sm-12 col-md-12">
+                                <label for="description" class="form-label">Description</label>
+                                <textarea class="tinymce-editor @error('description') is-invalid @enderror" name="description" id="description"></textarea>
                             </div>
 
                             {{-- seo --}}
@@ -247,95 +243,41 @@
             height: 200px;
             width: 200px;
         }
-
-        .gallarybox {
-            width: 100px;
-            height: 100px;
-            position: relative;
-
-        }
-
-        .closebtn {
-            position: absolute;
-            top: -33px;
-            left: 78%;
-            color: #f70202 !important;
-            font-size: 36px;
-        }
-
-        .closebtn {
-            z-index: 10;
-        }
     </style>
 @endpush
+
 
 @push('script')
     <script>
         function addRepeaterItem() {
-            const newItem = document.createElement('div');
-            newItem.className = 'hello';
-            newItem.innerHTML = `
-                                <div class="repeater-item d-flex align-items-center me-3 position-relative">
-                                    <div class="upload-img-box gallarybox">
-                                        <img id="updateImageUrl" src="">
-                                        <input class="form-control" type="file" name="gallary_image[]" id="image" accept="image/*" onchange="previewFile(this)">
-                                        <div class="upload-img-box-icon">
-                                            <i class="bi bi-camera-fill"></i>
-                                            <p class="m-0"></p>
-                                        </div>
+            const repeater = document.getElementById('repeater');
 
-                                        <button type="button" class="btn-close closebtn" aria-label="Close" onclick="removeRepeaterItem(this)"></button>
-                                    </div>
-                                    
-                                </div>
-                                `;
+            const newItem = document.createElement('div');
+            newItem.className = 'repeater';
+            newItem.innerHTML = `
+                        <div class="repeater-item d-flex align-items-center mt-3">
+                                                                    <input class="form-control image-input" type="text" name="technology[]" placeholder="feature"/>
+                                                                    <button type="button" class="remove-btn btn btn-primary ms-4" onclick="removeItem(event, this)">
+                                                                        <a href="" class="mr-1" title="Edit">
+                                                                            <img src="{{ asset('assets/backend/image/minus.png') }}" alt="">
+                                                                        </a>
+                                                                    </button>
+                                                                </div>
+                                                                
+                    `;
 
             repeater.appendChild(newItem);
         }
 
-        function removeRepeaterItem(button) {
-            button.closest('.hello').remove();
-        }
-//start tag
-document.addEventListener('DOMContentLoaded', function () {
-    const tagInput = document.getElementById('tagInput');
-    const tagsContainer = document.getElementById('tags');
 
-    tagInput.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter') {
-            e.preventDefault();
-            const tagValue = tagInput.value.trim();
-            if (tagValue) {
-                addTag(tagValue);
-                tagInput.value = '';
+        function removeItem(event, button) {
+            event.preventDefault();
+            const repeaterItem = button.closest('.repeater-item');
+            const wrapper = button.closest('.hello');
+            if (wrapper) {
+                wrapper.remove();
             }
+            repeaterItem.remove();
         }
-    });
-
-    function addTag(value) {
-        const span = document.createElement('span');
-        span.className = 'tag';
-        span.innerHTML = `${value} <span class="remove" style="cursor:pointer;">×</span>`;
-
-        // Hidden input to submit
-        const hiddenInput = document.createElement('input');
-        hiddenInput.type = 'hidden';
-        hiddenInput.name = 'tag[]';
-        hiddenInput.value = value;
-        span.appendChild(hiddenInput);
-
-        // Add remove function
-        span.querySelector('.remove').addEventListener('click', function () {
-            span.remove();
-        });
-
-        tagsContainer.appendChild(span);
-    }
-});
-
-//end blog tag
-
-
-
     </script>
 @endpush

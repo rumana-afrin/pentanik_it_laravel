@@ -3,11 +3,18 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Page;
+use App\Models\ServiceCategory;
+use App\Models\WorkProcess;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-   public function home(){
-    return view('frontend.home');
+   public function home()
+   {
+      $data['services'] = ServiceCategory::with('features')->get();
+      $data['workProcess'] = WorkProcess::all();
+      $data['pages'] = Page::select('slug', 'title')->get();
+      return view('frontend.home')->with($data);
    }
 }

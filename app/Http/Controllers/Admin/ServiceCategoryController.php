@@ -31,11 +31,9 @@ class ServiceCategoryController extends Controller
         $data['serviceCategoryShowClass'] = 'show';
         $data['createSrviceCategoryActiveClass'] = 'active';
 
-        // dd($request->all());
-
         $request->validate([
             'name' => 'required|string',
-            'slug' => 'nullable|string',
+            'slug' => 'required|string|unique:service_categories,slug',
             'short_description' => 'required|string|max:350',
             'sort_order' => 'nullable|integer',
             'status' => 'required|string|in:featured,regular',
@@ -64,7 +62,6 @@ class ServiceCategoryController extends Controller
                         'name' => $feature,
                     ];
                 }
-
                 ServiceFeatured::insert($insertData);
             }
         }
@@ -78,7 +75,6 @@ class ServiceCategoryController extends Controller
         $data['serviceCategoryShowClass'] = 'show';
         $data['createSrviceCategoryActiveClass'] = 'active';
         $data['serviceCategory'] = ServiceCategory::with('features')->findOrFail($id);
-        // dd($data['serviceCategory']);
         return view('digital-services.service-category.edit')->with($data);
     }
     public function update(Request $request, $id)
@@ -89,13 +85,12 @@ class ServiceCategoryController extends Controller
 
         $request->validate([
             'name' => 'required|string',
-            'slug' => 'nullable|string',
+            'slug' => 'required|string|unique:service_categories,slug,' . $id,
             'short_description' => 'required|string|max:350',
             'sort_order' => 'nullable|integer',
             'status' => 'required|string|in:featured,regular',
             'is_active' => 'required|boolean',
             'feature' => 'nullable|array',
-
         ]);
 
         $service_category = ServiceCategory::find($id);

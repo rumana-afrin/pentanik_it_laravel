@@ -71,7 +71,7 @@
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="short_description" class="form-label">Short Description</label>
                                 <textarea name="short_description" class="form-control" id="short_description" placeholder="description" cols="30"
-                                    rows="3">{{ $serviceCategory->name }}</textarea>
+                                    rows="3">{{ $serviceCategory->short_description }}</textarea>
 
                             </div>
 
@@ -83,7 +83,7 @@
                                             <div class="repeater" id="repeater">
                                                 <div class="repeater-item d-flex align-items-center mt-3">
                                                     <input class="form-control image-input" type="text" name="feature[]"
-                                                        placeholder="feature" value="{{ $item->name }}"/>
+                                                        placeholder="feature" value="{{ $item->name }}" />
                                                     <button type="button" class="remove-btn btn btn-primary ms-4"
                                                         onclick="removeItem(event, this)">
                                                         <a href="" class="mr-1" title="Edit">
@@ -144,6 +144,8 @@
 @push('script')
     <script>
         function addRepeaterItem() {
+            const container = document.querySelector('.repeater-container'); // or a better-specific container
+
             const newItem = document.createElement('div');
             newItem.className = 'repeater';
             newItem.innerHTML = `
@@ -158,7 +160,8 @@
                                                                 
                     `;
 
-            repeater.appendChild(newItem);
+            const addButton = container.querySelector('.add-btn');
+            container.insertBefore(newItem, addButton);
         }
 
 

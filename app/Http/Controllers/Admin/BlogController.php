@@ -313,10 +313,10 @@ class BlogController extends Controller
         if ($image->gallary_image && Storage::disk('public')->exists($image->gallary_image)) {
             Storage::disk('public')->delete($image->gallary_image);
         }
-        $image->delete(); // optional: also delete the DB record
+        $image->delete(); 
     }
 
-    $seo = $data->seoMetaTag; // using the relationship
+    $seo = $data->seoMetaTag; 
     if ($seo) {
         if ($seo->og_image && Storage::disk('public')->exists($seo->og_image)) {
             Storage::disk('public')->delete($seo->og_image);
@@ -326,9 +326,10 @@ class BlogController extends Controller
             Storage::disk('public')->delete($seo->twitter_image);
         }
 
-        $seo->delete(); // delete SEO record
+        $seo->delete(); 
     }
     $data->delete();
+    
 
     return redirect()->route('admin.all-team')->with('success', CoreConstant::DELETED_SUCCESSFULLY);
 }

@@ -5,6 +5,8 @@ namespace App\Providers;
 use App\Models\Setting;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
+use App\Models\Page;
+use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -31,5 +33,12 @@ class AppServiceProvider extends ServiceProvider
         } catch (\Exception $e) {
             //
         }
+
+        //share pages data
+     
+         View::share('pages', Page::where('status', 'active')
+                             ->where('menu_type', 'footer')
+                             ->select('slug', 'title')
+                             ->get());
     }
 }

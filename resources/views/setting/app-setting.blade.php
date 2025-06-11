@@ -98,6 +98,14 @@
                                 </div>
                             </div>
                             <div class="row mb-3">
+                                <label for="whatsapp_number" class="col-sm-3 col-form-label">Whatsapp</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="whatsapp_number"
+                                        name="whatsapp_number" placeholder="whatsapp"
+                                        value="{{ getOption('whatsapp_number') }}">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
                                 <label for="social_link_youtube" class="col-sm-3 col-form-label">Youtube</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="social_link_youtube"

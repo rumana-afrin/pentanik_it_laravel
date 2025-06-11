@@ -16,7 +16,7 @@
             <div class="col-md-8 stretch-card">
                 <div class="card">
                     <div class="card-body">
-
+                        
                         <h5 class="card-title">Create Service Category</h5>
 
                         <!-- Multi Columns Form -->
@@ -31,15 +31,11 @@
                                     placeholder="title">
                             </div>
 
-
-
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="step_number" class="form-label">Step Number</label>
-                                <input type="text" class="form-control" name="step_number" id="step_number"
+                                <input type="number" class="form-control" name="step_number" id="step_number"
                                     placeholder="step number">
                             </div>
-
-
 
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="status" class="form-label">Status</label>
@@ -52,21 +48,11 @@
                                 </select>
                             </div>
 
-
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="description" class="form-label">Description</label>
-                                <div class="upload-img-box">
-                                    <img id="updateImageUrl" src="{{ getimage(getOption('team_banner_large')) }}">
-                                    <input class="form-control" type="file" name="team_banner_large"
-                                        id="team_banner_large" accept="image/*" onchange="previewFile(this)">
-                                    <div class="upload-img-box-icon">
-                                        <i class="bi bi-camera-fill"></i>
-                                        <p class="m-0"></p>
-                                    </div>
-                                </div>
-
+                               <textarea name="description" class="form-control" id="description" placeholder="description"
+                                    cols="30" rows="3"></textarea>
                             </div>
-
 
                             <div class="text-center mt-5">
                                 <button type="submit" class="btn btn-primary">Submit</button>

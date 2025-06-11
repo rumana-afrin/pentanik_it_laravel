@@ -8,8 +8,10 @@
                              <a class="mobile-menu-icon" href="javascript:void(0)" onclick="openNav()"><i
                                      class="fa-solid fa-bars"></i></a>
                          </div>
-                         <a href="{{url('/')}}"><img class="logo-image" src="{{asset('assets/frontend/Pentanik-IT-Logo.png')}}" alt="" width="150"
+                         <a href="{{url('/')}}"><img class="logo-image" src="{{ getimage(getOption('footer_logo')) }}" alt="" width="150"
                                  height="60"></a>
+                         {{-- <a href="{{url('/')}}"><img class="logo-image" src="{{asset('assets/frontend/Pentanik-IT-Logo.png')}}" alt="" width="150"
+                                 height="60"></a> --}}
                      </div>
                      <div class="menus p-0 m-0">
                          <!--start category menu -->
@@ -70,9 +72,9 @@
                                 </li> -->
                          </ul>
                      </div>
-                     <!--start page menu -->
+                     <!--end page menu -->
                      <div class="right-nav">
-                         <a href="tel:01868366628"><i class="fa-solid fa-phone-volume pe-2"></i>01256978787</a>
+                         <a href="tel:01868366628"><i class="fa-solid fa-phone-volume pe-2"></i>{{ getOption('contact_phone') }}</a>
                          <i class="fa-solid fa-magnifying-glass header-icon" onclick="searchbar()"></i>
                          <div class="search-bar">
                              <input class="search" type="search" placeholder="search...">
@@ -84,11 +86,10 @@
                      </div>
 
                      <!--start mobile menu -->
-
                      <div id="mySidebar" class="sidebar">
                          <div class="mlogo mb-5">
                              <a href="index.html">
-                                 <img class="mlogo-image ms-5" src="{{asset('assets/frontend/Pentanik-IT-Logo.png')}}" alt="" width="150"
+                                 <img class="mlogo-image ms-5" src="{{ getimage(getOption('footer_logo')) }}" alt="" width="150"
                                      height="60">
                              </a>
                          </div>

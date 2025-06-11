@@ -39,7 +39,7 @@
         </li><!-- start service category Nav -->
         <li class="nav-item">
             <a class="nav-link {{ @$serviceCategoryShowClass ? '' : 'collapsed' }}" data-bs-target="#digitalservices-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-menu-button-wide"></i><span>digital Services</span><i class="bi bi-chevron-down ms-auto"></i>
+                <i class="bi bi-menu-button-wide"></i><span>Digital Services</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="digitalservices-nav" class="nav-content collapse  {{ @$serviceCategoryShowClass }}" data-bs-parent="#sidebar-nav">
                 <li>
@@ -93,6 +93,43 @@
                 <li>
                     <a href="{{ route('admin.create-blog') }}"  class="{{ @$createblogActiveClass }}"><i class="bi bi-circle"></i><span>Add Blog</span></a>
                 </li>
+            </ul>
+        </li><!-- End work process Nav -->
+
+        </li><!-- start portfolio Nav -->
+        <li class="nav-item">
+            <a class="nav-link {{ @$pCategoryShowClass ? '' : 'collapsed' }}" data-bs-target="#portfolio-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span>Portfolio</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="portfolio-nav" class="nav-content collapse  {{ @$pCategoryShowClass }}" data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{ route('admin.all-portfolio-category') }}" class="{{ @$allpCategoryActiveClass }}"><i class="bi bi-circle"></i><span>All  Category</span></a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.create-portfolio-category') }}"  class="{{ @$createpCategoryActiveClass }}"><i class="bi bi-circle"></i><span>Add Category</span></a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.all-portfolio') }}" class="{{ @$allportfolioActiveClass }}"><i class="bi bi-circle"></i><span>All Portfolio</span></a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.create-portfolio') }}"  class="{{ @$createportfolioActiveClass }}"><i class="bi bi-circle"></i><span>Add Portfolio</span></a>
+                </li>
+            </ul>
+        </li><!-- End work process Nav -->
+
+        </li><!-- start page Nav -->
+        <li class="nav-item">
+            <a class="nav-link {{ @$pageShowClass ? '' : 'collapsed' }}" data-bs-target="#page-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span>Default Page</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="page-nav" class="nav-content collapse  {{ @$pageShowClass }}" data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{ route('admin.all-page') }}" class="{{ @$allPageActiveClass }}"><i class="bi bi-circle"></i><span>All Page</span></a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.create-page') }}"  class="{{ @$createPageActiveClass }}"><i class="bi bi-circle"></i><span>Add Page</span></a>
+                </li>
+               
             </ul>
         </li><!-- End work process Nav -->
 

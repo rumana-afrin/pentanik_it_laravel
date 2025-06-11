@@ -34,7 +34,6 @@
                         </tr>
                       </thead>
                       <tbody>
-
                          @foreach ($serviceCategory as $item)
                         <tr>
                           <th scope="row">{{$loop->iteration}}</th>

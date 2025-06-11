@@ -9,3 +9,4 @@
 <link rel="stylesheet" href="{{ asset('assets/frontend/css/portfolio.css') }}" />
 <link rel="stylesheet" href="{{ asset('assets/frontend/css/team.css') }}" />
 <link rel="stylesheet" href="{{ asset('assets/frontend/css/blog-details.css') }}" />
+<link rel="stylesheet" href="{{ asset('assets/frontend/css/aditional-page.css') }}" />

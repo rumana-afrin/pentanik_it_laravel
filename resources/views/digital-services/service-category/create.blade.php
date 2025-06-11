@@ -36,7 +36,7 @@
                             </div>
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="sort_order" class="form-label">Order</label>
-                                <input type="text" class="form-control" name="sort_order" id="sort_order"
+                                <input type="number" class="form-control" name="sort_order" id="sort_order"
                                     placeholder="sort_order">
                             </div>
 

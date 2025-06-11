@@ -166,6 +166,8 @@
 @push('script')
     <script>
         function addRepeaterItem() {
+                const container = document.querySelector('.repeater-container'); // or a better-specific container
+
             const newItem = document.createElement('div');
             newItem.className = 'repeater';
             newItem.innerHTML = `
@@ -180,17 +182,19 @@
                                                                 
                     `;
 
-            repeater.appendChild(newItem);
+               // Insert above the Add Feature button
+    const addButton = container.querySelector('.add-btn');
+    container.insertBefore(newItem, addButton);
         }
 
 
         function removeItem(event, button) {
             event.preventDefault();
             const repeaterItem = button.closest('.repeater-item');
-            const wrapper = button.closest('.hello');
-            if (wrapper) {
-                wrapper.remove();
-            }
+            // const wrapper = button.closest('.hello');
+            // if (wrapper) {
+            //     wrapper.remove();
+            // }
             repeaterItem.remove();
         }
     </script>

@@ -18,7 +18,7 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">All Service Category</h5>
+                        <h5 class="card-title">All Page Content</h5>
 
                         <!-- Table with stripped rows -->
                         <table class="table table-striped">
@@ -26,26 +26,23 @@
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Title</th>
-                                    <th scope="col">Description</th>
-                                    {{-- <th scope="col">Step Number</th>
-                                    <th scope="col">Status</th> --}}
+                                    <th scope="col">Slug</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Menu Type</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
-                            @php
-                                use App\Helpers\CoreConstant;
-                            @endphp
                             <tbody>
 
-                                @foreach ($workProcess as $item)
+                                @foreach ($pages as $item)
                                     <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
                                         <td>{{ $item->title }}</td>
-                                        <td>{{ $item->description }}</td>
-                                        {{-- <td>{{ $item->step_number }}</td>
-                                        <td>{{ $item->status === CoreConstant::ACTIVE ? 'Active' : 'Inactive' }}</td> --}}
+                                        <td>{{ $item->slug }}</td>
+                                        <td>{{ $item->status }}</td>
+                                        <td>{{ $item->menu_type }}</td>
                                         <td>
-                                            <a href="{{ route('admin.edit-work-process', $item->id) }}" class="mr-1"
+                                            <a href="{{ route('admin.edit-page', $item->id) }}" class="mr-1"
                                                 title="Edit">
                                                 <img src="{{ asset('assets/backend/edit-2.svg') }}" alt="edit">
                                             </a>
@@ -53,12 +50,11 @@
                                                 data-formid="delete_row_form_{{ $item->id }}">
                                                 <img src="{{ asset('assets/backend/trash-2.svg') }}" alt="trash">
                                             </a>
-                                            <form action="{{ route('admin.delete-work-process', $item->id) }}"
-                                                method="post" id="delete_row_form_{{ $item->id }}">
+                                            <form action="{{ route('admin.delete-page', $item->id) }}" method="post"
+                                                id="delete_row_form_{{ $item->id }}">
                                                 {{ method_field('DELETE') }}
                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                             </form>
-
                                         </td>
                                     </tr>
                                 @endforeach
