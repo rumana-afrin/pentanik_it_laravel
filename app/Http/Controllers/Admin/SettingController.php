@@ -69,7 +69,7 @@ class SettingController extends Controller
                 $upload = uploadFile('setting', $request->home_twitter_image, $oldFile);
                 $option->option_value = $upload;
             }else {
-                $option->option_value = $value;
+                $option->option_value = is_null($value) ? '' : $value;
             }
             $option->save();
         }

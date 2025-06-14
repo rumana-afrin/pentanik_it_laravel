@@ -25,7 +25,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Title</th>
+                                    <th scope="col">Name</th>
                                     <th scope="col">Slug</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Menu Type</th>
@@ -37,7 +37,7 @@
                                 @foreach ($pages as $item)
                                     <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
-                                        <td>{{ $item->title }}</td>
+                                        <td>{{ $item->name }}</td>
                                         <td>{{ $item->slug }}</td>
                                         <td>{{ $item->status }}</td>
                                         <td>{{ $item->menu_type }}</td>

@@ -15,6 +15,7 @@ use App\Http\Controllers\Frontend\AboutUsController;
 use App\Http\Controllers\Frontend\AditionalPageController;
 use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\BlogDetailsController;
+use App\Http\Controllers\Frontend\HeaderPageController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\PortfolioController;
 use App\Http\Controllers\Frontend\TeamController;
@@ -23,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 
 
-Route::get('login', [LoginController::class, 'create'])->name('login.create');
+Route::get('login', [LoginController::class, 'create'])->name('login');
 Route::post('login', [LoginController::class, 'store'])->name('login.store');
 Route::get('logout', [LoginController::class, 'destroy'])->name('logout');
 
@@ -105,12 +106,13 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 
 //website route
 Route::get('/', [HomeController::class, 'home']);
-Route::get('about-us', [AboutUsController::class, 'aboutUs'])->name('about-us');
+// Route::get('about-us', [AboutUsController::class, 'aboutUs'])->name('about-us');
+Route::get('home/{slug}', [HeaderPageController::class, 'pages'])->name('header-page');
 Route::get('page/{slug}', [AditionalPageController::class, 'aditionalPage'])->name('aditional-page');
-Route::get('blog', [BlogController::class, 'blog'])->name('blog');
-Route::get('blog-details', [BlogDetailsController::class, 'blogDetails'])->name('blog-details');
+// Route::get('blog', [BlogController::class, 'blog'])->name('blog');
+Route::get('blog-details/{id}', [BlogDetailsController::class, 'blogDetails'])->name('blog-details');
 Route::get('portfolio', [PortfolioController::class, 'portfolio'])->name('portfolio');
-Route::get('team', [TeamController::class, 'team'])->name('team');
+// Route::get('team', [TeamController::class, 'team'])->name('team');
 
 
 

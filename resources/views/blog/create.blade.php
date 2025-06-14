@@ -34,18 +34,18 @@
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="subtitle" class="form-label">Subtitle</label>
                                 <input type="text" class="form-control" name="subtitle" id="subtitle"
-                                    placeholder="slug">
+                                    placeholder="subtitle">
                             </div>
 
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="slug" class="form-label">Slug</label>
                                 <input type="text" class="form-control" name="slug" id="slug" placeholder="slug">
                             </div>
-                            <div class="col-12 col-sm-12 col-md-6">
+                            {{-- <div class="col-12 col-sm-12 col-md-6">
                                 <label for="phone" class="form-label">Phone</label>
                                 <input type="text" class="form-control" name="phone" id="phone"
                                     placeholder="phone">
-                            </div>
+                            </div> --}}
 
 
                             <div class="col-12 col-sm-12 col-md-6">
@@ -160,6 +160,13 @@
                                 <input type="text" class="form-control" name="meta_keywords" id="meta_keywords"
                                     placeholder="meta_keywords">
                             </div>
+
+                            <div class="col-12 col-sm-12 col-md-6">
+                                <label for="auther" class="form-label">Site Auther</label>
+                                <input type="text" class="form-control" name="auther" id="auther"
+                                    placeholder="auther">
+                            </div>
+
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="canonical_url" class="form-label">Canonical Url</label>
                                 <input type="url" class="form-control" name="canonical_url" id="canonical_url"
@@ -194,6 +201,17 @@
                                     placeholder="og_type">
                             </div>
                              <div class="col-12 col-sm-12 col-md-6">
+                                <label for="og_url" class="form-label">Og URl</label>
+                                <input type="url" class="form-control" name="og_url" id="og_url"
+                                    placeholder="og url">
+                            </div>
+                             <div class="col-12 col-sm-12 col-md-6">
+                                <label for="og_site_name" class="form-label">Og Site Name</label>
+                                <input type="text" class="form-control" name="og_site_name" id="og_site_name"
+                                    placeholder="og_site_name">
+                            </div>
+
+                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="twitter_card" class="form-label">Twitter Card</label>
                                 <input type="text" class="form-control" name="twitter_card" id="twitter_card"
                                     placeholder="twitter_card">
@@ -207,6 +225,11 @@
                                 <label for="twitter_description" class="form-label">Twitter Description</label>
                                 <input type="text" class="form-control" name="twitter_description" id="twitter_description"
                                     placeholder="twitter_description">
+                            </div>
+                             <div class="col-12 col-sm-12 col-md-6">
+                                <label for="twitter_site" class="form-label">Twitter Site</label>
+                                <input type="text" class="form-control" name="twitter_site" id="twitter_site"
+                                    placeholder="@/yourtwitterhandle">
                             </div>
 
                                    <div class="col-12 col-sm-12 col-md-6">

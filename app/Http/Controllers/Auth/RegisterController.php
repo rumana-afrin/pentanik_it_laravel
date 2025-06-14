@@ -35,6 +35,6 @@ class RegisterController extends Controller
         $user->status = 1;
 
         $user->save();
-        return redirect()->route('login.create')->with('success', CoreConstant::CREATED_SUCCESSFULLY);
+        return redirect()->route('login')->with('success', CoreConstant::CREATED_SUCCESSFULLY);
    }
 }

@@ -10,12 +10,12 @@ function getDefaultImage(): string
 }
 function adminInfo()
 {
-    return Auth::user(); // returns the entire user model of the logged-in admin
+    return Auth::user(); 
 }
 
 function adminImage()
 {
-    $user = Auth::user(); // Get the authenticated user
+    $user = Auth::user();
 
     if ($user && $user->image) {
         return asset('storage/' . $user->image);
@@ -42,12 +42,10 @@ function getImage($file)
 {
     Log::info("inge", ['file' => $file]);
 
-    // Check if file is not empty and exists in public storage
     if (!empty($file) && Storage::disk('public')->exists($file)) {
         return asset('storage/' . $file);
     }
 
-    // Fallback image (note: should match actual public path)
     return asset('assets/backend/image/no-imge.jpg');
 }
 
@@ -56,7 +54,7 @@ function uploadFile($to, $file, $oldFile = '')
 {
 
     if ($oldFile) {
-        removeFile($oldFile); // Pass the old file path
+        removeFile($oldFile);
     }
     $extension = pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION);
     $file_name = time() . rand(1000, 9999) . '.' . $extension;

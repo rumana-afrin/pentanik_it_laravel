@@ -32,11 +32,11 @@
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="designation" class="form-label">Designation</label>
                                 <input type="text" class="form-control" name="designation" id="designation"
-                                    placeholder="slug">
+                                    placeholder="designation">
                             </div>
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="bio" class="form-label">Biography</label>
-                                <textarea class="form-control" name="bio" id="bio" placeholder="bio" cols="30" rows="3"></textarea>
+                                <textarea class="form-control" name="bio" id="bio" placeholder="biography" cols="30" rows="3"></textarea>
                             </div>
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="email" class="form-label">Email</label>
@@ -65,7 +65,7 @@
                                 <label for="status" class="form-label">Status</label>
                                 <select class="form-select" name="status" id="status"
                                     aria-label="Default select example">
-                                    <option selected>selete status</option>
+                                    <option selected value="">selete status</option>
                                     <option value="1">Active</option>
                                     <option value="0">Inactive</option>
 

@@ -245,11 +245,11 @@
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="ceo_title" class="col-sm-3 col-form-label">Short Summary</label>
+                                <label for="short_summary" class="col-sm-3 col-form-label">Short Summary</label>
                                 <div class="col-sm-8">
 
-                                    <textarea class="form-control" id="ceo_title" name="ceo_title" placeholder="write short details about CEO"
-                                        cols="30" rows="3">{{ getOption('ceo_title') }}</textarea>
+                                    <textarea class="form-control" id="short_summary" name="short_summary" placeholder="write short details about CEO"
+                                        cols="30" rows="3">{{ getOption('short_summary') }}</textarea>
                                 </div>
                             </div>
 
@@ -300,9 +300,25 @@
                                         value="{{ getOption('home_meta_keywords') }}">
                                 </div>
                             </div>
-
                             <div class="row mb-3">
-                                <label for="home_canonical_url" class="col-sm-3 col-form-label">Meta Canonical Url</label>
+                                <label for="home_meta_auther" class="col-sm-3 col-form-label">Site Auther</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="home_meta_auther"
+                                        name="home_meta_auther" placeholder="meta auther"
+                                        value="{{ getOption('home_meta_auther') }}">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="home_meta_business_name" class="col-sm-3 col-form-label">Business Name</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="home_meta_business_name"
+                                        name="home_meta_business_name" placeholder="meta business_name"
+                                        value="{{ getOption('home_meta_business_name') }}">
+                                </div>
+                            </div>
+                          
+                            <div class="row mb-3">
+                                <label for="home_canonical_url" class="col-sm-3 col-form-label">Canonical Url</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="home_canonical_url"
                                         name="home_canonical_url" placeholder="meta canonical url"
@@ -349,9 +365,25 @@
                                         placeholder="open graph type" value="{{ getOption('home_og_type') }}">
                                 </div>
                             </div>
+                            <div class="row mb-3">
+                                <label for="home_og_url" class="col-sm-3 col-form-label">Open Graph URl</label>
+                                <div class="col-sm-8">
+                                    <input type="url" class="form-control" id="home_og_url" name="home_og_url"
+                                        placeholder="open graph url" value="{{ getOption('home_og_url') }}">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="home_og_site_name" class="col-sm-3 col-form-label">Open Graph Site
+                                    Name</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="home_og_site_name"
+                                        name="home_og_site_name" placeholder="open graph site_name"
+                                        value="{{ getOption('home_og_site_name') }}">
+                                </div>
+                            </div>
 
                             <div class="row mb-3">
-                                <label for="home_twitter_card" class="col-sm-3 col-form-label">Twitter Card</label>
+                                <label for="home_twitter_card" class="col-sm-3 col-form-label">Twitter Card Type</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="home_twitter_card"
                                         name="home_twitter_card" placeholder="twitter card"
@@ -373,6 +405,14 @@
                                 <div class="col-sm-8">
                                     <textarea class="form-control" id="home_twitter_description" name="home_twitter_description"
                                         placeholder="twitter description" cols="30" rows="3">{{ getOption('home_twitter_description') }}</textarea>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="site" class="col-sm-3 col-form-label">Twitter Site name</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="home_twitter_site"
+                                        name="home_twitter_site" placeholder="@/yourtwitterhandle"
+                                        value="{{ getOption('home_twitter_site') }}">
                                 </div>
                             </div>
 

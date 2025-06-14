@@ -134,7 +134,7 @@
                                         </div>
                                         <div class="col-12 register-col">
                                             <p class="small mb-0">Already have an account? <a
-                                                    href="{{ route('login.create') }}">Log in</a></p>
+                                                    href="{{ route('login') }}">Log in</a></p>
                                         </div>
                                     </form>
 

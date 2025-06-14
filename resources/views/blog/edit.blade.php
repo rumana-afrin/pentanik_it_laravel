@@ -193,6 +193,11 @@
                                 <input type="text" class="form-control" name="meta_keywords" id="meta_keywords"
                                     placeholder="meta_keywords" value="{{ $blog->seoMetaTag?->meta_keywords }}">
                             </div>
+                              <div class="col-12 col-sm-12 col-md-6">
+                                <label for="auther" class="form-label">Site Auther</label>
+                                <input type="text" class="form-control" name="auther" id="auther"
+                                    placeholder="auther" value="{{ $blog->seoMetaTag?->auther }}">
+                            </div>
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="canonical_url" class="form-label">Canonical Url</label>
                                 <input type="url" class="form-control" name="canonical_url" id="canonical_url"
@@ -227,6 +232,18 @@
                                 <input type="text" class="form-control" name="og_type" id="og_type"
                                     placeholder="og_type" value="{{ $blog->seoMetaTag?->og_type }}">
                             </div>
+                            
+                             <div class="col-12 col-sm-12 col-md-6">
+                                <label for="og_url" class="form-label">Og URl</label>
+                                <input type="url" class="form-control" name="og_url" id="og_url"
+                                    placeholder="og url" value="{{ $blog->seoMetaTag?->og_url }}">
+                            </div>
+                             <div class="col-12 col-sm-12 col-md-6">
+                                <label for="og_site_name" class="form-label">Og Site Name</label>
+                                <input type="text" class="form-control" name="og_site_name" id="og_site_name"
+                                    placeholder="og site name" value="{{ $blog->seoMetaTag?->og_site_name }}">
+                            </div>
+
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="twitter_card" class="form-label">Twitter Card</label>
                                 <input type="text" class="form-control" name="twitter_card" id="twitter_card"
@@ -242,6 +259,11 @@
                                 <input type="text" class="form-control" name="twitter_description"
                                     id="twitter_description" placeholder="twitter_description"
                                     value="{{ $blog->seoMetaTag?->twitter_description }}">
+                            </div>
+                               <div class="col-12 col-sm-12 col-md-6">
+                                <label for="twitter_site" class="form-label">Twitter Site</label>
+                                <input type="text" class="form-control" name="twitter_site" id="twitter_site"
+                                    placeholder="@/yourtwitterhandle" value="{{ $blog->seoMetaTag?->twitter_site }}">
                             </div>
 
                             <div class="col-12 col-sm-12 col-md-6">

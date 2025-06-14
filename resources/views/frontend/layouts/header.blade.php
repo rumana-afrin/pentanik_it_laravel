@@ -8,7 +8,7 @@
                              <a class="mobile-menu-icon" href="javascript:void(0)" onclick="openNav()"><i
                                      class="fa-solid fa-bars"></i></a>
                          </div>
-                         <a href="{{url('/')}}"><img class="logo-image" src="{{ getimage(getOption('footer_logo')) }}" alt="" width="150"
+                         <a href="{{url('/')}}"><img class="logo-image" src="{{ getimage(getOption('header_logo')) }}" alt="" width="150"
                                  height="60"></a>
                          {{-- <a href="{{url('/')}}"><img class="logo-image" src="{{asset('assets/frontend/Pentanik-IT-Logo.png')}}" alt="" width="150"
                                  height="60"></a> --}}
@@ -17,16 +17,17 @@
                          <!--start category menu -->
                          <ul class="category-menu m-0 p-0">
                              <li class="menus-item">
-                                 <a href="{{route('about-us')}}">About</a>
+                                 <a href="{{route('header-page', ['slug' => 'about-us'])}}">About</a>
                              </li>
                              <li>
-                                 <a href="{{route('portfolio')}}">Portfolio</a>
+                                 <a href="{{route('header-page', ['slug' => 'portfolio'])}}">Portfolio</a>
+                             </li>
+                            
+                             <li>
+                                 <a href="{{route('header-page', ['slug' => 'team-member'])}}">Team</a>
                              </li>
                              <li>
-                                 <a href="{{route('team')}}">Team</a>
-                             </li>
-                             <li>
-                                 <a href="{{route('blog')}}">Blog</a>
+                                 <a href="{{route('header-page', ['slug' => 'blog'])}}">Blog</a>
                              </li>
                              <li class="dropdown">
                                  <div class="d-flex dropdownbtn">
@@ -80,7 +81,7 @@
                              <input class="search" type="search" placeholder="search...">
                          </div>
                          <div class="ms-3">
-                             <a class="text-decoration-none text-light" href="{{route('login.create')}}">
+                             <a class="text-decoration-none text-light" href="{{route('login')}}">
                                  <i class="fa-solid fa-user"></i>&nbsp login</a>
                          </div>
                      </div>
@@ -95,13 +96,13 @@
                          </div>
                          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
                          <li class="navbar-item">
-                             <a href="{{route('about-us')}}">About</a>
+                             <a href="{{route('header-page', ['slug' => 'about-us'])}}">About</a>
                          </li>
                          <li class="navbar-item">
-                             <a href="{{route('portfolio')}}">PortFolio</a>
+                             <a href="{{route('header-page', ['slug' => 'portfolio'])}}">PortFolio</a>
                          </li>
                          <li class="navbar-item">
-                             <a href="{{route('team')}}">Team</a>
+                             <a href="{{route('header-page', ['slug' => 'team-member'])}}">Team</a>
                          </li>
                          <li class="dropdown-container">
                              <a href="#" class="dropdown-togglee d-flex justify-content-between align-items-center">
@@ -133,7 +134,7 @@
                              </ul>
                          </li>
                          <li class="navbar-item">
-                             <a href="{{route('blog')}}">Blog</a>
+                             <a href="{{route('header-page', ['slug' => 'blog'])}}">Blog</a>
                          </li>
 
                      </div>

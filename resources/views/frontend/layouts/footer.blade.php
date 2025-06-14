@@ -2,14 +2,14 @@
      <div class="footer d-flex justify-content-center align-items-center">
          <div class="footer-logo">
              <div class="footerlogo">
-                 <img src="{{ getimage(getOption('header_logo')) }}" alt="">
+                 <img src="{{ getimage(getOption('footer_logo')) }}" alt="">
              </div>
          </div>
          <div class="footer-menu">
              <ul class="d-flex justify-content-center align-items-center list-unstyled flex-wrap menu-item m-0">
                  @foreach ($pages as $page)
                      <li class="p-2"><a class="text-decoration-underline text-light"
-                             href="{{ route('aditional-page', ['slug' => $page->slug]) }}">{{ $page->title }}</a></li>
+                             href="{{ route('aditional-page', ['slug' => $page->slug]) }}">{{ $page->name }}</a></li>
                  @endforeach
                  {{-- <li class="p-2"><a class="text-decoration-underline text-light"
                             href="{{route('aditional-page')}}">Privacy</a></li>

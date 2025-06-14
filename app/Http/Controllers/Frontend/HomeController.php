@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Page;
 use App\Models\ServiceCategory;
+use App\Models\Setting;
 use App\Models\WorkProcess;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {

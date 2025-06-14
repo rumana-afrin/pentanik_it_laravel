@@ -113,13 +113,17 @@ class BlogController extends Controller
         $seo->meta_title =  $request->meta_title;
         $seo->meta_description = $request->meta_description;
         $seo->meta_keywords = $request->meta_keywords;
-        $seo->canonical_url = $request->canonical_url;
-        $seo->og_title = $request->og_title;
-        $seo->og_description  = $request->og_description;
-        $seo->og_type  = $request->og_type;
-        $seo->twitter_card  = $request->twitter_card;
-        $seo->twitter_title  = $request->twitter_title;
-        $seo->twitter_description  = $request->twitter_description;
+        $seo->auther = $request->auther;
+        $seo->canonical_url = $request->canonical_url ?? "";
+        $seo->og_title = $request->og_title ?? "";
+        $seo->og_description  = $request->og_description ?? "";
+        $seo->og_type  = $request->og_type ?? "";
+        $seo->og_url  = $request->og_url ?? "";
+        $seo->og_site_name  = $request->og_site_name ?? "";
+        $seo->twitter_card  = $request->twitter_card ?? "";
+        $seo->twitter_title  = $request->twitter_title ?? "";
+        $seo->twitter_description  = $request->twitter_description ?? "";
+        $seo->twitter_site  = $request->twitter_site ?? "";
 
         if ($request->hasFile('og_image')) {
             $image = $request->file('og_image');
@@ -254,13 +258,17 @@ class BlogController extends Controller
         $seo->meta_title =  $request->meta_title;
         $seo->meta_description = $request->meta_description;
         $seo->meta_keywords = $request->meta_keywords;
-        $seo->canonical_url = $request->canonical_url;
-        $seo->og_title = $request->og_title;
-        $seo->og_description  = $request->og_description;
-        $seo->og_type  = $request->og_type;
-        $seo->twitter_card  = $request->twitter_card;
-        $seo->twitter_title  = $request->twitter_title;
-        $seo->twitter_description  = $request->twitter_description;
+        $seo->auther = $request->auther;
+        $seo->canonical_url = $request->canonical_url ?? "";
+        $seo->og_title = $request->og_title ?? "";
+        $seo->og_description  = $request->og_description ?? "";
+        $seo->og_type  = $request->og_type ?? "";
+        $seo->og_url  = $request->og_url ?? "";
+        $seo->og_site_name  = $request->og_site_name ?? "";
+        $seo->twitter_card  = $request->twitter_card ?? "";
+        $seo->twitter_title  = $request->twitter_title ?? "";
+        $seo->twitter_description  = $request->twitter_description ?? "";
+        $seo->twitter_site  = $request->twitter_site ?? "";
 
         if ($request->hasFile('og_image')) {
             $image = $request->file('og_image');
@@ -301,37 +309,36 @@ class BlogController extends Controller
     }
 
     public function destroy($id)
-{
-    $data = Blog::findOrFail($id);
+    {
+        $data = Blog::findOrFail($id);
 
-    if ($data->thumbnail_image && Storage::disk('public')->exists($data->thumbnail_image)) {
-        Storage::disk('public')->delete($data->thumbnail_image);
-    }
-
-    $galleries = BlogGalleryImage::where('blog_id', $data->id)->get();
-    foreach ($galleries as $image) {
-        if ($image->gallary_image && Storage::disk('public')->exists($image->gallary_image)) {
-            Storage::disk('public')->delete($image->gallary_image);
-        }
-        $image->delete(); 
-    }
-
-    $seo = $data->seoMetaTag; 
-    if ($seo) {
-        if ($seo->og_image && Storage::disk('public')->exists($seo->og_image)) {
-            Storage::disk('public')->delete($seo->og_image);
+        if ($data->thumbnail_image && Storage::disk('public')->exists($data->thumbnail_image)) {
+            Storage::disk('public')->delete($data->thumbnail_image);
         }
 
-        if ($seo->twitter_image && Storage::disk('public')->exists($seo->twitter_image)) {
-            Storage::disk('public')->delete($seo->twitter_image);
+        $galleries = BlogGalleryImage::where('blog_id', $data->id)->get();
+        foreach ($galleries as $image) {
+            if ($image->gallary_image && Storage::disk('public')->exists($image->gallary_image)) {
+                Storage::disk('public')->delete($image->gallary_image);
+            }
+            $image->delete();
         }
 
-        $seo->delete(); 
+        $seo = $data->seoMetaTag;
+        if ($seo) {
+            if ($seo->og_image && Storage::disk('public')->exists($seo->og_image)) {
+                Storage::disk('public')->delete($seo->og_image);
+            }
+
+            if ($seo->twitter_image && Storage::disk('public')->exists($seo->twitter_image)) {
+                Storage::disk('public')->delete($seo->twitter_image);
+            }
+
+            $seo->delete();
+        }
+        $data->delete();
+
+
+        return redirect()->route('admin.all-team')->with('success', CoreConstant::DELETED_SUCCESSFULLY);
     }
-    $data->delete();
-    
-
-    return redirect()->route('admin.all-team')->with('success', CoreConstant::DELETED_SUCCESSFULLY);
-}
-
 }

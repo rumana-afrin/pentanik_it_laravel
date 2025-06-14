@@ -25,10 +25,20 @@
                             @csrf
                             @method('POST')
 
-                            <div class="col-12 col-sm-12 col-md-6">
+                            <div class="col-12 col-sm-12 col-md-12">
+                                <label for="name" class="form-label">Page Name</label>
+                                <input type="text" name="name" class="form-control" id="name"
+                                    placeholder="name">
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-12">
                                 <label for="title" class="form-label">Title</label>
                                 <input type="text" name="title" class="form-control" id="title"
                                     placeholder="title">
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6">
+                                <label for="subtitle" class="form-label">Subtitle</label>
+                                <input type="text" name="subtitle" class="form-control" id="subtitle"
+                                    placeholder="subtitle">
                             </div>
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="slug" class="form-label">slug</label>
@@ -102,6 +112,7 @@
                             </div>
 
                             {{-- seo --}}
+                             {{-- seo --}}
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="meta_title" class="form-label">Meta Title</label>
                                 <input type="text" class="form-control" name="meta_title" id="meta_title"
@@ -109,14 +120,21 @@
                             </div>
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="meta_description" class="form-label">Meta Description</label>
-                                <textarea name="meta_description" class="form-control" id="meta_description" placeholder="meta_description"
-                                    cols="30" rows="3"></textarea>
+                                <input type="text" class="form-control" name="meta_description" id="meta_description"
+                                    placeholder="meta_description">
                             </div>
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="meta_keywords" class="form-label">Meta Keywords</label>
                                 <input type="text" class="form-control" name="meta_keywords" id="meta_keywords"
                                     placeholder="meta_keywords">
                             </div>
+
+                            <div class="col-12 col-sm-12 col-md-6">
+                                <label for="auther" class="form-label">Site Auther</label>
+                                <input type="text" class="form-control" name="auther" id="auther"
+                                    placeholder="auther">
+                            </div>
+
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="canonical_url" class="form-label">Canonical Url</label>
                                 <input type="url" class="form-control" name="canonical_url" id="canonical_url"
@@ -129,10 +147,10 @@
                             </div>
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="og_description" class="form-label">Og Description</label>
-                                <textarea name="og_description" class="form-control" id="og_description" placeholder="og_description"
-                                    cols="30" rows="3"></textarea>
+                                <input type="text" class="form-control" name="og_description" id="og_description"
+                                    placeholder="og_description">
                             </div>
-
+                          
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="og_image" class="form-label">Og Image</label>
                                 <div class="upload-img-box">
@@ -145,28 +163,44 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-sm-12 col-md-6">
+                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="og_type" class="form-label">Og Type</label>
                                 <input type="text" class="form-control" name="og_type" id="og_type"
                                     placeholder="og_type">
                             </div>
-                            <div class="col-12 col-sm-12 col-md-6">
+                             <div class="col-12 col-sm-12 col-md-6">
+                                <label for="og_url" class="form-label">Og URl</label>
+                                <input type="url" class="form-control" name="og_url" id="og_url"
+                                    placeholder="og url">
+                            </div>
+                             <div class="col-12 col-sm-12 col-md-6">
+                                <label for="og_site_name" class="form-label">Og Site Name</label>
+                                <input type="text" class="form-control" name="og_site_name" id="og_site_name"
+                                    placeholder="og_site_name">
+                            </div>
+
+                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="twitter_card" class="form-label">Twitter Card</label>
                                 <input type="text" class="form-control" name="twitter_card" id="twitter_card"
                                     placeholder="twitter_card">
                             </div>
-                            <div class="col-12 col-sm-12 col-md-6">
+                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="twitter_title" class="form-label">Twitter Title</label>
                                 <input type="text" class="form-control" name="twitter_title" id="twitter_title"
                                     placeholder="twitter_title">
                             </div>
-                            <div class="col-12 col-sm-12 col-md-6">
+                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="twitter_description" class="form-label">Twitter Description</label>
-                                <textarea name="twitter_description" class="form-control" id="twitter_description" placeholder="twitter_description"
-                                    cols="30" rows="3"></textarea>
+                                <input type="text" class="form-control" name="twitter_description" id="twitter_description"
+                                    placeholder="twitter_description">
+                            </div>
+                             <div class="col-12 col-sm-12 col-md-6">
+                                <label for="twitter_site" class="form-label">Twitter Site</label>
+                                <input type="text" class="form-control" name="twitter_site" id="twitter_site"
+                                    placeholder="@/yourtwitterhandle">
                             </div>
 
-                            <div class="col-12 col-sm-12 col-md-6">
+                                   <div class="col-12 col-sm-12 col-md-6">
                                 <label for="twitter_image" class="form-label">Twitter Image</label>
                                 <div class="upload-img-box">
                                     <img id="updateImageUrl" src="">

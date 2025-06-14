@@ -95,19 +95,23 @@ class PortfolioController extends Controller
             }
         }
 
-         //seo meta
+        //seo meta
 
         $seo = new SeoMetaTag();
-        $seo->meta_title =  $request->meta_title;
+    $seo->meta_title =  $request->meta_title;
         $seo->meta_description = $request->meta_description;
         $seo->meta_keywords = $request->meta_keywords;
-        $seo->canonical_url = $request->canonical_url;
-        $seo->og_title = $request->og_title;
-        $seo->og_description  = $request->og_description;
-        $seo->og_type  = $request->og_type;
-        $seo->twitter_card  = $request->twitter_card;
-        $seo->twitter_title  = $request->twitter_title;
-        $seo->twitter_description  = $request->twitter_description;
+        $seo->auther = $request->auther;
+        $seo->canonical_url = $request->canonical_url ?? "";
+        $seo->og_title = $request->og_title ?? "";
+        $seo->og_description  = $request->og_description ?? "";
+        $seo->og_type = $request->og_type ?? 'website';
+        $seo->og_url  = $request->og_url ?? "";
+        $seo->og_site_name  = $request->og_site_name ?? "";
+        $seo->twitter_card = $request->twitter_card ?? 'summary';
+        $seo->twitter_title  = $request->twitter_title ?? "";
+        $seo->twitter_description  = $request->twitter_description ?? "";
+        $seo->twitter_site  = $request->twitter_site ?? "";
 
         if ($request->hasFile('og_image')) {
             $image = $request->file('og_image');
@@ -137,12 +141,12 @@ class PortfolioController extends Controller
         return redirect()->route('admin.all-portfolio')->with('success', CoreConstant::CREATED_SUCCESSFULLY);
     }
 
-        public function edit($id)
+    public function edit($id)
     {
         $data['pageTitle'] = 'Portfolio';
         $data['pCategoryShowClass'] = 'show';
         $data['createportfolioActiveClass'] = 'active';
-                $data['category'] = PortfolioCategory::all();
+        $data['category'] = PortfolioCategory::all();
         $data['portfolio'] = Portfolio::findOrfail($id);
         return view('portfolio.edit')->with($data);
     }
@@ -158,14 +162,13 @@ class PortfolioController extends Controller
             'portfolio_category_id' => 'required',
             'title' => 'required|string',
             'subtitle' => 'nullable|string',
-            'slug' => 'required|string|unique:portfolios,slug',
+            'slug' => 'required|string|unique:portfolios,slug,' . $id,
             'short_description' => 'nullable|string',
             'description' => 'nullable|string',
             'client_name' => 'nullable|string',
             'project_url' => 'nullable|url',
             'is_featured' => 'boolean',
             'is_active' => 'boolean',
-            'featured_image' => 'required|image|mimes:jpg,png,webp,jpeg',
         ]);
 
         $portfolio = Portfolio::findOrfail($id);
@@ -202,7 +205,7 @@ class PortfolioController extends Controller
 
         if ($portfolio) {
             if ($request->has('technology')) {
-                $portfolio->technologies()->delete(); 
+                $portfolio->technologies()->delete();
 
                 $technology = $request->input('technology');
                 $insertData = [];
@@ -217,19 +220,23 @@ class PortfolioController extends Controller
             }
         }
 
-         //seo meta
+        //seo meta
 
-        $seo = $blog->seoMetaTag ?? new SeoMetaTag();
-        $seo->meta_title =  $request->meta_title;
+        $seo = $portfolio->seoMetaTag ?? new SeoMetaTag();
+         $seo->meta_title =  $request->meta_title;
         $seo->meta_description = $request->meta_description;
         $seo->meta_keywords = $request->meta_keywords;
-        $seo->canonical_url = $request->canonical_url;
-        $seo->og_title = $request->og_title;
-        $seo->og_description  = $request->og_description;
-        $seo->og_type  = $request->og_type;
-        $seo->twitter_card  = $request->twitter_card;
-        $seo->twitter_title  = $request->twitter_title;
-        $seo->twitter_description  = $request->twitter_description;
+        $seo->auther = $request->auther;
+        $seo->canonical_url = $request->canonical_url ?? "";
+        $seo->og_title = $request->og_title ?? "";
+        $seo->og_description  = $request->og_description ?? "";
+        $seo->og_type = $request->og_type ?? 'website';
+        $seo->og_url  = $request->og_url ?? "";
+        $seo->og_site_name  = $request->og_site_name ?? "";
+        $seo->twitter_card = $request->twitter_card ?? 'summary';
+        $seo->twitter_title  = $request->twitter_title ?? "";
+        $seo->twitter_description  = $request->twitter_description ?? "";
+        $seo->twitter_site  = $request->twitter_site ?? "";
 
         if ($request->hasFile('og_image')) {
             $image = $request->file('og_image');
@@ -241,7 +248,7 @@ class PortfolioController extends Controller
             $name = $file_name . '.' . $extension;
             $store = $image->storeAs('upload', $name, 'public');
 
-             if ($seo->og_image && Storage::disk('public')->exists($seo->og_image)) {
+            if ($seo->og_image && Storage::disk('public')->exists($seo->og_image)) {
                 Storage::disk('public')->delete($seo->og_image);
             }
 
@@ -257,7 +264,7 @@ class PortfolioController extends Controller
             $name = $file_name . '.' . $extension;
             $store = $image->storeAs('upload', $name, 'public');
 
-              if ($seo->twitter_image && Storage::disk('public')->exists($seo->twitter_image)) {
+            if ($seo->twitter_image && Storage::disk('public')->exists($seo->twitter_image)) {
                 Storage::disk('public')->delete($seo->twitter_image);
             }
 
@@ -269,29 +276,28 @@ class PortfolioController extends Controller
         return redirect()->route('admin.all-portfolio')->with('success', CoreConstant::UPDATED_SUCCESSFULLY);
     }
 
-    public function destroy($id){
-        
-          $data = Portfolio::findOrFail($id);
+    public function destroy($id)
+    {
 
-    if ($data->featured_image && Storage::disk('public')->exists($data->featured_image)) {
-        Storage::disk('public')->delete($data->featured_image);
-    }
-        $seo = $data->seoMetaTag; 
-    if ($seo) {
-        if ($seo->og_image && Storage::disk('public')->exists($seo->og_image)) {
-            Storage::disk('public')->delete($seo->og_image);
+        $data = Portfolio::findOrFail($id);
+
+        if ($data->featured_image && Storage::disk('public')->exists($data->featured_image)) {
+            Storage::disk('public')->delete($data->featured_image);
         }
+        $seo = $data->seoMetaTag;
+        if ($seo) {
+            if ($seo->og_image && Storage::disk('public')->exists($seo->og_image)) {
+                Storage::disk('public')->delete($seo->og_image);
+            }
 
-        if ($seo->twitter_image && Storage::disk('public')->exists($seo->twitter_image)) {
-            Storage::disk('public')->delete($seo->twitter_image);
+            if ($seo->twitter_image && Storage::disk('public')->exists($seo->twitter_image)) {
+                Storage::disk('public')->delete($seo->twitter_image);
+            }
+
+            $seo->delete();
         }
-
-        $seo->delete(); 
-    }
-    $data->delete();
+        $data->delete();
 
         return redirect()->route('admin.all-portfolio')->with('success', CoreConstant::DELETED_SUCCESSFULLY);
-
-
     }
 }

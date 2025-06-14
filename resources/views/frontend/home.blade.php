@@ -6,7 +6,7 @@
             <div class="hero-section d-flex justify-content-start align-items-center">
                 <div class="hero-image d-flex justify-content-between align-items-center">
                     <div class="main-image">
-                        <img src="{{ asset('assets/frontend/img/Artboard 15.png') }}" alt="Hero image">
+                        <img src="{{ getimage(getOption('home_banner')) }}" alt="Hero image">
 
                         <!-- <picture>
                                                             <source media="(max-width: 992px)" srcset="/img/hero-2.jpg" width="350" height="450">

@@ -35,8 +35,8 @@ class PortfolioCategoryController extends Controller
         $request->validate([
             'name' => 'required|string',
             'slug' => 'required|string|unique:portfolio_categories,slug',
-            'description' => 'required|string',
-            'image' => 'required|image|mimes:jpg,png,webp,jpeg',
+            'description' => 'nullable|string',
+            'image' => 'nullable|image|mimes:jpg,png,webp,jpeg',
             'sort_order' => 'nullable|integer',
             'is_active' => 'required|boolean',
 
@@ -85,8 +85,8 @@ class PortfolioCategoryController extends Controller
         $request->validate([
             'name' => 'required|string',
             'slug' => 'required|string|unique:portfolio_categories,slug,' . $id,
-            'description' => 'required|string',
-            'image' => 'required|image|mimes:jpg,png,webp,jpeg',
+            'description' => 'nullable|string',
+            'image' => 'nullable|image|mimes:jpg,png,webp,jpeg',
             'sort_order' => 'nullable|integer',
             'is_active' => 'required|boolean',
 

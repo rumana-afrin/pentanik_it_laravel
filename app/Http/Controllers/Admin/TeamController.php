@@ -17,7 +17,6 @@ class TeamController extends Controller
         $data['teamShowClass'] = 'show';
         $data['allteamActiveClass'] = 'active';
         $data['teams'] = Team::all();
-
         return view('team.index')->with($data);
     }
     public function create()
@@ -111,7 +110,6 @@ class TeamController extends Controller
             'name' => 'required|string',
             'designation' => 'required|string',
             'bio' => 'nullable|string',
-            'image' => 'required|image|mimes:jpg,png,webp,jpeg',
             'email' => 'nullable|email',
             'phone' => 'nullable|string',
             'experience_years' => 'nullable|integer',

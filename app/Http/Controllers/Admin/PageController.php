@@ -35,14 +35,18 @@ class PageController extends Controller
         // dd($request->all());
 
         $request->validate([
-            'title' => 'required|string',
+            'name' => 'required|string',
+            'title' => 'nullable|string',
+            'subtitle' => 'nullable|string',
             'slug' => 'required|string|unique:pages',
             'short_content' => 'nullable|string',
             'content' => 'nullable|string',
         ]);
 
         $page = new Page();
+        $page->name = $request->name;
         $page->title = $request->title;
+        $page->subtitle = $request->subtitle;
         $page->slug = $request->slug;
         $page->short_content = $request->short_content;
         $page->content = $request->content ?? "";
@@ -68,16 +72,20 @@ class PageController extends Controller
 
         //seo meta
         $seo = new SeoMetaTag();
-        $seo->meta_title =  $request->meta_title;
+         $seo->meta_title =  $request->meta_title;
         $seo->meta_description = $request->meta_description;
         $seo->meta_keywords = $request->meta_keywords;
-        $seo->canonical_url = $request->canonical_url;
-        $seo->og_title = $request->og_title;
-        $seo->og_description  = $request->og_description;
-        $seo->og_type  = $request->og_type;
-        $seo->twitter_card  = $request->twitter_card;
-        $seo->twitter_title  = $request->twitter_title;
-        $seo->twitter_description  = $request->twitter_description;
+        $seo->auther = $request->auther;
+        $seo->canonical_url = $request->canonical_url ?? "";
+        $seo->og_title = $request->og_title ?? "";
+        $seo->og_description  = $request->og_description ?? "";
+        $seo->og_type = $request->og_type ?? 'website';
+        $seo->og_url  = $request->og_url ?? "";
+        $seo->og_site_name  = $request->og_site_name ?? "";
+        $seo->twitter_card = $request->twitter_card ?? 'summary';
+        $seo->twitter_title  = $request->twitter_title ?? "";
+        $seo->twitter_description  = $request->twitter_description ?? "";
+        $seo->twitter_site  = $request->twitter_site ?? "";
 
         if ($request->hasFile('og_image')) {
             $image = $request->file('og_image');
@@ -123,14 +131,18 @@ class PageController extends Controller
         $data['createPageActiveClass'] = 'active';
 
         $request->validate([
-            'title' => 'required|string',
+            'name' => 'required|string',
+            'title' => 'nullable|string',
+            'subtitle' => 'nullable|string',
             'slug' => 'required|string|unique:pages,slug,' . $id,
             'short_content' => 'nullable|string',
             'content' => 'nullable|string',
         ]);
 
         $page = Page::findOrfail($id);
+        $page->name = $request->name;
         $page->title = $request->title;
+        $page->subtitle = $request->subtitle;
         $page->slug = $request->slug;
         $page->short_content = $request->short_content;
         $page->content = $request->content ?? "";
@@ -161,16 +173,20 @@ class PageController extends Controller
 
         //seo meta
         $seo = $page->seoMetaTag ?? new SeoMetaTag();
-        $seo->meta_title =  $request->meta_title;
+       $seo->meta_title =  $request->meta_title;
         $seo->meta_description = $request->meta_description;
         $seo->meta_keywords = $request->meta_keywords;
-        $seo->canonical_url = $request->canonical_url;
-        $seo->og_title = $request->og_title;
-        $seo->og_description  = $request->og_description;
-        $seo->og_type  = $request->og_type;
-        $seo->twitter_card  = $request->twitter_card;
-        $seo->twitter_title  = $request->twitter_title;
-        $seo->twitter_description  = $request->twitter_description;
+        $seo->auther = $request->auther;
+        $seo->canonical_url = $request->canonical_url ?? "";
+        $seo->og_title = $request->og_title ?? "";
+        $seo->og_description  = $request->og_description ?? "";
+        $seo->og_type = $request->og_type ?? 'website';
+        $seo->og_url  = $request->og_url ?? "";
+        $seo->og_site_name  = $request->og_site_name ?? "";
+        $seo->twitter_card = $request->twitter_card ?? 'summary';
+        $seo->twitter_title  = $request->twitter_title ?? "";
+        $seo->twitter_description  = $request->twitter_description ?? "";
+        $seo->twitter_site  = $request->twitter_site ?? "";
 
         if ($request->hasFile('og_image')) {
             $image = $request->file('og_image');

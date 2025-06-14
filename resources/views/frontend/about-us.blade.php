@@ -11,6 +11,13 @@
             <div class="about-content d-flex justify-content-between align-items-center">
                 <div class="about-head-section">
                     <div class="about-head-content">
+                        <h5 class="abouthead-text">{!! $aboutUs->short_content !!}</div>
+                    <div class="about-image">
+                        <img src="{{ asset('storage/' . $aboutUs->featured_image) }}" alt="">
+                    </div>
+                </div>
+                {{-- <div class="about-head-section">
+                    <div class="about-head-content">
                         <h5 class="abouthead-text">Welcome to Pentanik IT, your trusted partner in digital
                             innovation and business growth since 2019. We have
                             been at the forefront of providing comprehensive IT
@@ -29,13 +36,14 @@
                     <div class="about-image">
                         <img src="{{ asset('assets/frontend/img/about-us.png') }}" alt="">
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
 
         <div class="about-bottom-content d-flex justify-content-center align-items-center mb-4">
             <div class="bottom-content p-4">
-                <p>We take pride in our growing reputation as a reliable IT service provider in Bangladesh,
+                <p>{!! $aboutUs->content !!}</p>
+                {{-- <p>We take pride in our growing reputation as a reliable IT service provider in Bangladesh,
                     recognized for delivering quality and value to our clients. With a passionate team of
                     professionals, we aim to empower businesses by offering innovative strategies and cutting-edge
                     solutions tailored to meet their unique needs.
@@ -48,7 +56,7 @@
                     As we grow, our vision remains clear: to bridge the gap between technology and business,
                     enabling success for all our clients while giving back to the community. Partner with Pentanik
                     IT to transform your ideas into impactful digital experiences and convert your visitors into
-                    loyal customers.</p>
+                    loyal customers.</p> --}}
             </div>
         </div>
 

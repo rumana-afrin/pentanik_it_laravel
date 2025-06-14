@@ -27,10 +27,8 @@
                           <th scope="col">#</th>
                           <th scope="col">Name</th>
                           <th scope="col">Designation</th>
-                          <th scope="col">Biography </th>
-                          <th scope="col">Experience Years</th>
                           <th scope="col">Sort Order</th>
-                          <th scope="col">Status</th>
+                          <th scope="col">Biography</th>
                            <th scope="col">Image</th>
                           <th scope="col">Action</th>
                         </tr>
@@ -41,11 +39,9 @@
                         <tr>
                           <th scope="row">{{$loop->iteration}}</th>
                           <td>{{$item->name}}</td>
-                          <td>{{$item->bio}}</td>
                           <td>{{$item->designation}}</td>
-                          <td>{{$item->experience_years}}</td>
                           <td>{{$item->sort_order}}</td>
-                          <td>{{$item->status}}</td>
+                          <td>{{$item->bio}}</td>
                           <td>
                             <img src="{{asset('storage/' . $item->image)}}" alt="" width="100" height="100">
                           </td>
