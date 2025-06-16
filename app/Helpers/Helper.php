@@ -21,7 +21,7 @@ function adminImage()
         return asset('storage/' . $user->image);
     }
 
-    return asset('assets/image/no-imge.jpg');
+    return asset('assets/backend/image/no-imge.jpg');
 }
 
 //setting table

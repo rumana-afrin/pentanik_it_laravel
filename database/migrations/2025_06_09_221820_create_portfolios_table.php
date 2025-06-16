@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('short_description')->nullable();
             $table->longText('description')->nullable();
             $table->string('featured_image');
+                        $table->string('image_alt')->nullable();
             $table->string('client_name')->nullable();
             $table->string('project_url')->nullable();
             $table->integer('sort_order')->default(0);

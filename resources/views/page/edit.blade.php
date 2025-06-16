@@ -25,10 +25,10 @@
                             @csrf
                             @method('PUT')
 
-                             <div class="col-12 col-sm-12 col-md-12">
+                            <div class="col-12 col-sm-12 col-md-12">
                                 <label for="name" class="form-label">Page Name</label>
-                                <input type="text" name="name" class="form-control" id="name"
-                                    placeholder="name"  value="{{ $page->name }}">
+                                <input type="text" name="name" class="form-control" id="name" placeholder="name"
+                                    value="{{ $page->name }}">
                             </div>
 
                             <div class="col-12 col-sm-12 col-md-12">
@@ -36,7 +36,7 @@
                                 <input type="text" name="title" class="form-control" id="title" placeholder="title"
                                     value="{{ $page->title }}">
                             </div>
-                             <div class="col-12 col-sm-12 col-md-6">
+                            <div class="col-12 col-sm-12 col-md-6">
                                 <label for="subtitle" class="form-label">Subtitle</label>
                                 <input type="text" name="subtitle" class="form-control" id="subtitle"
                                     placeholder="subtitle" value="{{ $page->subtitle }}">
@@ -55,12 +55,14 @@
                                 <textarea class="tinymce-editor @error('content') is-invalid @enderror" name="content" id="content">{{ $page->content }}</textarea>
                             </div>
 
-                             <div class="col-12 col-sm-12 col-md-6">
+                            <div class="col-12 col-sm-12 col-md-6">
                                 <label for="menu_type" class="form-label">Menu Type</label>
                                 <select class="form-select" name="menu_type" id="menu_type"
                                     aria-label="Default select example">
-                                    <option value="footer" {{$page->menu_type === "footer" ? "selected" : ""}}>Footer</option>
-                                    <option value="header" {{$page->menu_type === "header" ? "selected" : ""}}>Header</option>
+                                    <option value="footer" {{ $page->menu_type === 'footer' ? 'selected' : '' }}>Footer
+                                    </option>
+                                    <option value="header" {{ $page->menu_type === 'header' ? 'selected' : '' }}>Header
+                                    </option>
                                 </select>
                             </div>
 
@@ -79,49 +81,56 @@
                                 </div>
                             </div>
 
+                            <div class="col-12 col-sm-12 col-md-6">
+                                <label for="image_alt" class="form-label">Image alt text</label>
+                                <input type="text" class="form-control" name="image_alt" id="image_alt" placeholder="alt"
+                                    value="{{ $page->image_alt }}">
+                            </div>
+
 
                             {{-- seo --}}
-                           <div class="col-12 col-sm-12 col-md-6">
+                            <div class="col-12 col-sm-12 col-md-6">
                                 <label for="meta_title" class="form-label">Meta Title</label>
                                 <input type="text" class="form-control" name="meta_title" id="meta_title"
-                                    placeholder="meta_title" value="{{ $blog->seoMetaTag?->meta_title }}">
+                                    placeholder="meta title" value="{{ $page->seoMetaTag?->meta_title }}">
                             </div>
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="meta_description" class="form-label">Meta Description</label>
-                                <input type="text" class="form-control" name="meta_description" id="meta_description"
-                                    placeholder="meta_description" value="{{ $blog->seoMetaTag?->meta_description }}">
+                                     <textarea class="form-control" id="og_description" name="og_description"
+                                        placeholder="twitter description" cols="30" rows="3">{{ $page->seoMetaTag?->meta_description }}</textarea>
                             </div>
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="meta_keywords" class="form-label">Meta Keywords</label>
                                 <input type="text" class="form-control" name="meta_keywords" id="meta_keywords"
-                                    placeholder="meta_keywords" value="{{ $blog->seoMetaTag?->meta_keywords }}">
-                            </div>
-                              <div class="col-12 col-sm-12 col-md-6">
-                                <label for="auther" class="form-label">Site Auther</label>
-                                <input type="text" class="form-control" name="auther" id="auther"
-                                    placeholder="auther" value="{{ $blog->seoMetaTag?->auther }}">
+                                    placeholder="meta keywords" value="{{ $page->seoMetaTag?->meta_keywords }}">
                             </div>
                             <div class="col-12 col-sm-12 col-md-6">
+                                <label for="auther" class="form-label">Site Auther</label>
+                                <input type="text" class="form-control" name="auther" id="auther"
+                                    placeholder="auther" value="{{ $page->seoMetaTag?->auther }}">
+                            </div>
+                            {{-- <div class="col-12 col-sm-12 col-md-6">
                                 <label for="canonical_url" class="form-label">Canonical Url</label>
                                 <input type="url" class="form-control" name="canonical_url" id="canonical_url"
-                                    placeholder="canonical_url" value="{{ $blog->seoMetaTag?->canonical_url }}">
-                            </div>
+                                    placeholder="canonical_url" value="{{ $page->seoMetaTag?->canonical_url }}">
+                            </div> --}}
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="og_title" class="form-label">Og Title</label>
                                 <input type="text" class="form-control" name="og_title" id="og_title"
-                                    placeholder="og_title" value="{{ $blog->seoMetaTag?->og_title }}">
+                                    placeholder="open graph title" value="{{ $page->seoMetaTag?->og_title }}">
                             </div>
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="og_description" class="form-label">Og Description</label>
-                                <input type="text" class="form-control" name="og_description" id="og_description"
-                                    placeholder="og_description" value="{{ $blog->seoMetaTag?->og_description }}">
+
+                                     <textarea class="form-control" id="og_description" name="og_description"
+                                        placeholder="open graph description" cols="30" rows="3">{{ $page->seoMetaTag?->og_description }}</textarea>
                             </div>
 
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="og_image" class="form-label">Og Image</label>
                                 <div class="upload-img-box">
                                     <img id="updateImageUrl"
-                                        src="{{ $blog->seoMetaTag?->og_image ? asset('storage/' . $blog->seoMetaTag?->og_image) : getDefaultImage() }}">
+                                        src="{{ $page->seoMetaTag?->og_image ? asset('storage/' . $page->seoMetaTag?->og_image) : getDefaultImage() }}">
                                     <input class="form-control" type="file" name="og_image" id="image"
                                         accept="image/*" onchange="previewFile(this)">
                                     <div class="upload-img-box-icon">
@@ -133,47 +142,47 @@
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="og_type" class="form-label">Og Type</label>
                                 <input type="text" class="form-control" name="og_type" id="og_type"
-                                    placeholder="og_type" value="{{ $blog->seoMetaTag?->og_type }}">
+                                    placeholder=" open graph type" value="{{ $page->seoMetaTag?->og_type }}">
                             </div>
-                            
-                             <div class="col-12 col-sm-12 col-md-6">
+{{-- 
+                            <div class="col-12 col-sm-12 col-md-6">
                                 <label for="og_url" class="form-label">Og URl</label>
                                 <input type="url" class="form-control" name="og_url" id="og_url"
-                                    placeholder="og url" value="{{ $blog->seoMetaTag?->og_url }}">
-                            </div>
-                             <div class="col-12 col-sm-12 col-md-6">
+                                    placeholder="og url" value="{{ $page->seoMetaTag?->og_url }}">
+                            </div> --}}
+                            <div class="col-12 col-sm-12 col-md-6">
                                 <label for="og_site_name" class="form-label">Og Site Name</label>
                                 <input type="text" class="form-control" name="og_site_name" id="og_site_name"
-                                    placeholder="og site name" value="{{ $blog->seoMetaTag?->og_site_name }}">
+                                    placeholder="open graph site name" value="{{ $page->seoMetaTag?->og_site_name }}">
                             </div>
 
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="twitter_card" class="form-label">Twitter Card</label>
                                 <input type="text" class="form-control" name="twitter_card" id="twitter_card"
-                                    placeholder="twitter_card" value="{{ $blog->seoMetaTag?->twitter_card }}">
+                                    placeholder="twitter card" value="{{ $page->seoMetaTag?->twitter_card }}">
                             </div>
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="twitter_title" class="form-label">Twitter Title</label>
                                 <input type="text" class="form-control" name="twitter_title" id="twitter_title"
-                                    placeholder="twitter_title" value="{{ $blog->seoMetaTag?->twitter_title }}">
+                                    placeholder="twitter title" value="{{ $page->seoMetaTag?->twitter_title }}">
                             </div>
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="twitter_description" class="form-label">Twitter Description</label>
-                                <input type="text" class="form-control" name="twitter_description"
-                                    id="twitter_description" placeholder="twitter_description"
-                                    value="{{ $blog->seoMetaTag?->twitter_description }}">
+                                                                   <textarea class="form-control" id="twitter_description" name="twitter_description"
+                                        placeholder="twitter description" cols="30" rows="3">{{ $page->seoMetaTag?->twitter_description }}</textarea>
+
                             </div>
-                               <div class="col-12 col-sm-12 col-md-6">
+                            <div class="col-12 col-sm-12 col-md-6">
                                 <label for="twitter_site" class="form-label">Twitter Site</label>
                                 <input type="text" class="form-control" name="twitter_site" id="twitter_site"
-                                    placeholder="@/yourtwitterhandle" value="{{ $blog->seoMetaTag?->twitter_site }}">
+                                    placeholder="@/yourtwitterhandle" value="{{ $page->seoMetaTag?->twitter_site }}">
                             </div>
 
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="twitter_image" class="form-label">Twitter Image</label>
                                 <div class="upload-img-box">
                                     <img id="updateImageUrl"
-                                        src="{{ $blog->seoMetaTag?->twitter_image ? asset('storage/' . $blog->seoMetaTag?->twitter_image) : getDefaultImage() }}">
+                                        src="{{ $page->seoMetaTag?->twitter_image ? asset('storage/' . $page->seoMetaTag?->twitter_image) : getDefaultImage() }}">
                                     <input class="form-control" type="file" name="twitter_image" id="image"
                                         accept="image/*" onchange="previewFile(this)">
                                     <div class="upload-img-box-icon">

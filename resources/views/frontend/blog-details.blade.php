@@ -42,7 +42,7 @@
                                             <p class="p-0 m-0 writer-name"><span class="blog-writer-icon ps-3"><i
                                                         class="fa-solid fa-calendar-days"></i></span>{{ $item->created_at->format('M d, Y') }}</p>
                                         </div>
-                                        <a href="{{route('blog-details', $item->id)}}" class="stretched-link blog-details-btn">Read More</a>
+                                        <a href="{{route('blog-details', $item->slug)}}" class="stretched-link blog-details-btn">Read More</a>
                                     </div>
                                 </div>
                             </div>

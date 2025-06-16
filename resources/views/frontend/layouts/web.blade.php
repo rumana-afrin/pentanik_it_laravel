@@ -30,7 +30,7 @@
         <title>{{ $meta->meta_title }}</title>
         <meta name="description" content="{{ $meta->meta_description }}">
         <meta name="keywords" content="{{ $meta->meta_keywords }}">
-        <meta name="author" content="John Doe">
+        <meta name="author" content="{{ $meta->auther }}">
         <meta name="robots" content="index, follow, max-snippet:-1, max-video-preview:30, max-image-preview:standard">
         <!-- index = show in search, follow = follow links -->
 
@@ -39,16 +39,16 @@
         <meta name="geo.position" content="23.7935;90.3654" />
         <meta name="ICBM" content="23.7935, 90.3654" /> <!-- Alternative format for geo position -->
 
-        <link rel="canonical" href="{{ $meta->canonical_url ?? url()->current() }}">
+        <link rel="canonical" href="{{ url()->current() }}">
 
         <meta property="og:title" content="{{ $meta->og_title ?? $meta->meta_title }}">
         <meta property="og:description" content="{{ $meta->og_description ?? $meta->meta_description }}">
         <meta property="og:image" content="{{ asset('storage/' . $meta->og_image) }}">
         <meta property="og:type" content="{{ $meta->og_type }}">
-        
-        <meta property="og:url" content="https://yourwebsite.com/this-page">
-       
-        <meta property="og:site_name" content="Your Website Name">
+
+        <meta property="og:url" content="{{ url()->current() }}">
+
+        <meta property="og:site_name" content="{{ $meta->og_site_name }}">
         <meta property="og:locale" content="en_US" />
         <meta property="og:locale:alternate" content="bn_BD" />
 
@@ -61,19 +61,18 @@
         <title>{{ getOption('home_meta_title') }}</title>
         <meta name="description" content="{{ getOption('home_meta_description') }}">
         <meta name="keywords" content="{{ getOption('home_meta_keywords') }}">
-        
-        <meta name="author" content="John Doe">
-      
+
+       <meta name="author" content="pentanik it">
         <meta name="robots" content="index, follow, max-video-preview:30, max-image-preview:standard">
         <!-- index = show in search, follow = follow links -->
 
-        <link rel="canonical" href="{{ getOption('home_canonical_url') ?? url()->current() }}">
+        <link rel="canonical" href="{{ url()->current() }}">
 
         <meta property="og:title" content="{{ getOption('home_og_title') }}">
         <meta property="og:description" content="{{ getOption('home_og_description') }}">
         <meta property="og:type" content="{{ getOption('home_og_type') }}">
-        <meta property="og:url" content="https://yourwebsite.com/this-page">
-       <meta property="og:site_name" content="Your Website Name">
+        <meta property="og:url" content="{{ url()->current() }}">
+        <meta property="og:site_name" content="{{ getOption('company_name') }}">
         <meta property="og:locale" content="en_US">
         <meta property="og:locale:alternate" content="bn_BD" />
 
@@ -84,12 +83,12 @@
     @endif
 
     @stack('style')
-
-    {{-- <script type="application/ld+json">
+    {{-- 
+    <script type="application/ld+json">
         {
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "name": "{{ getOption('business_name', 'Pentanik IT') }}",
+            "name": "{{ getOption('home_meta_description', 'Pentanik IT') }}",
             "image": "{{ getOption('business_logo') ? asset('storage/' . getOption('business_logo')) : asset('images/logo.png') }}",
             "url": "{{ url('/') }}",
             "telephone": "{{ getOption('business_phone', '+8801XXXXXXXXX') }}",
@@ -115,112 +114,57 @@
                 @endif
             ]
         }
+
+
     </script> --}}
 
-    
-
-
-<!-- এটা Product page এর জন্য -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org/",
-  "@type": "Product",
-  "name": "Product Name",                    // Required
-  "description": "Product description",
-  "image": ["image1.jpg", "image2.jpg"],
-
-}
-</script>
-
-<!-- এটা FAQPage page এর জন্য -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [{                          // Required
-    "@type": "Question",
-    "name": "Question text?",               // Required
-    "acceptedAnswer": {                     // Required
-      "@type": "Answer",
-      "text": "Answer text here"              // Required
-    }
-  }]
-}
-</script>
-<!-- এটা Article page এর জন্য -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Article Title",              // Required
-  "author": {                              // Required
-    "@type": "Person",
-    "name": "Author Name"
-  },
-  "publisher": {                           // Required
-    "@type": "Organization",
-    "name": "Publisher Name",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "logo.png"
-    }
-  },
-  "datePublished": "2024-01-01",           // Required
-  "dateModified": "2024-06-01",
-  "image": "article-image.jpg",
-  "articleBody": "Full article text...",
-  "wordCount": "1500",
-  "articleSection": "Technology",
-  "keywords": "TV, Samsung, Review"
-}
-</script>
-<!-- এটা Organization page এর জন্য -->
+<!-- Organization Schema -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "Company Name",                   // Required
-  "url": "https://website.com",
-  "logo": "logo.png",
-  "description": "Company description",
-  "foundingDate": "2010-01-01",
+  "name": "{{ getOption('company_name') }}",
+  "url": "{{ url()->current() }}",
+  "logo": "{{ getOption('header_logo') }}",
+  "description": "{{ getOption('company_description') }}",
+  "foundingDate": "{{ getOption('founding_data') }}",
   "contactPoint": {
     "@type": "ContactPoint",
-    "telephone": "+880-XXX-XXXXX",
-    "contactType": "Customer Service",
-    "email": "contact@example.com"
+    "telephone": "{{ getOption('whatsapp_number') }}",
+    "contactType": "{{ getOption('company_type') }}",
+    "email": "{{ getOption('social_link_gmail') }}"
   },
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "123 Main St",
+    "streetAddress": "{{ getOption('app_address') }}",
     "addressLocality": "Dhaka",
     "addressRegion": "Dhaka Division",
-    "postalCode": "1000",
+    "postalCode": "{{ getOption('postal_code') }}",
     "addressCountry": "BD"
   },
   "sameAs": [
-    "https://facebook.com/page",
-    "https://twitter.com/handle"
+    "{{ getOption('social_link_fb') }}",
+    "{{ getOption('social_link_linkedin') }}",
+    "{{ getOption('social_link_youtube') }}",
+    "{{ getOption('social_link_twitter') }}"
   ]
 }
 </script>
-<!-- এটা LocalBusiness page এর জন্য -->
+
+<!-- LocalBusiness Schema -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "name": "Business Name",                  // Required
-  "address": {                             // Required
+  "name": "{{ getOption('company_name') }}",
+  "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Address",
+    "streetAddress": "{{ getOption('app_address') }}",
     "addressLocality": "Dhaka",
     "addressCountry": "BD"
   },
   "telephone": "+880-XXX-XXXXX",
-  "openingHours": "Mo-Sa 09:00-18:00",
-  "priceRange": "$$",
-  "servesCuisine": "Bengali",              // Restaurant এর জন্য
-  "acceptsReservations": true,
+  "openingHours": "Mo-Sa 09:00-19:00",
   "geo": {
     "@type": "GeoCoordinates",
     "latitude": "23.8103",
@@ -229,21 +173,17 @@
 }
 </script>
 
-<!-- এটা LocalBusiness page এর জন্য -->
+<!-- WebSite Schema -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": "Website Name",                   // Required
-  "url": "https://website.com",            // Required
-  "description": "Website description",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://website.com/search?q={search_term_string}",
-    "query-input": "required name=search_term_string"
-  }
+  "name": "{{ getOption('company_name') }}",
+  "url": "{{ url('/') }}",
+  "description": "{{ getOption('company_description') }}"
 }
 </script>
+
 </head>
 
 <body>
@@ -269,5 +209,4 @@
     <!--script -->
 
 </body>
-
 </html>

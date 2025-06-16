@@ -35,7 +35,7 @@ class UserController extends Controller
             'email' => 'required|email|unique:users',
             'phone' => 'string',
             'password' => ['required', Password::min(6)],
-            'role' => 'required|string|in:super admin, admin, manager, sales man, user',
+            'role' => 'required|string|in:admin, user',
 
         ]);
 
@@ -77,7 +77,7 @@ class UserController extends Controller
             'designation' => 'string',
             'email' => ['required', 'string', 'email', Rule::unique('users')->ignore($id),],
             'phone' => 'string',
-            'role' => 'required|string|in:super admin, admin, manager, sales man, user',
+            'role' => 'required|string|in:admin, user',
 
         ]);
 

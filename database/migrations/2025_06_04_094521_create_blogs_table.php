@@ -21,6 +21,7 @@ return new class extends Migration
             $table->text('excerpt')->nullable();
             $table->longText('content');
             $table->string('thumbnail_image');
+            $table->string('image_alt');
             $table->string('author_name')->nullable();
             $table->enum('status', ['draft', 'published', 'pending'])->default('draft');
             $table->integer('sort_order')->default(0);

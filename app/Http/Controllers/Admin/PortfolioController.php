@@ -58,14 +58,14 @@ class PortfolioController extends Controller
         $portfolio->title = $request->title;
         $portfolio->subtitle = $request->subtitle;
         $portfolio->slug = $request->slug;
+        $portfolio->image_alt = $request->image_alt;
         $portfolio->short_description = $request->short_description;
         $portfolio->description = $request->description;
         $portfolio->client_name = $request->client_name;
         $portfolio->project_url = $request->project_url;
-        $portfolio->project_url = $request->project_url;
         $portfolio->sort_order = $request->sort_order ?? 0;
-        $portfolio->is_featured = $request->is_featured;
-        $portfolio->is_active = $request->is_active;
+        $portfolio->is_featured = $request->is_featured ?? false;
+        $portfolio->is_active = $request->is_active ?? 1;
 
         if ($request->hasFile('featured_image')) {
             $image = $request->file('featured_image');
@@ -98,15 +98,15 @@ class PortfolioController extends Controller
         //seo meta
 
         $seo = new SeoMetaTag();
-    $seo->meta_title =  $request->meta_title;
+        $seo->meta_title =  $request->meta_title;
         $seo->meta_description = $request->meta_description;
         $seo->meta_keywords = $request->meta_keywords;
         $seo->auther = $request->auther;
-        $seo->canonical_url = $request->canonical_url ?? "";
+        // $seo->canonical_url = $request->canonical_url ?? "";
         $seo->og_title = $request->og_title ?? "";
         $seo->og_description  = $request->og_description ?? "";
         $seo->og_type = $request->og_type ?? 'website';
-        $seo->og_url  = $request->og_url ?? "";
+        // $seo->og_url  = $request->og_url ?? "";
         $seo->og_site_name  = $request->og_site_name ?? "";
         $seo->twitter_card = $request->twitter_card ?? 'summary';
         $seo->twitter_title  = $request->twitter_title ?? "";
@@ -145,7 +145,7 @@ class PortfolioController extends Controller
     {
         $data['pageTitle'] = 'Portfolio';
         $data['pCategoryShowClass'] = 'show';
-        $data['createportfolioActiveClass'] = 'active';
+        $data['allportfolioActiveClass'] = 'active';
         $data['category'] = PortfolioCategory::all();
         $data['portfolio'] = Portfolio::findOrfail($id);
         return view('portfolio.edit')->with($data);
@@ -176,14 +176,14 @@ class PortfolioController extends Controller
         $portfolio->title = $request->title;
         $portfolio->subtitle = $request->subtitle;
         $portfolio->slug = $request->slug;
+        $portfolio->image_alt = $request->image_alt;
         $portfolio->short_description = $request->short_description;
         $portfolio->description = $request->description;
         $portfolio->client_name = $request->client_name;
         $portfolio->project_url = $request->project_url;
-        $portfolio->project_url = $request->project_url;
         $portfolio->sort_order = $request->sort_order ?? 0;
-        $portfolio->is_featured = $request->is_featured;
-        $portfolio->is_active = $request->is_active;
+        $portfolio->is_featured = $request->is_featured ?? false;
+        $portfolio->is_active = $request->is_active ?? 1;
 
         if ($request->hasFile('featured_image')) {
             $image = $request->file('featured_image');
@@ -223,15 +223,15 @@ class PortfolioController extends Controller
         //seo meta
 
         $seo = $portfolio->seoMetaTag ?? new SeoMetaTag();
-         $seo->meta_title =  $request->meta_title;
+        $seo->meta_title =  $request->meta_title;
         $seo->meta_description = $request->meta_description;
         $seo->meta_keywords = $request->meta_keywords;
         $seo->auther = $request->auther;
-        $seo->canonical_url = $request->canonical_url ?? "";
+        // $seo->canonical_url = $request->canonical_url ?? "";
         $seo->og_title = $request->og_title ?? "";
         $seo->og_description  = $request->og_description ?? "";
         $seo->og_type = $request->og_type ?? 'website';
-        $seo->og_url  = $request->og_url ?? "";
+        // $seo->og_url  = $request->og_url ?? "";
         $seo->og_site_name  = $request->og_site_name ?? "";
         $seo->twitter_card = $request->twitter_card ?? 'summary';
         $seo->twitter_title  = $request->twitter_title ?? "";

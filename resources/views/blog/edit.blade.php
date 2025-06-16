@@ -63,6 +63,11 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-12 col-sm-12 col-md-6">
+                                <label for="image_alt" class="form-label">Image alt text</label>
+                                <input type="text" class="form-control" name="image_alt" id="image_alt" placeholder="alt"
+                                    value="{{ $blog->image_alt }}">
+                            </div>
 
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="excerpt" class="form-label">Excerpt</label>
@@ -108,7 +113,7 @@
                                 </select>
 
                                 {{-- <input type="hidden" name="is_featured" value="0">
-<input type="checkbox" name="is_featured" value="1" {{ $blog->is_featured ? 'checked' : '' }}> --}}
+                                    <input type="checkbox" name="is_featured" value="1" {{ $blog->is_featured ? 'checked' : '' }}> --}}
 
                             </div>
 
@@ -136,7 +141,7 @@
                                                                 src="{{ $item->gallary_image ? asset('storage/' . $item->gallary_image) : getDefaultImage() }}">
                                                             <input class="form-control" type="file"
                                                                 name="gallary_image[]" id="gallary_image"
-                                                                accept="image/*" onchange="previewFile(this)">
+                                                                accept="image/*" onchange="previewImage(this)">
                                                             <div class="upload-img-box-icon">
                                                                 <i class="bi bi-camera-fill"></i>
                                                                 <p class="m-0"></p>
@@ -185,24 +190,25 @@
                             </div>
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="meta_description" class="form-label">Meta Description</label>
-                                <input type="text" class="form-control" name="meta_description" id="meta_description"
-                                    placeholder="meta_description" value="{{ $blog->seoMetaTag?->meta_description }}">
+                                <textarea class="form-control" id="meta_description" name="meta_description" placeholder="open graph description"
+                                    cols="30" rows="3">{{ $blog->seoMetaTag?->meta_description }}</textarea>
+
                             </div>
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="meta_keywords" class="form-label">Meta Keywords</label>
                                 <input type="text" class="form-control" name="meta_keywords" id="meta_keywords"
                                     placeholder="meta_keywords" value="{{ $blog->seoMetaTag?->meta_keywords }}">
                             </div>
-                              <div class="col-12 col-sm-12 col-md-6">
+                            <div class="col-12 col-sm-12 col-md-6">
                                 <label for="auther" class="form-label">Site Auther</label>
                                 <input type="text" class="form-control" name="auther" id="auther"
                                     placeholder="auther" value="{{ $blog->seoMetaTag?->auther }}">
                             </div>
-                            <div class="col-12 col-sm-12 col-md-6">
+                            {{-- <div class="col-12 col-sm-12 col-md-6">
                                 <label for="canonical_url" class="form-label">Canonical Url</label>
                                 <input type="url" class="form-control" name="canonical_url" id="canonical_url"
                                     placeholder="canonical_url" value="{{ $blog->seoMetaTag?->canonical_url }}">
-                            </div>
+                            </div> --}}
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="og_title" class="form-label">Og Title</label>
                                 <input type="text" class="form-control" name="og_title" id="og_title"
@@ -210,8 +216,8 @@
                             </div>
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="og_description" class="form-label">Og Description</label>
-                                <input type="text" class="form-control" name="og_description" id="og_description"
-                                    placeholder="og_description" value="{{ $blog->seoMetaTag?->og_description }}">
+                                <textarea class="form-control" id="og_description" name="og_description" placeholder="open graph description"
+                                    cols="30" rows="3">{{ $blog->seoMetaTag?->og_description }}</textarea>
                             </div>
 
                             <div class="col-12 col-sm-12 col-md-6">
@@ -232,13 +238,13 @@
                                 <input type="text" class="form-control" name="og_type" id="og_type"
                                     placeholder="og_type" value="{{ $blog->seoMetaTag?->og_type }}">
                             </div>
-                            
-                             <div class="col-12 col-sm-12 col-md-6">
+
+                            {{-- <div class="col-12 col-sm-12 col-md-6">
                                 <label for="og_url" class="form-label">Og URl</label>
                                 <input type="url" class="form-control" name="og_url" id="og_url"
                                     placeholder="og url" value="{{ $blog->seoMetaTag?->og_url }}">
-                            </div>
-                             <div class="col-12 col-sm-12 col-md-6">
+                            </div> --}}
+                            <div class="col-12 col-sm-12 col-md-6">
                                 <label for="og_site_name" class="form-label">Og Site Name</label>
                                 <input type="text" class="form-control" name="og_site_name" id="og_site_name"
                                     placeholder="og site name" value="{{ $blog->seoMetaTag?->og_site_name }}">
@@ -256,11 +262,10 @@
                             </div>
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="twitter_description" class="form-label">Twitter Description</label>
-                                <input type="text" class="form-control" name="twitter_description"
-                                    id="twitter_description" placeholder="twitter_description"
-                                    value="{{ $blog->seoMetaTag?->twitter_description }}">
+                                <textarea class="form-control" id="og_description" name="og_description" placeholder="open graph description"
+                                    cols="30" rows="3">{{ $blog->seoMetaTag?->twitter_description }}</textarea>
                             </div>
-                               <div class="col-12 col-sm-12 col-md-6">
+                            <div class="col-12 col-sm-12 col-md-6">
                                 <label for="twitter_site" class="form-label">Twitter Site</label>
                                 <input type="text" class="form-control" name="twitter_site" id="twitter_site"
                                     placeholder="@/yourtwitterhandle" value="{{ $blog->seoMetaTag?->twitter_site }}">
@@ -329,15 +334,14 @@
 
 @push('script')
     <script>
-       
-    function addRepeaterItem(event) {
-        event.preventDefault();
+        function addRepeaterItem(event) {
+            event.preventDefault();
 
-        const repeater = document.getElementById('repeater'); // Correct container reference
+            const repeater = document.getElementById('repeater'); // Correct container reference
 
-        const newItem = document.createElement('div');
-        newItem.className = 'hello d-flex justify-content-center';
-        newItem.innerHTML = `
+            const newItem = document.createElement('div');
+            newItem.className = 'hello d-flex justify-content-center';
+            newItem.innerHTML = `
             <div class="repeater-item d-flex align-items-center me-3 position-relative">
                 <div class="upload-img-box gallarybox">
                     <img src="" class="preview-img" />
@@ -351,26 +355,26 @@
             </div>
         `;
 
-        repeater.appendChild(newItem);
-    }
-
-    function removeRepeaterItem(button) {
-        const wrapper = button.closest('.hello');
-        if (wrapper) {
-            wrapper.remove();
+            repeater.appendChild(newItem);
         }
-    }
 
-    function previewFile(input) {
-        const file = input.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                input.closest('.upload-img-box').querySelector('.preview-img').src = e.target.result;
-            };
-            reader.readAsDataURL(file);
+        function removeRepeaterItem(button) {
+            const wrapper = button.closest('.hello');
+            if (wrapper) {
+                wrapper.remove();
+            }
         }
-    }
+
+        function previewImage(input) {
+            const file = input.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    input.closest('.upload-img-box').querySelector('.preview-img').src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
         //start tag
         document.addEventListener('DOMContentLoaded', function() {
             const tagInput = document.getElementById('tagInput');

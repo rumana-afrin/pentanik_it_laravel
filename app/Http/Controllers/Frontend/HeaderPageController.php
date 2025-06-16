@@ -27,7 +27,7 @@ class HeaderPageController extends Controller
             $data['meta'] = $data['page']->seoMetaTag;
             return view('frontend.team')->with($data);
         } elseif ($slug === 'blog') {
-            $data['blogs'] = Blog::paginate(1); 
+            $data['blogs'] = Blog::paginate(6); 
              $data['page'] = Page::where('slug', $slug)->firstOrFail();
             $data['meta'] = $data['page']->seoMetaTag;
             return view('frontend.blog')->with($data);

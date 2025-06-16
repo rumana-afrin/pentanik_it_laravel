@@ -61,6 +61,11 @@
                                 </div>
                             </div>
 
+                             <div class="col-12 col-sm-12 col-md-6">
+                                <label for="image_alt" class="form-label">Image alt text</label>
+                                <input type="text" class="form-control" name="image_alt" id="image_alt" placeholder="alt">
+                            </div>
+
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="excerpt" class="form-label">Excerpt</label>
                                 <textarea class="form-control" name="excerpt" id="excerpt" placeholder="excerpt" cols="30" rows="3"></textarea>
@@ -152,8 +157,8 @@
                             </div>
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="meta_description" class="form-label">Meta Description</label>
-                                <input type="text" class="form-control" name="meta_description" id="meta_description"
-                                    placeholder="meta_description">
+                               <textarea class="form-control" id="meta_description" name="meta_description"
+                                        placeholder="meta description" cols="30" rows="3"></textarea>
                             </div>
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="meta_keywords" class="form-label">Meta Keywords</label>
@@ -167,11 +172,11 @@
                                     placeholder="auther">
                             </div>
 
-                            <div class="col-12 col-sm-12 col-md-6">
+                            {{-- <div class="col-12 col-sm-12 col-md-6">
                                 <label for="canonical_url" class="form-label">Canonical Url</label>
                                 <input type="url" class="form-control" name="canonical_url" id="canonical_url"
                                     placeholder="canonical_url">
-                            </div>
+                            </div> --}}
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="og_title" class="form-label">Og Title</label>
                                 <input type="text" class="form-control" name="og_title" id="og_title"
@@ -179,8 +184,8 @@
                             </div>
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="og_description" class="form-label">Og Description</label>
-                                <input type="text" class="form-control" name="og_description" id="og_description"
-                                    placeholder="og_description">
+                                <textarea class="form-control" id="og_description" name="og_description"
+                                        placeholder="open graph description" cols="30" rows="3"></textarea>
                             </div>
                           
                             <div class="col-12 col-sm-12 col-md-6">
@@ -200,11 +205,11 @@
                                 <input type="text" class="form-control" name="og_type" id="og_type"
                                     placeholder="og_type">
                             </div>
-                             <div class="col-12 col-sm-12 col-md-6">
+                             {{-- <div class="col-12 col-sm-12 col-md-6">
                                 <label for="og_url" class="form-label">Og URl</label>
                                 <input type="url" class="form-control" name="og_url" id="og_url"
                                     placeholder="og url">
-                            </div>
+                            </div> --}}
                              <div class="col-12 col-sm-12 col-md-6">
                                 <label for="og_site_name" class="form-label">Og Site Name</label>
                                 <input type="text" class="form-control" name="og_site_name" id="og_site_name"
@@ -223,8 +228,8 @@
                             </div>
                              <div class="col-12 col-sm-12 col-md-6">
                                 <label for="twitter_description" class="form-label">Twitter Description</label>
-                                <input type="text" class="form-control" name="twitter_description" id="twitter_description"
-                                    placeholder="twitter_description">
+                                 <textarea class="form-control" id="og_description" name="og_description" placeholder="open graph description"
+                                    cols="30" rows="3"></textarea>
                             </div>
                              <div class="col-12 col-sm-12 col-md-6">
                                 <label for="twitter_site" class="form-label">Twitter Site</label>

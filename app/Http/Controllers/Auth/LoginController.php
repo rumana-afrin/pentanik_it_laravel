@@ -24,7 +24,14 @@ class LoginController extends Controller
         $request->authenticate();
         $request->session()->regenerate();
 
-        return redirect()->route('admin.dashboard')->with('success', 'welcome to dashboard');
+        $route = "";
+         if($request->user()->role == 'admin'){
+            $route = "admin.dashboard"; 
+        }else{
+            $route = "home"; 
+        }
+
+        return redirect()->route($route)->with('success', 'welcome to dashboard');
     }
     public function destroy(Request $request): RedirectResponse
     {

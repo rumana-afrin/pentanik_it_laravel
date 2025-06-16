@@ -93,6 +93,19 @@
                                 </div>
                             </div>
 
+                             <div class="col-12 col-sm-12 col-md-6">
+                                <label for="icon" class="form-label">Icon</label>
+                                <div class="upload-img-box">
+                                    <img id="updateImageUrl" src="">
+                                    <input class="form-control" type="file" name="icon" id="icon"
+                                        accept="image/*" onchange="previewFile(this)">
+                                    <div class="upload-img-box-icon">
+                                        <i class="bi bi-camera-fill"></i>
+                                        <p class="m-0"></p>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="text-center mt-5">
                                 <button type="submit" class="btn btn-primary">Submit</button>
                                 <button type="reset" class="btn btn-secondary">Reset</button>
@@ -112,6 +125,11 @@
             font-style: italic;
             font-size: 13px;
             opacity: 0.7;
+        }
+        
+        .upload-img-box {
+            height: 100px;
+            width: 100px;
         }
     </style>
 @endpush

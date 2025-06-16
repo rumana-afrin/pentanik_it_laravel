@@ -54,12 +54,8 @@
                 <div class="col-12 col-sm-12 col-md-6">
                     <label for="phone" class="form-label">Role</label>
                     <select class="form-select" name="status" aria-label="Default select example">
-                        <option selected>selete status</option>                        
-                        <option value="super admin">super admin</option>                        
-                        <option value="admin">admin</option>                        
-                        <option value="manager">manager</option>                        
-                        <option value="sales man">sales man</option>                        
-                        <option value="user">user</option>                        
+                        <option selected>selete status</option>   
+                        <option value="admin">admin</option>  
                     </select>
                 </div>
 

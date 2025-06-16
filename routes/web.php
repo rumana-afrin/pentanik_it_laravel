@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\BlogController as AdminBlogController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\PortfolioCategoryController;
 use App\Http\Controllers\Admin\PortfolioController as AdminPortfolioController;
+use App\Http\Controllers\Admin\SchemaController;
 use App\Http\Controllers\Admin\ServiceCategoryController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\TeamController as AdminTeamController;
@@ -102,15 +103,17 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::get('edit-page/{id}', [PageController::class, 'edit'])->name('edit-page');
     Route::put('update-page/{id}', [PageController::class, 'update'])->name('update-page');
     Route::delete('delete-page/{id}', [PageController::class, 'destroy'])->name('delete-page');
+
+
 });
 
 //website route
-Route::get('/', [HomeController::class, 'home']);
+Route::get('/', [HomeController::class, 'home'])->name('home');
 // Route::get('about-us', [AboutUsController::class, 'aboutUs'])->name('about-us');
 Route::get('home/{slug}', [HeaderPageController::class, 'pages'])->name('header-page');
 Route::get('page/{slug}', [AditionalPageController::class, 'aditionalPage'])->name('aditional-page');
 // Route::get('blog', [BlogController::class, 'blog'])->name('blog');
-Route::get('blog-details/{id}', [BlogDetailsController::class, 'blogDetails'])->name('blog-details');
+Route::get('blog-details/{slug}', [BlogDetailsController::class, 'blogDetails'])->name('blog-details');
 Route::get('portfolio', [PortfolioController::class, 'portfolio'])->name('portfolio');
 // Route::get('team', [TeamController::class, 'team'])->name('team');
 

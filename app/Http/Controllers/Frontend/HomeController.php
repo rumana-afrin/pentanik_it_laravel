@@ -13,8 +13,23 @@ class HomeController extends Controller
    public function home()
    {
       $data['services'] = ServiceCategory::with('features')->get();
+      $services = $data['services'];
       $data['workProcess'] = WorkProcess::all();
-      $data['pages'] = Page::select('slug', 'title')->get();
+      // $data['pages'] = Page::select('slug', 'title')->get();
+      $graphData = [];
+
+      foreach ($services as $service) {
+         $graphData[] = [
+            '@type' => 'Product',
+            'name' => $service->name,
+            'description' => $service->short_description,
+            'url' => url('/')  
+         ];
+      }
+
+      $data['schema'] = [
+         '@graph' => $graphData
+      ];
       return view('frontend.home')->with($data);
    }
 }

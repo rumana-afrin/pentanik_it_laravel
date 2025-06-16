@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('slug')->unique();
+            $table->string('icon')->unique();
             $table->text('short_description');
             $table->integer('sort_order')->default(0)->unsigned();
             $table->enum('status', ['featured', 'regular'])->default('regular')->comment('featured, regular');
@@ -28,8 +29,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        // Schema::disableForeignKeyConstraints();
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('service_categories');
-        // Schema::enableForeignKeyConstraints();
+        Schema::enableForeignKeyConstraints();
     }
 };

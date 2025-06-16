@@ -36,8 +36,6 @@
                     </div>
                 </div>
             </div>
-
-
         </section>
         <!-- end CEO section -->
 
@@ -62,98 +60,53 @@
                     </div>
                      @endforeach
 
-                    {{-- <div class="col-12 col-sm-6 col-lg-3 col-xl-3 flex-column align-items-center member-column">
-                        <div class="member-image">
-                            <img src="{{asset('assets/frontend/img/member-2.png')}}" alt="">
-                        </div>
-                        <div class="member-info d-flex flex-column justify-content-center align-items-center mt-2">
-                            <p class="p-0 m-0 member-name">JOhn Doe</p>
-                            <p class="p-0 m-0 member-designation">SEO Expert</p>
-                            <p class="p-0 m-2 text-center member-info-content">Lorem ipsum dolor sit amet, consectetur
-                                adipisicing elit. In dolore atque officiis
-                                architecto tenetur!</p>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-sm-6 col-lg-3 col-xl-3 flex-column align-items-center member-column">
-                        <div class="member-image">
-                            <img src="{{asset('assets/frontend/img/member-4.png')}}" alt="">
-                        </div>
-                        <div class="member-info d-flex flex-column justify-content-center align-items-center mt-2">
-                            <p class="p-0 m-0 member-name">JOhn Doe</p>
-                            <p class="p-0 m-0 member-designation">SEO Expert</p>
-                            <p class="p-0 m-2 text-center member-info-content">Lorem ipsum dolor sit amet, consectetur
-                                adipisicing elit. In dolore atque officiis
-                                architecto tenetur!</p>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-sm-6 col-lg-3 col-xl-3 flex-column align-items-center member-column">
-                        <div class="member-image">
-                            <img src="{{asset('assets/frontend/img/member-1.png')}}" alt="">
-                        </div>
-                        <div class="member-info d-flex flex-column justify-content-center align-items-center mt-2">
-                            <p class="p-0 m-0 member-name">JOhn Doe</p>
-                            <p class="p-0 m-0 member-designation">SEO Expert</p>
-                            <p class="p-0 m-2 text-center member-info-content">Lorem ipsum dolor sit amet, consectetur
-                                adipisicing elit. In dolore atque officiis
-                                architecto tenetur!</p>
-                            
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-sm-6 col-lg-3 col-xl-3 flex-column align-items-center member-column">
-                        <div class="member-image">
-                            <img src="{{asset('assets/frontend/img/member-6.jpg')}}" alt="">
-                        </div>
-                        <div class="member-info d-flex flex-column justify-content-center align-items-center mt-2">
-                            <p class="p-0 m-0 member-name">JOhn Doe</p>
-                            <p class="p-0 m-0 member-designation">SEO Expert</p>
-                            <p class="p-0 m-2 text-center member-info-content">Lorem ipsum dolor sit amet, consectetur
-                                adipisicing elit. In dolore atque officiis
-                                architecto tenetur!</p>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-lg-3 col-xl-3 flex-column align-items-center member-column">
-                        <div class="member-image">
-                            <img src="{{asset('assets/frontend/img/member-5.png')}}" alt="">
-                        </div>
-                        <div class="member-info d-flex flex-column justify-content-center align-items-center mt-2">
-                            <p class="p-0 m-0 member-name">JOhn Doe</p>
-                            <p class="p-0 m-0 member-designation">SEO Expert</p>
-                            <p class="p-0 m-2 text-center member-info-content">Lorem ipsum dolor sit amet, consectetur
-                                adipisicing elit. In dolore atque officiis
-                                architecto tenetur!</p>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-lg-3 col-xl-3 flex-column align-items-center member-column">
-                        <div class="member-image">
-                            <img src="{{asset('assets/frontend/img/member-7.png')}}" alt="">
-                        </div>
-                        <div class="member-info d-flex flex-column justify-content-center align-items-center mt-2">
-                            <p class="p-0 m-0 member-name">JOhn Doe</p>
-                            <p class="p-0 m-0 member-designation">SEO Expert</p>
-                            <p class="p-0 m-2 text-center member-info-content">Lorem ipsum dolor sit amet, consectetur
-                                adipisicing elit. In dolore atque officiis
-                                architecto tenetur!</p>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-lg-3 col-xl-3 flex-column align-items-center member-column">
-                        <div class="member-image">
-                            <img src="{{asset('assets/frontend/img/member-3.png')}}" alt="">
-                        </div>
-                        <div class="member-info d-flex flex-column justify-content-center align-items-center mt-2">
-                            <p class="p-0 m-0 member-name">JOhn Doe</p>
-                            <p class="p-0 m-0 member-designation">SEO Expert</p>
-                            <p class="p-0 m-2 text-center member-info-content">Lorem ipsum dolor sit amet, consectetur
-                                adipisicing elit. In dolore atque officiis
-                                architecto tenetur!</p>
-                           
-                        </div>
-                    </div> --}}
 
                 </div>
             </div>
         </section>
         <!-- end other member section -->
 @endsection
+
+@push('script')
+<script>
+    {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "{{ getOption('ceo_name') }}",                                        
+  "honorificPrefix": "CEO",                    
+  "sameAs": [
+    "{{ getOption('social_link_fb') }}",
+    "{{ getOption('social_link_linkedin') }}",
+    "{{ getOption('social_link_youtube') }}",
+    "{{ getOption('social_link_twitter') }}"
+  ],
+  "image": "{{ getimage(getOption('ceo_image')) }}", 
+  "gender": "Male",    
+
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "{{ getOption('app_address') }}",
+    "addressLocality": "Dhaka",
+    "addressRegion": "Dhaka Division",
+    "postalCode": "{{ getOption('postal_code') }}",
+    "addressCountry": "BD"
+  },
+
+  "jobTitle": "businessman",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "{{ getOption('company_name') }}"
+  },
+
+  "nationality": "Bangladeshi",
+  "description": "{{ getOption('short_summary') }}",
+  "identifier": "ceo-pentanik-it",     
+  "memberOf": [
+    {
+      "@type": "Organization",
+      "name": "Founder's Community Club Ltd"
+    }
+  ]
+}
+</script>
+@endpush

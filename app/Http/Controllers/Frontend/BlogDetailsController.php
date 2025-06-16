@@ -8,11 +8,11 @@ use Illuminate\Http\Request;
 
 class BlogDetailsController extends Controller
 {
-    public function blogDetails($id)
+    public function blogDetails($slug)
     {
 
-        $data['blog'] = Blog::findOrfail($id);
-        $data['blogs'] = Blog::latest()->get(); 
+        $data['blog'] = Blog::where('slug', $slug)->firstOrFail();
+        $data['blogs'] = Blog::latest()->get();
         $data['meta'] = $data['blog']->seoMetaTag;
         return view('frontend.blog-details')->with($data);
     }

@@ -15,7 +15,7 @@
 
         <li class="nav-item">
             <a class="nav-link {{ @$settingShowClass ? '' : 'collapsed' }}" href="{{route('admin.app-setting')}}">
-                <i class="bi bi-person"></i>
+                </i><i class="bx bx-cog"></i>
                 <span>Setting</span>
             </a>
         </li>
@@ -24,7 +24,7 @@
         </li><!-- start user Nav -->
         <li class="nav-item">
             <a class="nav-link {{ @$userShowClass ? '' : 'collapsed' }}" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-menu-button-wide"></i><span>Users</span><i class="bi bi-chevron-down ms-auto"></i>
+                <i class="bi bi-person"></i><span>Users</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="components-nav" class="nav-content collapse  {{ @$userShowClass }}" data-bs-parent="#sidebar-nav">
                 <li>
@@ -39,7 +39,7 @@
         </li><!-- start service category Nav -->
         <li class="nav-item">
             <a class="nav-link {{ @$serviceCategoryShowClass ? '' : 'collapsed' }}" data-bs-target="#digitalservices-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-menu-button-wide"></i><span>Digital Services</span><i class="bi bi-chevron-down ms-auto"></i>
+                  <i class="bx bxs-donate-heart"></i><span>Digital Services</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="digitalservices-nav" class="nav-content collapse  {{ @$serviceCategoryShowClass }}" data-bs-parent="#sidebar-nav">
                 <li>
@@ -54,7 +54,7 @@
         </li><!-- start work process Nav -->
         <li class="nav-item">
             <a class="nav-link {{ @$workProcessShowClass ? '' : 'collapsed' }}" data-bs-target="#workprocess-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-menu-button-wide"></i><span>Work Process</span><i class="bi bi-chevron-down ms-auto"></i>
+                 <i class="bx bx-shape-square"></i><span>Work Process</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="workprocess-nav" class="nav-content collapse  {{ @$workProcessShowClass }}" data-bs-parent="#sidebar-nav">
                 <li>
@@ -69,7 +69,7 @@
         </li><!-- start work process Nav -->
         <li class="nav-item">
             <a class="nav-link {{ @$teamShowClass ? '' : 'collapsed' }}" data-bs-target="#team-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-menu-button-wide"></i><span>Team</span><i class="bi bi-chevron-down ms-auto"></i>
+                <i class="bx bx-cog"></i><span>Team</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="team-nav" class="nav-content collapse  {{ @$teamShowClass }}" data-bs-parent="#sidebar-nav">
                 <li>
@@ -84,7 +84,7 @@
         </li><!-- start work process Nav -->
         <li class="nav-item">
             <a class="nav-link {{ @$blogShowClass ? '' : 'collapsed' }}" data-bs-target="#blog-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-menu-button-wide"></i><span>Blog</span><i class="bi bi-chevron-down ms-auto"></i>
+                <i class="bx bx-spreadsheet"></i><span>Blog</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="blog-nav" class="nav-content collapse  {{ @$blogShowClass }}" data-bs-parent="#sidebar-nav">
                 <li>
@@ -99,7 +99,7 @@
         </li><!-- start portfolio Nav -->
         <li class="nav-item">
             <a class="nav-link {{ @$pCategoryShowClass ? '' : 'collapsed' }}" data-bs-target="#portfolio-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-menu-button-wide"></i><span>Portfolio</span><i class="bi bi-chevron-down ms-auto"></i>
+                 <i class="bx bx-polygon"></i>Portfolio</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="portfolio-nav" class="nav-content collapse  {{ @$pCategoryShowClass }}" data-bs-parent="#sidebar-nav">
                 <li>
@@ -120,7 +120,7 @@
         </li><!-- start page Nav -->
         <li class="nav-item">
             <a class="nav-link {{ @$pageShowClass ? '' : 'collapsed' }}" data-bs-target="#page-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-menu-button-wide"></i><span>Default Page</span><i class="bi bi-chevron-down ms-auto"></i>
+                <i class="bx bx-note"></i><span>Pages</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="page-nav" class="nav-content collapse  {{ @$pageShowClass }}" data-bs-parent="#sidebar-nav">
                 <li>
@@ -132,6 +132,7 @@
                
             </ul>
         </li><!-- End work process Nav -->
+
 
 
 

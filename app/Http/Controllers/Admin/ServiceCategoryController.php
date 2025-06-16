@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
 use App\Helpers\CoreConstant;
 use App\Http\Controllers\Controller;
 use App\Models\ServiceCategory;
 use App\Models\ServiceFeatured;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ServiceCategoryController extends Controller
 {
@@ -16,15 +16,17 @@ class ServiceCategoryController extends Controller
         $data['serviceCategoryShowClass'] = 'show';
         $data['allSrviceCategoryActiveClass'] = 'active';
         $data['serviceCategory'] = ServiceCategory::all();
-        return view('digital-services.service-category.index')->with($data);
+        return view('digital-services.index')->with($data);
     }
+
     public function create()
     {
         $data['pageTitle'] = 'Digital Services';
         $data['serviceCategoryShowClass'] = 'show';
         $data['createSrviceCategoryActiveClass'] = 'active';
-        return view('digital-services.service-category.create')->with($data);
+        return view('digital-services.create')->with($data);
     }
+
     public function store(Request $request)
     {
         $data['pageTitle'] = 'Digital Services';
@@ -49,6 +51,20 @@ class ServiceCategoryController extends Controller
         $service_category->sort_order = $request->sort_order;
         $service_category->status = $request->status;
         $service_category->is_active = $request->is_active;
+
+        if ($request->hasFile('icon')) {
+            $image = $request->file('icon');
+            $orginalName = time() . '.' . $image->getClientOriginalName();
+            $fileName = pathinfo($orginalName, PATHINFO_FILENAME);
+            $extension = pathinfo($orginalName, PATHINFO_EXTENSION);
+            $imageName = preg_replace('/\s+/', '', $fileName);
+            $file_name = preg_replace('/[^A-Za-z0-9\-]/', '', $imageName);
+            $name = $file_name . '.' . $extension;
+            $store = $image->storeAs('upload', $name, 'public');
+            $service_category->icon = $store;
+        }
+
+
         $service_category->save();
 
         if ($service_category) {
@@ -75,7 +91,7 @@ class ServiceCategoryController extends Controller
         $data['serviceCategoryShowClass'] = 'show';
         $data['createSrviceCategoryActiveClass'] = 'active';
         $data['serviceCategory'] = ServiceCategory::with('features')->findOrFail($id);
-        return view('digital-services.service-category.edit')->with($data);
+        return view('digital-services.edit')->with($data);
     }
     public function update(Request $request, $id)
     {
@@ -100,6 +116,24 @@ class ServiceCategoryController extends Controller
         $service_category->sort_order = $request->sort_order;
         $service_category->status = $request->status;
         $service_category->is_active = $request->is_active;
+
+        if ($request->hasFile('icon')) {
+            $image = $request->file('icon');
+            $orginalName = time() . '.' . $image->getClientOriginalName();
+            $fileName = pathinfo($orginalName, PATHINFO_FILENAME);
+            $extension = pathinfo($orginalName, PATHINFO_EXTENSION);
+            $imageName = preg_replace('/\s+/', '', $fileName);
+            $file_name = preg_replace('/[^A-Za-z0-9\-]/', '', $imageName);
+            $name = $file_name . '.' . $extension;
+            $store = $image->storeAs('upload', $name, 'public');
+
+            if ($service_category->icon && Storage::disk('public')->exists($service_category->icon)) {
+                Storage::disk('public')->delete($service_category->icon);
+            }
+
+            $service_category->icon = $store;
+        }
+
 
         $service_category->save();
 

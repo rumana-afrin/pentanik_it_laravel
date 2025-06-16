@@ -18,7 +18,7 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <h5 class="card-title">Create Service Category</h5>
+                        <h5 class="card-title">Create Portfolio Category</h5>
 
                         <!-- Multi Columns Form -->
                         <form class="row g-3" action="{{ route('admin.update-portfolio-category', $pCategory->id) }}" method="post"
@@ -70,6 +70,12 @@
                                         <p class="m-0"></p>
                                     </div>
                                 </div>
+                            </div>
+
+                               <div class="col-12 col-sm-12 col-md-6">
+                                <label for="image_alt" class="form-label">Image alt text</label>
+                                <input type="text" class="form-control" name="image_alt" id="image_alt" placeholder="alt"
+                                    {{ $pCategory->image_alt }}>
                             </div>
 
                             <div class="text-center mt-5">

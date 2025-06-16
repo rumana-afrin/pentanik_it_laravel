@@ -50,8 +50,36 @@
                     </div>
                 @endforeach
 
-
             </div>
         </div>
     </section>
 @endsection
+
+
+@push('style')
+    <style>
+        /* .portfolio-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(51, 51, 51, 0.4);
+                display: none;
+                align-items: center;
+                justify-content: center;
+                z-index: 10;
+            }
+
+            .content:hover .portfolio-overlay {
+                display: flex;
+            }
+
+            .overlay-text {
+                color: white;
+                font-size: 1.5rem;
+                font-weight: bold;
+                text-align: center;
+            } */
+    </style>
+@endpush

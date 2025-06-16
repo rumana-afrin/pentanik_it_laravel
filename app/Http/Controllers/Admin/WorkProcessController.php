@@ -6,6 +6,7 @@ use App\Helpers\CoreConstant;
 use App\Http\Controllers\Controller;
 use App\Models\WorkProcess;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class WorkProcessController extends Controller
 {
@@ -47,7 +48,21 @@ class WorkProcessController extends Controller
         $work_process->step_number = $request->step_number;
         $work_process->status = $request->status;
 
+
+        if ($request->hasFile('icon')) {
+            $image = $request->file('icon');
+            $orginalName = time() . '.' . $image->getClientOriginalName();
+            $fileName = pathinfo($orginalName, PATHINFO_FILENAME);
+            $extension = pathinfo($orginalName, PATHINFO_EXTENSION);
+            $imageName = preg_replace('/\s+/', '', $fileName);
+            $file_name = preg_replace('/[^A-Za-z0-9\-]/', '', $imageName);
+            $name = $file_name . '.' . $extension;
+            $store = $image->storeAs('upload', $name, 'public');
+            $work_process->icon = $store;
+        }
+
         $work_process->save();
+
         return redirect()->route('admin.all-work-process')->with('success', CoreConstant::CREATED_SUCCESSFULLY);
     }
 
@@ -60,7 +75,7 @@ class WorkProcessController extends Controller
         return view('work-process.edit')->with($data);
     }
 
-       public function update(Request $request, $id)
+    public function update(Request $request, $id)
     {
         $data['pageTitle'] = 'Work Process';
         $data['workProcessShowClass'] = 'show';
@@ -72,7 +87,7 @@ class WorkProcessController extends Controller
             'title' => 'required|string',
             'description' => 'required|string',
             'step_number' => 'required|string',
-            
+
         ]);
 
         $work_process = WorkProcess::find($id);
@@ -81,12 +96,29 @@ class WorkProcessController extends Controller
         $work_process->step_number = $request->step_number;
         $work_process->status = $request->status;
 
+        if ($request->hasFile('icon')) {
+            $image = $request->file('icon');
+            $orginalName = time() . '.' . $image->getClientOriginalName();
+            $fileName = pathinfo($orginalName, PATHINFO_FILENAME);
+            $extension = pathinfo($orginalName, PATHINFO_EXTENSION);
+            $imageName = preg_replace('/\s+/', '', $fileName);
+            $file_name = preg_replace('/[^A-Za-z0-9\-]/', '', $imageName);
+            $name = $file_name . '.' . $extension;
+            $store = $image->storeAs('upload', $name, 'public');
+
+            if ($work_process->icon && Storage::disk('public')->exists($work_process->icon)) {
+                Storage::disk('public')->delete($work_process->icon);
+            }
+
+            $work_process->icon = $store;
+        }
+
         $work_process->save();
         return redirect()->route('admin.all-work-process')->with('success', CoreConstant::UPDATED_SUCCESSFULLY);
     }
 
 
-        public function destroy($id)
+    public function destroy($id)
     {
         $work_process = WorkProcess::findOrFail($id);
         $work_process->delete();

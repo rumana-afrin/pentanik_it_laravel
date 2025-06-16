@@ -21,6 +21,7 @@ return new class extends Migration
             $table->longText('content');
             $table->string('template')->default('default');
             $table->string('featured_image')->nullable();
+            $table->string('image_alt')->nullable();
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->boolean('show_in_menu')->default(false);
             $table->enum('menu_type', ['header', 'footer'])->nullable();

@@ -45,6 +45,7 @@ class PortfolioCategoryController extends Controller
         $portfolioCategory = new PortfolioCategory();
         $portfolioCategory->name = $request->name;
         $portfolioCategory->slug = $request->slug;
+        $portfolioCategory->image_alt = $request->image_alt;
         $portfolioCategory->description = $request->description;
         $portfolioCategory->sort_order = $request->sort_order;
         $portfolioCategory->is_active = $request->is_active;
@@ -70,7 +71,7 @@ class PortfolioCategoryController extends Controller
     public function edit($id)
     {
         $data['pageTitle'] = 'Portfolio Category';
-        $data['pCategoryShowClass'] = 'show';
+         $data['pCategoryShowClass'] = 'show';
         $data['allpCategoryActiveClass'] = 'active';
         $data['pCategory'] = PortfolioCategory::findOrfail($id);
         // dd($data['pCategory']);
@@ -95,6 +96,7 @@ class PortfolioCategoryController extends Controller
         $portfolioCategory = PortfolioCategory::findOrfail($id);
         $portfolioCategory->name = $request->name;
         $portfolioCategory->slug = $request->slug;
+        $portfolioCategory->image_alt = $request->image_alt;
         $portfolioCategory->description = $request->description;
         $portfolioCategory->sort_order = $request->sort_order;
         $portfolioCategory->is_active = $request->is_active;
@@ -115,8 +117,6 @@ class PortfolioCategoryController extends Controller
             $portfolioCategory->image = $store;
         }
         $portfolioCategory->save();
-
-
         return redirect()->route('admin.all-portfolio-category')->with('success', CoreConstant::UPDATED_SUCCESSFULLY);
     }
 

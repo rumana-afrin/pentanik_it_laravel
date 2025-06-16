@@ -40,7 +40,8 @@ class BlogController extends Controller
         $request->validate([
             'title' => 'required|string',
             'subtitle' => 'nullable|string',
-            'slug' => 'required|string|max:350',
+            'slug' => 'required|string|unique:blogs',
+            'image_alt' => 'required|string',
             'excerpt' => 'nullable|string',
             'content' => 'required|string',
             'author_name' => 'nullable|string',
@@ -51,6 +52,7 @@ class BlogController extends Controller
         $blog->title = $request->title;
         $blog->subtitle = $request->subtitle;
         $blog->slug = $request->slug;
+        $blog->image_alt = $request->image_alt;
         $blog->excerpt = $request->excerpt;
         $blog->content = $request->content;
         $blog->author_name = $request->author_name;
@@ -114,11 +116,11 @@ class BlogController extends Controller
         $seo->meta_description = $request->meta_description;
         $seo->meta_keywords = $request->meta_keywords;
         $seo->auther = $request->auther;
-        $seo->canonical_url = $request->canonical_url ?? "";
+        // $seo->canonical_url = $request->canonical_url ?? "";
         $seo->og_title = $request->og_title ?? "";
         $seo->og_description  = $request->og_description ?? "";
         $seo->og_type  = $request->og_type ?? "";
-        $seo->og_url  = $request->og_url ?? "";
+        // $seo->og_url  = $request->og_url ?? "";
         $seo->og_site_name  = $request->og_site_name ?? "";
         $seo->twitter_card  = $request->twitter_card ?? "";
         $seo->twitter_title  = $request->twitter_title ?? "";
@@ -168,10 +170,13 @@ class BlogController extends Controller
         $data['blogShowClass'] = 'show';
         $data['allblogActiveClass'] = 'active';
 
+
+       
         $request->validate([
             'title' => 'required|string',
             'subtitle' => 'nullable|string',
-            'slug' => 'required|string|max:350',
+            'slug' => 'required|string|unique:blogs,slug,' . $id,
+            'image_alt' => 'required|string',
             'excerpt' => 'nullable|string',
             'content' => 'required|string',
             'author_name' => 'nullable|string',
@@ -182,6 +187,7 @@ class BlogController extends Controller
         $blog->title = $request->title;
         $blog->subtitle = $request->subtitle;
         $blog->slug = $request->slug;
+        $blog->image_alt = $request->image_alt;
         $blog->excerpt = $request->excerpt;
         $blog->content = $request->content;
         $blog->author_name = $request->author_name;
@@ -253,17 +259,16 @@ class BlogController extends Controller
         }
 
         //seo meta
-
         $seo = $blog->seoMetaTag ?? new SeoMetaTag();
         $seo->meta_title =  $request->meta_title;
         $seo->meta_description = $request->meta_description;
         $seo->meta_keywords = $request->meta_keywords;
         $seo->auther = $request->auther;
-        $seo->canonical_url = $request->canonical_url ?? "";
+        // $seo->canonical_url = $request->canonical_url ?? "";
         $seo->og_title = $request->og_title ?? "";
         $seo->og_description  = $request->og_description ?? "";
         $seo->og_type  = $request->og_type ?? "";
-        $seo->og_url  = $request->og_url ?? "";
+        // $seo->og_url  = $request->og_url ?? "";
         $seo->og_site_name  = $request->og_site_name ?? "";
         $seo->twitter_card  = $request->twitter_card ?? "";
         $seo->twitter_title  = $request->twitter_title ?? "";

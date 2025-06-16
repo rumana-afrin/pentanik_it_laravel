@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('work_processes', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('icon');
             $table->text('description');
             $table->integer('step_number');
             $table->tinyInteger('status')->default(1)->comment('1=active, 0=inactive')->nullable();

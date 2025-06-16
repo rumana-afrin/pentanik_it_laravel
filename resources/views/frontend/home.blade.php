@@ -9,11 +9,11 @@
                         <img src="{{ getimage(getOption('home_banner')) }}" alt="Hero image">
 
                         <!-- <picture>
-                                                            <source media="(max-width: 992px)" srcset="/img/hero-2.jpg" width="350" height="450">
-                                                            <source media="(max-width: 1200px)" srcset="/img/hero-6.png" width="500" height="450">
-                                                            <img src="/img/Artboard 15.png" alt="Hero Image" width="900" height="450">
-                                                            <img src="/img/hero-6.png" alt="Hero Image" width="650" height="450">
-                                                        </picture> -->
+                                                                <source media="(max-width: 992px)" srcset="/img/hero-2.jpg" width="350" height="450">
+                                                                <source media="(max-width: 1200px)" srcset="/img/hero-6.png" width="500" height="450">
+                                                                <img src="/img/Artboard 15.png" alt="Hero Image" width="900" height="450">
+                                                                <img src="/img/hero-6.png" alt="Hero Image" width="650" height="450">
+                                                            </picture> -->
                     </div>
 
                 </div>
@@ -28,7 +28,7 @@
                             <h1 class="hero-title">{{ getOption('home_title') }}</h1>
                         </div>
                         <div class="heroinfo info-subtitle mt-3">
-                            <p>{{ getOption('home_subtitle') }}</p>
+                            <h6>{{ getOption('home_subtitle') }}</h6>
                         </div>
                         <div class="d-flex justify-content-start align-items-center heroinfo mt-5">
                             <!-- <div> -->
@@ -83,7 +83,7 @@
                                     height="67">
                             </div>
                             <div class="card-right-side">
-                                <h5><a href="#">{{ $item->name }}</a></h5>
+                                <h5><a href="#" class="service-title">{{ $item->name }}</a></h5>
                                 <p>{{ $item->short_description }}</p>
                                 <ul class="p-3">
                                     @foreach ($item->features as $feature)
@@ -124,20 +124,20 @@
                             </div>
                         </div>
                         <div class="contact-icon text-center d-flex justify-content-center align-items-center">
-                            <a href="{{ getOption('social_link_fb') }}"><img
+                            <a href="{{ getOption('social_link_fb') }}" target="_blank"><img
                                     src="{{ asset('assets/frontend/img/icon/icons8-facebook.svg') }}" alt=""></a>
                             <a href="https://mail.google.com/mail/?view=cm&fs=1&to={{ urlencode(getOption('social_link_gmail')) }}"
                                 target="_blank">
                                 <img src="{{ asset('assets/frontend/img/icon/icons8-gmail.svg') }}" alt="Gmail Icon">
                             </a>
-                            <a href="{{ getOption('social_link_linkedin') }}"><img
+                            <a href="{{ getOption('social_link_linkedin') }}" target="_blank"><img
                                     src="{{ asset('assets/frontend/img/icon/icons8-linkedin.svg') }}" alt=""></a>
                             <a href="https://wa.me/{{ getOption('whatsapp_number') }}" target="_blank"
                                 rel="noopener noreferrer">
                                 <img src="{{ asset('assets/frontend/img/icon/icons8-whatsapp.svg') }}" alt="WhatsApp">
                             </a>
 
-                            <a href="{{ getOption('social_link_youtube') }}"><img
+                            <a href="{{ getOption('social_link_youtube') }}" target="_blank"><img
                                     src="{{ asset('assets/frontend/img/icon/icons8-youtube.svg') }}" alt=""></a>
                         </div>
                     </div>
@@ -180,9 +180,9 @@
                                 </div>
                                 <div class="work-card-body">
                                     <div class="d-flex justify-content-start align-items-center">
-                                        <img src="{{ asset('assets/frontend/img/icon/work-proces-icon.jpeg') }}"
+                                        <img src="{{ asset('storage/' . $item->icon) }}"
                                             alt="" width="80" height="80">
-                                        <h4 class="ms-3">{{ $item->title }}</h4>
+                                        <h4 class="ms-3"><a href="#" class="service-title work-process">{{ $item->title }}</a></h4>
                                     </div>
                                     <div class="work-card-content mt-3">
                                         <p>{{ $item->description }}</p>
@@ -201,3 +201,38 @@
     </section>
     <!-- end contact section -->
 @endsection
+
+{{-- <script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  {!! json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) !!}
+}
+</script> --}}
+
+@push('style')
+    <style>
+        .service-title:hover{
+            color: rgb(151, 0, 0);
+        }
+        .work-process{
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+@endpush
+
+@push('script')
+    <script>
+        <!-- Product Schema 
+        -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  {!! json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) !!}
+}
+</script>
+
+    </script>
+@endpush

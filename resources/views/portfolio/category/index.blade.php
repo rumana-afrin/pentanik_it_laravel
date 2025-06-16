@@ -23,7 +23,7 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">All Team Member</h5>
+                        <h5 class="card-title">All Portfolio Category</h5>
 
                         <!-- Table with stripped rows -->
                         <table class="table table-striped">

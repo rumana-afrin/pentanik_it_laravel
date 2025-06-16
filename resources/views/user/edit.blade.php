@@ -56,10 +56,7 @@
                     <label for="role" class="form-label">Role</label>
                     <select class="form-select" name="role" id="role" aria-label="Default select example">
                         <option selected>selete status</option>                        
-                        <option value="super admin" {{$user->role == 'super admin' ? 'selected' : '' }}>super admin</option>                        
                         <option value="admin" {{$user->role == 'admin' ? 'selected' : '' }}>admin</option>                        
-                        <option value="manager" {{$user->role == 'manager' ? 'selected' : '' }}>manager</option>                        
-                        <option value="sales man" {{$user->role == 'sales man' ? 'selected' : '' }}>sales man</option>                        
                         <option value="user" {{$user->role == 'user' ? 'selected' : '' }}>user</option>                        
                     </select>
                 </div>

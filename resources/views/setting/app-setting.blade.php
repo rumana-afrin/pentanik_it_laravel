@@ -63,8 +63,6 @@
                                 <div class="col-sm-8">
                                     <textarea class="form-control" id="contact_summary" name="contact_summary"
                                         placeholder="write short details about contact" cols="30" rows="3">{{ getOption('contact_summary') }}</textarea>
-
-
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -77,7 +75,7 @@
                             <div class="row mb-3">
                                 <label for="social_link_fb" class="col-sm-3 col-form-label">Facebook</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="social_link_fb" name="social_link_fb"
+                                    <input type="url" class="form-control" id="social_link_fb" name="social_link_fb"
                                         placeholder="facebook link" value="{{ getOption('social_link_fb') }}">
                                 </div>
                             </div>
@@ -92,11 +90,21 @@
                             <div class="row mb-3">
                                 <label for="social_link_linkedin" class="col-sm-3 col-form-label">Linkedin</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="social_link_linkedin"
+                                    <input type="url" class="form-control" id="social_link_linkedin"
                                         name="social_link_linkedin" placeholder="linkedin link"
                                         value="{{ getOption('social_link_linkedin') }}">
                                 </div>
                             </div>
+
+                            <div class="row mb-3">
+                                <label for="social_link_twitter" class="col-sm-3 col-form-label">Twitter</label>
+                                <div class="col-sm-8">
+                                    <input type="url" class="form-control" id="social_link_twitter"
+                                        name="social_link_twitter" placeholder="twitter link"
+                                        value="{{ getOption('social_link_twitter') }}">
+                                </div>
+                            </div>
+
                             <div class="row mb-3">
                                 <label for="whatsapp_number" class="col-sm-3 col-form-label">Whatsapp</label>
                                 <div class="col-sm-8">
@@ -108,7 +116,7 @@
                             <div class="row mb-3">
                                 <label for="social_link_youtube" class="col-sm-3 col-form-label">Youtube</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="social_link_youtube"
+                                    <input type="url" class="form-control" id="social_link_youtube"
                                         name="social_link_youtube" placeholder="youtube link"
                                         value="{{ getOption('social_link_youtube') }}">
                                 </div>
@@ -286,12 +294,11 @@
                                 <label for="home_meta_description" class="col-sm-3 col-form-label">Meta
                                     Description</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="home_meta_description"
-                                        name="home_meta_description" placeholder="meta description"
-                                        value="{{ getOption('home_meta_description') }}">
+                                    <textarea class="form-control" id="home_meta_description" name="home_meta_description" placeholder="write short details about CEO"
+                                        cols="30" rows="3">{{ getOption('home_meta_description') }}</textarea>
                                 </div>
                             </div>
-
+                            
                             <div class="row mb-3">
                                 <label for="home_meta_keywords" class="col-sm-3 col-form-label">Meta Keywords</label>
                                 <div class="col-sm-8">
@@ -304,27 +311,19 @@
                                 <label for="home_meta_auther" class="col-sm-3 col-form-label">Site Auther</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="home_meta_auther"
-                                        name="home_meta_auther" placeholder="meta auther"
+                                        name="home_meta_auther" placeholder="auther"
                                         value="{{ getOption('home_meta_auther') }}">
                                 </div>
                             </div>
-                            <div class="row mb-3">
-                                <label for="home_meta_business_name" class="col-sm-3 col-form-label">Business Name</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="home_meta_business_name"
-                                        name="home_meta_business_name" placeholder="meta business_name"
-                                        value="{{ getOption('home_meta_business_name') }}">
-                                </div>
-                            </div>
-                          
-                            <div class="row mb-3">
+                        
+                            {{-- <div class="row mb-3">
                                 <label for="home_canonical_url" class="col-sm-3 col-form-label">Canonical Url</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="home_canonical_url"
+                                    <input type="url" class="form-control" id="home_canonical_url"
                                         name="home_canonical_url" placeholder="meta canonical url"
                                         value="{{ getOption('home_canonical_url') }}">
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <div class="row mb-3">
                                 <label for="home_og_title" class="col-sm-3 col-form-label">Open Graph Title</label>
@@ -365,13 +364,13 @@
                                         placeholder="open graph type" value="{{ getOption('home_og_type') }}">
                                 </div>
                             </div>
-                            <div class="row mb-3">
+                            {{-- <div class="row mb-3">
                                 <label for="home_og_url" class="col-sm-3 col-form-label">Open Graph URl</label>
                                 <div class="col-sm-8">
                                     <input type="url" class="form-control" id="home_og_url" name="home_og_url"
                                         placeholder="open graph url" value="{{ getOption('home_og_url') }}">
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="row mb-3">
                                 <label for="home_og_site_name" class="col-sm-3 col-form-label">Open Graph Site
                                     Name</label>
@@ -433,8 +432,50 @@
                             </div>
                             {{-- seo meta info --}}
 
+                            {{-- schema meta info --}}
 
+                            <div class="row mb-3">
+                                <label for="company_name" class="col-sm-3 col-form-label">Website
+                                    Name</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="company_name"
+                                        name="company_name" placeholder="website name"
+                                        value="{{ getOption('company_name') }}">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="company_description" class="col-sm-3 col-form-label">Company
+                                    Description</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="company_description"
+                                        name="company_description" placeholder="company description"
+                                        value="{{ getOption('company_description') }}">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="company_type" class="col-sm-3 col-form-label">Company Type</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="company_type" name="company_type"
+                                        placeholder="company type" value="{{ getOption('company_type') }}">
+                                </div>
+                            </div>
 
+                            <div class="row mb-3">
+                                <label for="founding_data" class="col-sm-3 col-form-label">Founding Date</label>
+                                <div class="col-sm-8">
+                                    <input type="date" class="form-control" id="founding_data" name="founding_data"
+                                        placeholder="founding data" value="{{ getOption('founding_data') }}">
+                                </div>
+                            </div>
+                        
+                            <div class="row mb-3">
+                                <label for="postal_code" class="col-sm-3 col-form-label">Postal Code</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="postal_code"
+                                        name="postal_code" placeholder="postal code"
+                                        value="{{ getOption('postal_code') }}">
+                                </div>
+                            </div>
 
                             <button type="submit" class="btn btn-primary mt-4">Submit</button>
                             <button type="button" class="btn btn-secondary mt-4">Cancel</button>

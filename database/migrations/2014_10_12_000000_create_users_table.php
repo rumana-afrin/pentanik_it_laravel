@@ -21,6 +21,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('phone')->nullable();
+            $table->enum('role', ['admin','user'])->default('user');
             $table->unsignedBigInteger('user_id')->nullable()->comment('Created BY');
             $table->rememberToken();
             $table->timestamps();

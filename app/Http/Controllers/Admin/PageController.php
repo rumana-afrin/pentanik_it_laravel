@@ -48,6 +48,7 @@ class PageController extends Controller
         $page->title = $request->title;
         $page->subtitle = $request->subtitle;
         $page->slug = $request->slug;
+        $page->image_alt = $request->image_alt;
         $page->short_content = $request->short_content;
         $page->content = $request->content ?? "";
         $page->template = "default";
@@ -76,11 +77,11 @@ class PageController extends Controller
         $seo->meta_description = $request->meta_description;
         $seo->meta_keywords = $request->meta_keywords;
         $seo->auther = $request->auther;
-        $seo->canonical_url = $request->canonical_url ?? "";
+        // $seo->canonical_url = $request->canonical_url ?? "";
         $seo->og_title = $request->og_title ?? "";
         $seo->og_description  = $request->og_description ?? "";
         $seo->og_type = $request->og_type ?? 'website';
-        $seo->og_url  = $request->og_url ?? "";
+        // $seo->og_url  = $request->og_url ?? "";
         $seo->og_site_name  = $request->og_site_name ?? "";
         $seo->twitter_card = $request->twitter_card ?? 'summary';
         $seo->twitter_title  = $request->twitter_title ?? "";
@@ -144,6 +145,7 @@ class PageController extends Controller
         $page->title = $request->title;
         $page->subtitle = $request->subtitle;
         $page->slug = $request->slug;
+        $page->image_alt = $request->image_alt;
         $page->short_content = $request->short_content;
         $page->content = $request->content ?? "";
         $page->template = "default";
@@ -177,11 +179,11 @@ class PageController extends Controller
         $seo->meta_description = $request->meta_description;
         $seo->meta_keywords = $request->meta_keywords;
         $seo->auther = $request->auther;
-        $seo->canonical_url = $request->canonical_url ?? "";
+        // $seo->canonical_url = $request->canonical_url ?? "";
         $seo->og_title = $request->og_title ?? "";
         $seo->og_description  = $request->og_description ?? "";
         $seo->og_type = $request->og_type ?? 'website';
-        $seo->og_url  = $request->og_url ?? "";
+        // $seo->og_url  = $request->og_url ?? "";
         $seo->og_site_name  = $request->og_site_name ?? "";
         $seo->twitter_card = $request->twitter_card ?? 'summary';
         $seo->twitter_title  = $request->twitter_title ?? "";

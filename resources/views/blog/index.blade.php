@@ -27,7 +27,7 @@
                                     <th scope="col">#</th>
                                     <th scope="col">Title</th>
                                     <th scope="col">Subtitle</th>
-                                    <th scope="col">slug </th>
+                                    <th scope="col">Slug </th>
                                     <th scope="col">Excerpt</th>
                                     {{-- <th scope="col">Content</th> --}}
                                     <th scope="col">Author Name</th>
@@ -55,10 +55,7 @@
                                                 width="100" height="100">
                                         </td>
                                         <td>{{ $item->sort_order }}</td>
-                                        <td>{{ $item->is_featured == 1 ? 'YES' : 'NO'}}
-
-                                        </td>
-
+                                        <td> <p class="feature">{{ $item->is_featured == 1 ? 'YES' : 'NO'}}</p> </td>
                                         <td>
                                             <a href="{{ route('admin.edit-blog', $item->id) }}" class="mr-1"
                                                 title="Edit">
@@ -91,7 +88,8 @@
 @endsection
 @push('style')
     <style>
-
-
+.feature{
+    font-size: 12px;
+}
     </style>
 @endpush

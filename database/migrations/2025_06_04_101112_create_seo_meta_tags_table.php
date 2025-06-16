@@ -19,12 +19,12 @@ return new class extends Migration
             $table->text('meta_description')->nullable();
             $table->string('meta_keywords')->nullable();
             $table->string('auther')->nullable();
-            $table->string('canonical_url')->nullable();
+            // $table->string('canonical_url')->nullable();
             $table->string('og_title')->nullable();
             $table->text('og_description')->nullable();
             $table->string('og_image')->nullable();
             $table->string('og_type')->default('website');
-            $table->string('og_url')->nullable();
+            // $table->string('og_url')->nullable();
             $table->string('og_site_name')->nullable();
             $table->string('twitter_card')->default('summary');
             $table->string('twitter_title')->nullable();
