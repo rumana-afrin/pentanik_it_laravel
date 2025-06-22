@@ -17,7 +17,7 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <h5 class="card-title">Create Service Category</h5>
+                        <h5 class="card-title">Create Member</h5>
 
                         <!-- Multi Columns Form -->
                         <form class="row g-3" action="{{ route('admin.store-team') }}" method="post"
@@ -50,13 +50,13 @@
                             </div>
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="experience_years" class="form-label">Experience Years</label>
-                                <input type="text" class="form-control" name="experience_years" id="experience_years"
+                                <input type="number" class="form-control" name="experience_years" id="experience_years"
                                     placeholder="experience years">
                             </div>
 
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="sort_order" class="form-label">Order</label>
-                                <input type="text" class="form-control" name="sort_order" id="sort_order"
+                                <input type="number" class="form-control" name="sort_order" id="sort_order"
                                     placeholder="sort_order">
                             </div>
 

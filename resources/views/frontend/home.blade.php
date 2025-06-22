@@ -74,8 +74,7 @@
         <div class="mt-2 d-flex justify-content-center">
             <div class="service-container">
                 <div class="row d-flex justify-content-center m-0">
-
-
+                    
                     @foreach ($services as $item)
                         <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 d-flex justify-content-center service-card">
                             <div class="card-left-side">
@@ -171,7 +170,7 @@
                             <div class="bg-light work-way p-3">
                                 <div class="work-card-top d-flex justify-content-between align-items-center ps-2 pe-2">
                                     <div class="work-number">
-                                        <h1>01</h1>
+                                        <h1>{{ $item->step_number }}</h1>
                                     </div>
                                     <div class="work-shap">
                                         <img src="{{ asset('assets/frontend/img/pattern-1.png') }}" alt=""

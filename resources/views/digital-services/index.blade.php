@@ -28,7 +28,7 @@
                                     <th scope="col">Name</th>
                                     <th scope="col">Slug</th>
                                     <th scope="col">Short Description</th>
-                                    <th scope="col">Status</th>
+                                    <th scope="col">Order</th>
                                     <th scope="col">Is Active?</th>
                                     <th scope="col">Icon</th>
                                     <th scope="col">Action</th>
@@ -41,7 +41,7 @@
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->slug }}</td>
                                         <td>{{ $item->short_description }}</td>
-                                        <td>{{ $item->status }}</td>
+                                        <td>{{ $item->sort_order }}</td>
                                         <td>{{ $item->is_active == 1 ? 'active' : 'inactive' }}</td>
                                         <td>
                                             <img src="{{ asset('storage/' . $item->icon) }}" alt="" width="60"

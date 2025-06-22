@@ -17,7 +17,7 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <h5 class="card-title">Create Service Category</h5>
+                        <h5 class="card-title">Create Member</h5>
 
                         <!-- Multi Columns Form -->
                         <form class="row g-3" action="{{ route('admin.update-team', $team->id) }}" method="post"
@@ -51,13 +51,13 @@
                             </div>
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="experience_years" class="form-label">Experience Years</label>
-                                <input type="text" class="form-control" name="experience_years" id="experience_years"
+                                <input type="number" class="form-control" name="experience_years" id="experience_years"
                                     placeholder="experience years" value="{{ $team->experience_years }}">
                             </div>
 
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="sort_order" class="form-label">Order</label>
-                                <input type="text" class="form-control" name="sort_order" id="sort_order"
+                                <input type="number" class="form-control" name="sort_order" id="sort_order"
                                     placeholder="sort_order" value="{{ $team->sort_order }}">
                             </div>
 
@@ -77,7 +77,6 @@
 
                                 <div class="repeater-container">
                                     <label for="skill" class="form-label">Skills</label>
-
                                     @if (count($team->skills) > 0)
                                         @foreach ($team->skills as $item)
                                             <div class="repeater mt-2" id="repeater">
@@ -92,7 +91,6 @@
                                                         </a>
                                                     </button>
                                                 </div>
-
                                             </div>
                                             {{-- @endif --}}
                                         @endforeach
@@ -110,7 +108,6 @@
                                                     </a>
                                                 </button>
                                             </div>
-
                                         </div>
                                     @endif
 

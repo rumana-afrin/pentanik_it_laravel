@@ -27,6 +27,7 @@
                                     <th scope="col">#</th>
                                     <th scope="col">Title</th>
                                     <th scope="col">Description</th>
+                                    <th scope="col">Step Number</th>
                                     <th scope="col">Icon</th>
                                     {{-- <th scope="col">Status</th> --}}
                                     <th scope="col">Action</th>
@@ -42,6 +43,7 @@
                                         <th scope="row">{{ $loop->iteration }}</th>
                                         <td>{{ $item->title }}</td>
                                         <td>{{ $item->description }}</td>
+                                        <td>{{ $item->step_number }}</td>
                                         <td>
                                             <img src="{{ asset('storage/' . $item->icon) }}" alt="" width="100"
                                                 height="100">

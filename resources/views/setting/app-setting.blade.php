@@ -39,12 +39,26 @@
                             </div>
 
                             <div class="row mb-3">
-
                                 <label for="home_banner" class="col-sm-3 col-form-label">Banner</label>
                                 <div class="col-sm-8">
                                     <div class="upload-img-box">
                                         <img id="updateImageUrl" src="{{ getimage(getOption('home_banner')) }}">
                                         <input class="form-control" type="file" name="home_banner" id="home_banner"
+                                            accept="image/*" onchange="previewFile(this)">
+                                        <div class="upload-img-box-icon">
+                                            <i class="bi bi-camera-fill"></i>
+                                            <p class="m-0"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="fav_icon" class="col-sm-3 col-form-label">Fav Icon</label>
+                                <div class="col-sm-8">
+                                    <div class="upload-img-box">
+                                        <img id="updateImageUrl" src="{{ getimage(getOption('fav_icon')) }}">
+                                        <input class="form-control" type="file" name="fav_icon" id="fav_icon"
                                             accept="image/*" onchange="previewFile(this)">
                                         <div class="upload-img-box-icon">
                                             <i class="bi bi-camera-fill"></i>

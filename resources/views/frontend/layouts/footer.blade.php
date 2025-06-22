@@ -8,8 +8,8 @@
          <div class="footer-menu">
              <ul class="d-flex justify-content-center align-items-center list-unstyled flex-wrap menu-item m-0">
                  @foreach ($pages as $page)
-                     <li class="p-2"><a class="text-decoration-underline text-light"
-                             href="{{ route('aditional-page', ['slug' => $page->slug]) }}">{{ $page->name }}</a></li>
+                     <li class="p-2"><a class="text-decoration-underline text-dark"
+                             href="{{ route('dynamic-page', ['slug' => $page->slug]) }}">{{ $page->name }}</a></li>
                  @endforeach
                  {{-- <li class="p-2"><a class="text-decoration-underline text-light"
                             href="{{route('aditional-page')}}">Privacy</a></li>
@@ -28,7 +28,7 @@
              </ul>
          </div>
          <div class="footer-office-address">
-             <div class="offce-address text-light text-end">
+             <div class="offce-address text-dark text-end">
                  <p class="p-0 m-0"><span>Corporate Office:</span>{{ getOption('app_address') }}</p>
                  <p class="p-0 m-0"><span>Email:</span>{{ getOption('app_gmail') }}</p>
                  <p class="p-0 m-0"><span>Phone:</span>+{{ getOption('app_phone') }}</p>

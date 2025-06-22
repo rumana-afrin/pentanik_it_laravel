@@ -1,7 +1,7 @@
 @extends("frontend.layouts.web")
 @section('content')
         <!-- start team banner section -->
-        <section>
+        {{-- <section>
             <div class="container-fluid p-0 m-0">
                 <div class="team-banner">
                     <!-- <img class="w-100" src="/img/team-banner-7.jpg" alt=""> -->
@@ -12,15 +12,15 @@
                     </picture>
                 </div>
             </div>
-        </section>
+        </section> --}}
         <!-- end team banner section -->
 
         <!-- start CEO section -->
-        <section class="auther-section">
-            <div class="team-title d-flex justify-content-center align-items-center pb-3">
+        <section class="auther-section mt-3">
+            <div class="team-title d-flex justify-content-center align-items-center">
                 <h2>Our Team</h2>
             </div>
-            <div class="d-flex justify-content-center align-items-center mt-4">
+            <div class="d-flex justify-content-center align-items-center mt-1">
                 <div class="ceo-section d-flex justify-content-center align-items-start">
                     <div class="ceo-img">
                         <img src="{{ getimage(getOption('ceo_image')) }}" alt="">
@@ -40,11 +40,11 @@
         <!-- end CEO section -->
 
         <!-- start other member section -->
-        <section class="member-section p-5">
+        <section class="member-section pt-5">
             <div class="team-title d-flex justify-content-center align-items-center mt-4">
                 <h2>Other Team Members</h2>
             </div>
-            <div class="container">
+            <div class="container team-container">
                 <div class="row m-0 p-0 g-5 d-flex justify-content-center align-items-start">
 
                     @foreach ($teams as $item)
@@ -60,11 +60,36 @@
                     </div>
                      @endforeach
 
-
                 </div>
             </div>
         </section>
         <!-- end other member section -->
+
+        <!-- start sdvisory section -->
+        <section class="member-section pt-1">
+            <div class="team-title d-flex justify-content-center align-items-center mt-1">
+                <h2>Advisory Members</h2>
+            </div>
+            <div class="container team-container">
+                <div class="row m-0 p-0 g-5 d-flex justify-content-center align-items-start">
+
+                    @foreach ($advisory as $advisoryItem)
+                    <div class="col-12 col-sm-6 col-lg-3 col-xl-3 flex-column align-items-center member-column">
+                        <div class="member-image">
+                            <img src="{{asset('storage/' . $advisoryItem->image)}}" alt="">
+                        </div>
+                        <div class="member-info d-flex flex-column justify-content-center align-items-center mt-2">
+                            <p class="p-0 m-0 member-name">{{$advisoryItem->name}}</p>
+                            <p class="p-0 m-0 member-designation">{{$advisoryItem->designation}}</p>
+                            <p class="p-0 m-2 text-center member-info-content">{{$advisoryItem->bio}}</p>
+                        </div>
+                    </div>
+                     @endforeach
+
+                </div>
+            </div>
+        </section>
+        <!-- end sdvisory section -->
 @endsection
 
 @push('script')

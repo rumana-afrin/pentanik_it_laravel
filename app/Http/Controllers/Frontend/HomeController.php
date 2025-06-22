@@ -12,7 +12,7 @@ class HomeController extends Controller
 {
    public function home()
    {
-      $data['services'] = ServiceCategory::with('features')->get();
+      $data['services'] = ServiceCategory::with('features')->orderBy('sort_order', 'asc')->get();
       $services = $data['services'];
       $data['workProcess'] = WorkProcess::all();
       // $data['pages'] = Page::select('slug', 'title')->get();

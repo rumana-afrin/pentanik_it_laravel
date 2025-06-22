@@ -295,6 +295,7 @@
 .work-way {
     margin: 10px 0;
     /* Removed fixed width */
+      border-radius: 20px;
 }
 
 .work-section {

@@ -18,17 +18,17 @@
                         <!--start category menu -->
                         <ul class="category-menu m-0 p-0">
                             <li class="menus-item">
-                                <a href="{{ route('header-page', ['slug' => 'about-us']) }}">About</a>
+                                <a href="{{ route('dynamic-page', ['slug' => 'about-us']) }}">About</a>
                             </li>
                             <li>
-                                <a href="{{ route('header-page', ['slug' => 'portfolio']) }}">Portfolio</a>
+                                <a href="{{ route('dynamic-page', ['slug' => 'portfolio']) }}">Portfolio</a>
                             </li>
 
                             <li>
-                                <a href="{{ route('header-page', ['slug' => 'team-member']) }}">Team</a>
+                                <a href="{{ route('dynamic-page', ['slug' => 'team-member']) }}">Team</a>
                             </li>
                             <li>
-                                <a href="{{ route('header-page', ['slug' => 'blog']) }}">Blog</a>
+                                <a href="{{ route('dynamic-page', ['slug' => 'blog']) }}">Blog</a>
                             </li>
                             <li class="dropdown">
                                 <div class="d-flex dropdownbtn">
@@ -91,16 +91,16 @@
                         @auth
 
                             @if (Auth::user()->role === 'admin')
-                                <a class="text-decoration-none text-light fs-6" href="{{ route('admin.dashboard') }}">
+                                <a class="text-decoration-none fs-6" href="{{ route('admin.dashboard') }}">
                                     &nbsp  &nbsp Dashboard</a>
-                                <a class="text-decoration-none text-light fs-6" href="{{ route('logout') }}">
+                                <a class="text-decoration-none fs-6" href="{{ route('logout') }}">
                                    &nbsp Log Out</a>
                             @elseif (Auth::user()->role === 'user')
-                                <a class="text-decoration-none text-light fs-6" href="{{ route('logout') }}">
+                                <a class="text-decoration-none fs-6" href="{{ route('logout') }}">
                                     &nbsp &nbsp<i class="fa-solid fa-user"></i>&nbsp Log Out</a>
                             @endif
                         @else
-                            <a class="text-decoration-none text-light" href="{{ route('login') }}">
+                            <a class="text-decoration-none" href="{{ route('login') }}">
                                 &nbsp &nbsp <i class="fa-solid fa-user"></i>&nbsp login</a>
                         @endauth
                     </div>
@@ -115,13 +115,13 @@
                         </div>
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
                         <li class="navbar-item">
-                            <a href="{{ route('header-page', ['slug' => 'about-us']) }}">About</a>
+                            <a href="{{ route('dynamic-page', ['slug' => 'about-us']) }}">About</a>
                         </li>
                         <li class="navbar-item">
-                            <a href="{{ route('header-page', ['slug' => 'portfolio']) }}">PortFolio</a>
+                            <a href="{{ route('dynamic-page', ['slug' => 'portfolio']) }}">PortFolio</a>
                         </li>
                         <li class="navbar-item">
-                            <a href="{{ route('header-page', ['slug' => 'team-member']) }}">Team</a>
+                            <a href="{{ route('dynamic-page', ['slug' => 'team-member']) }}">Team</a>
                         </li>
                         <li class="dropdown-container">
                             <a href="#"
@@ -154,7 +154,7 @@
                             </ul>
                         </li>
                         <li class="navbar-item">
-                            <a href="{{ route('header-page', ['slug' => 'blog']) }}">Blog</a>
+                            <a href="{{ route('dynamic-page', ['slug' => 'blog']) }}">Blog</a>
                         </li>
 
                     </div>

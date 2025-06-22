@@ -68,6 +68,10 @@ class SettingController extends Controller
                 $oldFile = $option->option_value;
                 $upload = uploadFile('setting', $request->home_twitter_image, $oldFile);
                 $option->option_value = $upload;
+            }elseif ($request->hasFile('fav_icon') && $key == 'fav_icon') {
+                $oldFile = $option->option_value;
+                $upload = uploadFile('setting', $request->fav_icon, $oldFile);
+                $option->option_value = $upload;
             }else {
                 $option->option_value = is_null($value) ? '' : $value;
             }

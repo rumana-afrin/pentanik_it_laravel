@@ -10,8 +10,8 @@ class Skill extends Model
     use HasFactory;
     protected $guarded = [];
 
-    public function skill()
+    public function team()
     {
-        return $this->belongsTo(Skill::class);
+        return $this->belongsTo(Team::class);
     }
 }

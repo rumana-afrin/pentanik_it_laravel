@@ -20,9 +20,10 @@ class HeaderPageController extends Controller
             $data['meta'] = $data['portfolioMeta']->seoMetaTag;
             $data['portfolio'] = Portfolio::all();
             $data['portfolioCategory'] = PortfolioCategory::with('portfolio')->get();
+            // dd($data['portfolioCategory']);
             return view('frontend.portfolio')->with($data);
         } elseif ($slug === 'team-member') {
-            $data['teams'] = Team::with('skills')->get();
+            $data['teams'] = Team::with('skills')->orderBy('sort_order', 'asc')->get();
             $data['page'] = Page::where('slug', $slug)->firstOrFail();
             $data['meta'] = $data['page']->seoMetaTag;
             return view('frontend.team')->with($data);

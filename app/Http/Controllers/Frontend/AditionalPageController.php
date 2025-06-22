@@ -17,7 +17,6 @@ class AditionalPageController extends Controller
             $data['meta'] = $data['page']->seoMetaTag;
             return view('frontend.team')->with($data);
         }
-
         $data['page'] = Page::where('slug', $slug)->firstOrFail();
         $data['meta'] = $data['page']->seoMetaTag;
         return view('frontend.aditional-page')->with($data);

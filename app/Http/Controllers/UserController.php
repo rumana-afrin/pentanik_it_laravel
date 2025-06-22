@@ -10,12 +10,11 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Validation\Rule;
 
-
 class UserController extends Controller
 {
     public function index()
     {
-         $data['userShowClass'] = 'show';
+        $data['userShowClass'] = 'show';
         $data['allUserActiveClass'] = 'active';
         $data['users'] = User::all();
         return view('user.index')->with($data);

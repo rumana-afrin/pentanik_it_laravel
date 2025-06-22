@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdvisoryController;
 use App\Http\Controllers\Admin\BlogController as AdminBlogController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\PortfolioCategoryController;
@@ -18,6 +19,7 @@ use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\BlogDetailsController;
 use App\Http\Controllers\Frontend\HeaderPageController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\PageController as FrontendPageController;
 use App\Http\Controllers\Frontend\PortfolioController;
 use App\Http\Controllers\Frontend\TeamController;
 use App\Http\Controllers\UserController;
@@ -104,19 +106,26 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::put('update-page/{id}', [PageController::class, 'update'])->name('update-page');
     Route::delete('delete-page/{id}', [PageController::class, 'destroy'])->name('delete-page');
 
-
+    //page advisory
+    Route::get('all-advisory', [AdvisoryController::class, 'index'])->name('all-advisory');
+    Route::get('create-advisory', [AdvisoryController::class, 'create'])->name('create-advisory');
+    Route::post('store-advisory', [AdvisoryController::class, 'store'])->name('store-advisory');
+    Route::get('edit-advisory/{id}', [AdvisoryController::class, 'edit'])->name('edit-advisory');
+    Route::put('update-advisory/{id}', [AdvisoryController::class, 'update'])->name('update-advisory');
+    Route::delete('delete-advisory/{id}', [AdvisoryController::class, 'destroy'])->name('delete-advisory');
 });
 
 //website route
 Route::get('/', [HomeController::class, 'home'])->name('home');
-// Route::get('about-us', [AboutUsController::class, 'aboutUs'])->name('about-us');
-Route::get('home/{slug}', [HeaderPageController::class, 'pages'])->name('header-page');
-Route::get('page/{slug}', [AditionalPageController::class, 'aditionalPage'])->name('aditional-page');
-// Route::get('blog', [BlogController::class, 'blog'])->name('blog');
+// Route::get('home/{slug}', [HeaderPageController::class, 'pages'])->name('header-page');
+// Route::get('page/{slug}', [AditionalPageController::class, 'aditionalPage'])->name('aditional-page');
 Route::get('blog-details/{slug}', [BlogDetailsController::class, 'blogDetails'])->name('blog-details');
-Route::get('portfolio', [PortfolioController::class, 'portfolio'])->name('portfolio');
-// Route::get('team', [TeamController::class, 'team'])->name('team');
+// Route::get('portfolio', [PortfolioController::class, 'portfolio'])->name('portfolio');
+Route::get('/{slug}', [FrontendPageController::class, 'handle'])->name('dynamic-page');
 
+// Route::get('about-us', [AboutUsController::class, 'aboutUs'])->name('about-us');
+// Route::get('blog', [BlogController::class, 'blog'])->name('blog');
+// Route::get('team', [TeamController::class, 'team'])->name('team');
 
 
 // Route::get('/clear-all', function () {
