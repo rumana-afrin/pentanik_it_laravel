@@ -9,11 +9,11 @@
                         <img src="{{ getimage(getOption('home_banner')) }}" alt="Hero image">
 
                         <!-- <picture>
-                                                                <source media="(max-width: 992px)" srcset="/img/hero-2.jpg" width="350" height="450">
-                                                                <source media="(max-width: 1200px)" srcset="/img/hero-6.png" width="500" height="450">
-                                                                <img src="/img/Artboard 15.png" alt="Hero Image" width="900" height="450">
-                                                                <img src="/img/hero-6.png" alt="Hero Image" width="650" height="450">
-                                                            </picture> -->
+                                                                        <source media="(max-width: 992px)" srcset="/img/hero-2.jpg" width="350" height="450">
+                                                                        <source media="(max-width: 1200px)" srcset="/img/hero-6.png" width="500" height="450">
+                                                                        <img src="/img/Artboard 15.png" alt="Hero Image" width="900" height="450">
+                                                                        <img src="/img/hero-6.png" alt="Hero Image" width="650" height="450">
+                                                                    </picture> -->
                     </div>
 
                 </div>
@@ -74,7 +74,7 @@
         <div class="mt-2 d-flex justify-content-center">
             <div class="service-container">
                 <div class="row d-flex justify-content-center m-0">
-                    
+
                     @foreach ($services as $item)
                         <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 d-flex justify-content-center service-card">
                             <div class="card-left-side">
@@ -179,9 +179,10 @@
                                 </div>
                                 <div class="work-card-body">
                                     <div class="d-flex justify-content-start align-items-center">
-                                        <img src="{{ asset('storage/' . $item->icon) }}"
-                                            alt="" width="80" height="80">
-                                        <h4 class="ms-3"><a href="#" class="service-title work-process">{{ $item->title }}</a></h4>
+                                        <img src="{{ asset('storage/' . $item->icon) }}" alt="" width="80"
+                                            height="80">
+                                        <h4 class="ms-3"><a href="#"
+                                                class="service-title work-process">{{ $item->title }}</a></h4>
                                     </div>
                                     <div class="work-card-content mt-3">
                                         <p>{{ $item->description }}</p>
@@ -198,7 +199,334 @@
 
         <!-- </div> -->
     </section>
-    <!-- end contact section -->
+    <!-- end work section -->
+
+
+    <!-- start package section -->
+    <section class="package-section mt-5 mb-4">
+        <div class="packages container">
+            <div class="text-center mb-4">
+                <h1>Find Your Perfect Social Media Package</h1>
+                <h5>We've translated our service report into a simple, interactive guide. Compare our packages to
+                    find the ideal fit for your brand's journey and budget.</h5>
+            </div>
+            <div class="row justify-content-center package-item">
+                <!-- Repeat this block for each package -->
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 mb-4">
+                    <div class="package one">
+                        <div class="package-header text-center">
+                            <div class="fs-4 mt-3">
+                                <i class="fa-solid fa-star p-2"></i>
+                                <i class="fa-solid fa-star p-2"></i>
+                                <i class="fa-solid fa-star p-2"></i>
+                            </div>
+                            <h1>One star Package</h1>
+                            <h5>New Brands Starting Their Journey</h5>
+                        </div>
+                        <div class="package-body px-3">
+                            <div class="price pac-item text-center">
+                                <h1>BDT-5,000/Month</h1>
+                            </div>
+                            <div class="pac-item">
+                                <p>10 Basic Social Media Posts</p>
+                            </div>
+                            <div class="pac-item">
+                                <p>1 Edited Promotional Video</p>
+                            </div>
+                            <div class="pac-item">
+                                <p>Reach up to 20,000+ per month</p>
+                            </div>
+                            <div class="pac-item">
+                                <p>Report Per 15 Days & Consultancy</p>
+                            </div>
+                        </div>
+                        <div class="get-consult d-flex justify-content-center align-items-center">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Get Consultant</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 mb-4">
+                    <div class="package three">
+                        <div class="package-header text-center">
+                            <p class="fs-4">
+                                <i class="fa-solid fa-star p-2"></i>
+                                <i class="fa-solid fa-star p-2"></i>
+                                <i class="fa-solid fa-star p-2"></i>
+                            </p>
+                            <h1>One star Package</h1>
+                            <h5>New Brands Starting Their Journey</h5>
+                        </div>
+                        <div class="package-body px-3">
+                            <div class="price pac-item text-center">
+                                <h1>BDT-5,000/Month</h1>
+                            </div>
+                            <div class="pac-item">
+                                <p>10 Basic Social Media Posts</p>
+                            </div>
+                            <div class="pac-item">
+                                <p>1 Edited Promotional Video</p>
+                            </div>
+                            <div class="pac-item">
+                                <p>Reach up to 20,000+ per month</p>
+                            </div>
+                            <div class="pac-item">
+                                <p>Report Per 15 Days & Consultancy</p>
+                            </div>
+                        </div>
+                        <div class="get-consult d-flex justify-content-center align-items-center">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Get Consultant</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 mb-4">
+                    <div class="package five">
+                        <div class="package-header text-center">
+                            <p class="fs-4">
+                                <i class="fa-solid fa-star p-2"></i>
+                                <i class="fa-solid fa-star p-2"></i>
+                                <i class="fa-solid fa-star p-2"></i>
+                            </p>
+                            <h1>One star Package</h1>
+                            <h5>New Brands Starting Their Journey</h5>
+                        </div>
+                        <div class="package-body px-3">
+                            <div class="price pac-item text-center">
+                                <h1>BDT-5,000/Month</h1>
+                            </div>
+                            <div class="pac-item">
+                                <p>10 Basic Social Media Posts</p>
+                            </div>
+                            <div class="pac-item">
+                                <p>1 Edited Promotional Video</p>
+                            </div>
+                            <div class="pac-item">
+                                <p>Reach up to 20,000+ per month</p>
+                            </div>
+                            <div class="pac-item">
+                                <p>Report Per 15 Days & Consultancy</p>
+                            </div>
+                        </div>
+                        <div class="get-consult d-flex justify-content-center align-items-center">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Get Consultant</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Copy and paste the above .col block to create more packages -->
+            </div>
+        </div>
+        <!-- ---------------- -->
+        <div class="packages container mt-4">
+            <div class="text-center mb-4">
+                <h1>Find Your Perfect Development Package</h1>
+                <h5>We've translated our service report into a simple, interactive guide. Compare our packages to
+                    find the ideal fit for your brand's journey and budget.</h5>
+            </div>
+            <div class="row justify-content-center package-item">
+                <!-- Repeat this block for each package -->
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 mb-4">
+                    <div class="package one">
+                        <div class="package-header text-center">
+                            <div class="fs-4 mt-3">
+                                <i class="fa-solid fa-star p-2"></i>
+                                <i class="fa-solid fa-star p-2"></i>
+                                <i class="fa-solid fa-star p-2"></i>
+                            </div>
+                            <h1>One star Package</h1>
+                            <h5>New Brands Starting Their Journey</h5>
+                        </div>
+                        <div class="package-body px-3">
+                            <div class="price pac-item text-center">
+                                <h1>BDT-5,000/Month</h1>
+                            </div>
+                            <div class="pac-item">
+                                <p>10 Basic Social Media Posts</p>
+                            </div>
+                            <div class="pac-item">
+                                <p>1 Edited Promotional Video</p>
+                            </div>
+                            <div class="pac-item">
+                                <p>Reach up to 20,000+ per month</p>
+                            </div>
+                            <div class="pac-item">
+                                <p>Report Per 15 Days & Consultancy</p>
+                            </div>
+                        </div>
+                        <div class="get-consult d-flex justify-content-center align-items-center">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Get Consultant</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 mb-4">
+                    <div class="package three">
+                        <div class="package-header text-center">
+                            <div class="fs-4 mt-3">
+                                <i class="fa-solid fa-star p-2"></i>
+                                <i class="fa-solid fa-star p-2"></i>
+                                <i class="fa-solid fa-star p-2"></i>
+                            </div>
+                            <h1>One star Package</h1>
+                            <h5>New Brands Starting Their Journey</h5>
+                        </div>
+                        <div class="package-body px-3">
+                            <div class="price pac-item text-center">
+                                <h1>BDT-5,000/Month</h1>
+                            </div>
+                            <div class="pac-item">
+                                <p>10 Basic Social Media Posts</p>
+                            </div>
+                            <div class="pac-item">
+                                <p>1 Edited Promotional Video</p>
+                            </div>
+                            <div class="pac-item">
+                                <p>Reach up to 20,000+ per month</p>
+                            </div>
+                            <div class="pac-item">
+                                <p>Report Per 15 Days & Consultancy</p>
+                            </div>
+                        </div>
+                        <div class="get-consult d-flex justify-content-center align-items-center">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Get Consultant</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 mb-4">
+                    <div class="package five">
+                        <div class="package-header text-center">
+                            <p class="fs-4">
+                                <i class="fa-solid fa-star p-2"></i>
+                                <i class="fa-solid fa-star p-2"></i>
+                                <i class="fa-solid fa-star p-2"></i>
+                            </p>
+                            <h1>One star Package</h1>
+                            <h5>New Brands Starting Their Journey</h5>
+                        </div>
+                        <div class="package-body px-3">
+                            <div class="price pac-item text-center">
+                                <h1>BDT-5,000/Month</h1>
+                            </div>
+                            <div class="pac-item">
+                                <p>10 Basic Social Media Posts</p>
+                            </div>
+                            <div class="pac-item">
+                                <p>1 Edited Promotional Video</p>
+                            </div>
+                            <div class="pac-item">
+                                <p>Reach up to 20,000+ per month</p>
+                            </div>
+                            <div class="pac-item">
+                                <p>Report Per 15 Days & Consultancy</p>
+                            </div>
+                        </div>
+                        <div class="get-consult d-flex justify-content-center align-items-center">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Get Consultant</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Copy and paste the above .col block to create more packages -->
+            </div>
+        </div>
+        <!-- ----------------modal-------------------- -->
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-xl">
+                <div class="modal-content">
+                    <form action="#" method="POST" id="consultation-form">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Request Consultation</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+
+                        <div class="modal-body">
+                            <div class="row">
+                                <!-- Form Inputs -->
+                                <div class="col-lg-6 mb-4">
+                                    <input type="hidden" name="package_name" id="selected-package-name">
+
+                                    <div class="mb-3">
+                                        <label for="full_name" class="form-label">Full Name</label>
+                                        <input type="text" class="form-control" id="full_name" name="full_name"
+                                            placeholder="Your Name" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="email" name="email"
+                                            placeholder="name@example.com" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="phone" class="form-label">Phone</label>
+                                        <input type="tel" class="form-control" id="phone" name="phone"
+                                            placeholder="01XXXXXXXXX" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="address" class="form-label">Address</label>
+                                        <input type="text" class="form-control" id="address" name="address"
+                                            placeholder="Street, City" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="message" class="form-label">Additional Message</label>
+                                        <textarea class="form-control" id="message" name="message" rows="3" placeholder="Optional message..."></textarea>
+                                    </div>
+
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" value="1" id="consent"
+                                            name="consent" required>
+                                        <label class="form-check-label" for="consent">
+                                            I agree to the <a href="#">privacy policy</a> and terms of contact.
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Package Details -->
+                                <div class="col-lg-6 mb-5">
+                                    <div class="package-body px-3">
+                                        <div class="price pac-item text-center">
+                                            <h4 id="modal-package-title">One star Package</h4>
+                                            <h5 id="modal-package-price">BDT-5,000/Month</h5>
+                                        </div>
+                                        <div id="modal-package-features">
+                                            <div class="pac-item">
+                                                <p>10 Basic Social Media Posts</p>
+                                            </div>
+                                            <div class="pac-item">
+                                                <p>1 Edited Promotional Video</p>
+                                            </div>
+                                            <div class="pac-item">
+                                                <p>Reach up to 20,000+ per month</p>
+                                            </div>
+                                            <div class="pac-item">
+                                                <p>Report Per 15 Days & Consultancy</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p class="mt-4"><strong>Note:</strong> Thank you! Our expert will contact you shortly.
+                            </p>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Confirm</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+        <!-- Modal -->
+
+
+    </section>
+    <!-- end package section -->
 @endsection
 
 {{-- <script type="application/ld+json">
@@ -211,10 +539,11 @@
 
 @push('style')
     <style>
-        .service-title:hover{
+        .service-title:hover {
             color: rgb(151, 0, 0);
         }
-        .work-process{
+
+        .work-process {
             text-decoration: none;
             color: black;
         }
@@ -222,16 +551,13 @@
 @endpush
 
 @push('script')
-    <script>
-        <!-- Product Schema 
-        -->
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org/",
-  "@type": "Product",
-  {!! json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) !!}
-}
-</script>
-
-    </script>
+    
+         <!-- Product Schema -->
+            <script type="application/ld+json">
+                        {
+                        "@context": "https://schema.org/",
+                        "@type": "Product",
+                        {!! json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) !!}
+                        }
+            </script>
 @endpush

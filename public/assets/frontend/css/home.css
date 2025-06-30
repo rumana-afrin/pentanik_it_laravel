@@ -327,3 +327,77 @@
 
 
 /* start section */
+
+/* start package section */
+.package-item {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.package {
+    background-color: rgb(247, 247, 247);
+    border-radius: 10px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.package-header {
+    background-color: rgb(141, 20, 20);
+    color: whitesmoke;
+    border-radius: 10px 10px 0 0;
+    padding: 10px;
+}
+
+.pac-item {
+    font-size: 18px;
+    border-bottom: 1px dashed rgb(65, 65, 65);
+    padding: 8px 0;
+}
+
+.pac-item p {
+    margin-left: 0px;
+    margin-bottom: 0;
+    padding: 11px;}
+
+.get-consult {
+    background-color: rgb(141, 20, 20);
+    border-radius: 0 0 10px 10px;
+    padding: 20px;
+}
+
+.get-consult a {
+    text-decoration: none;
+    padding: 10px 20px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+/* Shared styles */
+.package-header,
+.get-consult {
+    color: white;
+    border-radius: 10px;
+}
+
+/* One star colors */
+.package.one .package-header,
+.package.one .get-consult {
+    background-color: #999; /* Gray */
+}
+
+/* Three star colors */
+.package.three .package-header,
+.package.three .get-consult {
+    background-color: #d63b2c; /* Red */
+}
+
+/* Five star colors */
+.package.five .package-header,
+.package.five .get-consult {
+    background-color: #113b92; /* Blue */
+}
+
+/* end package section */
