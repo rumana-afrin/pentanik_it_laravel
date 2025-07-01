@@ -28,10 +28,6 @@ class AdvisoryController extends Controller
     }
     public function store(Request $request)
     {
-        $data['pageTitle'] = 'Team';
-        $data['advisoryShowClass'] = 'show';
-        $data['createAdvisoryActiveClass'] = 'active';
-
         // dd($request->all());
 
         $request->validate([

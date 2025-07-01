@@ -141,6 +141,7 @@
 @push('script')
     <script>
         function addRepeaterItem() {
+                        const repeater = document.getElementById('repeater');
             const newItem = document.createElement('div');
             newItem.className = 'repeater';
             newItem.innerHTML = `

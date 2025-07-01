@@ -508,9 +508,9 @@
                                     </div>
                                 </div>
                             </div>
-
+{{-- 
                             <p class="mt-4"><strong>Note:</strong> Thank you! Our expert will contact you shortly.
-                            </p>
+                            </p> --}}
                         </div>
 
                         <div class="modal-footer">

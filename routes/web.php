@@ -2,10 +2,11 @@
 
 use App\Http\Controllers\Admin\AdvisoryController;
 use App\Http\Controllers\Admin\BlogController as AdminBlogController;
+use App\Http\Controllers\Admin\PackageCategoryController;
+use App\Http\Controllers\Admin\PackageController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\PortfolioCategoryController;
 use App\Http\Controllers\Admin\PortfolioController as AdminPortfolioController;
-use App\Http\Controllers\Admin\SchemaController;
 use App\Http\Controllers\Admin\ServiceCategoryController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\TeamController as AdminTeamController;
@@ -13,15 +14,9 @@ use App\Http\Controllers\Admin\WorkProcessController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\Frontend\AboutUsController;
-use App\Http\Controllers\Frontend\AditionalPageController;
-use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\BlogDetailsController;
-use App\Http\Controllers\Frontend\HeaderPageController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\PageController as FrontendPageController;
-use App\Http\Controllers\Frontend\PortfolioController;
-use App\Http\Controllers\Frontend\TeamController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
@@ -113,6 +108,22 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::get('edit-advisory/{id}', [AdvisoryController::class, 'edit'])->name('edit-advisory');
     Route::put('update-advisory/{id}', [AdvisoryController::class, 'update'])->name('update-advisory');
     Route::delete('delete-advisory/{id}', [AdvisoryController::class, 'destroy'])->name('delete-advisory');
+
+    //page package category
+    Route::get('all-package-category', [PackageCategoryController::class, 'index'])->name('all-package-category');
+    Route::get('create-package-category', [PackageCategoryController::class, 'create'])->name('create-package-category');
+    Route::post('store-package-category', [PackageCategoryController::class, 'store'])->name('store-package-category');
+    Route::get('edit-package-category/{id}', [PackageCategoryController::class, 'edit'])->name('edit-package-category');
+    Route::put('update-package-category/{id}', [PackageCategoryController::class, 'update'])->name('update-package-category');
+    Route::delete('delete-package-category/{id}', [PackageCategoryController::class, 'destroy'])->name('delete-package-category');
+
+    //page package
+    Route::get('all-package', [PackageController::class, 'index'])->name('all-package');
+    Route::get('create-package', [PackageController::class, 'create'])->name('create-package');
+    Route::post('store-package', [PackageController::class, 'store'])->name('store-package');
+    Route::get('edit-package/{id}', [PackageController::class, 'edit'])->name('edit-package');
+    Route::put('update-package/{id}', [PackageController::class, 'update'])->name('update-package');
+    Route::delete('delete-package/{id}', [PackageController::class, 'destroy'])->name('delete-package');
 });
 
 //website route

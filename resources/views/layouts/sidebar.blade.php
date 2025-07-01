@@ -180,6 +180,32 @@
             </ul>
         </li><!-- End advisory Nav -->
 
+        <!-- start Package Nav -->
+        <li class="nav-item">
+            <a class="nav-link {{ @$packageCategoryShowClass ? '' : 'collapsed' }}" data-bs-target="#package-nav"
+                data-bs-toggle="collapse" href="#">
+                <i class="bx bx-note"></i><span>Package</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="package-nav" class="nav-content collapse  {{ @$packageCategoryShowClass }}" data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{ route('admin.all-package-category') }}" class="{{ @$allpackageCategoryActiveClass }}"><i
+                            class="bi bi-circle"></i><span>All Package Category</span></a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.create-package-category') }}" class="{{ @$createpackageCategoryActiveClass }}"><i
+                            class="bi bi-circle"></i><span>Add Package Category</span></a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.all-package') }}" class="{{ @$allpackageActiveClass }}"><i
+                            class="bi bi-circle"></i><span>All Package</span></a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.create-package') }}" class="{{ @$createpackageActiveClass }}"><i
+                            class="bi bi-circle"></i><span>Add Package</span></a>
+                </li>
+            </ul>
+        </li><!-- End Package Nav -->
+
         <li class="nav-heading">Pages</li>
 
         <li class="nav-item">
