@@ -9,11 +9,11 @@
                         <img src="{{ getimage(getOption('home_banner')) }}" alt="Hero image">
 
                         <!-- <picture>
-                                                                        <source media="(max-width: 992px)" srcset="/img/hero-2.jpg" width="350" height="450">
-                                                                        <source media="(max-width: 1200px)" srcset="/img/hero-6.png" width="500" height="450">
-                                                                        <img src="/img/Artboard 15.png" alt="Hero Image" width="900" height="450">
-                                                                        <img src="/img/hero-6.png" alt="Hero Image" width="650" height="450">
-                                                                    </picture> -->
+                                                                                                                    <source media="(max-width: 992px)" srcset="/img/hero-2.jpg" width="350" height="450">
+                                                                                                                    <source media="(max-width: 1200px)" srcset="/img/hero-6.png" width="500" height="450">
+                                                                                                                    <img src="/img/Artboard 15.png" alt="Hero Image" width="900" height="450">
+                                                                                                                    <img src="/img/hero-6.png" alt="Hero Image" width="650" height="450">
+                                                                                                                </picture> -->
                     </div>
 
                 </div>
@@ -33,7 +33,7 @@
                         <div class="d-flex justify-content-start align-items-center heroinfo mt-5">
                             <!-- <div> -->
                             <div class="readmore-button">
-                                <button class="btn">Read More</button>
+                                <button class="btn readmore"><a class="text-decoration-none" href="{{route('about-us')}}">Read More</a></button>
                             </div>
                             <div class="hero-icon d-flex justify-content-center align-items-center ms-4">
                                 <div class="hero-icon2 d-flex justify-content-center align-items-center">
@@ -102,10 +102,10 @@
     <!-- start contact section -->
     <section class="contact-section mt-3">
         <div class="devices-contact-section d-flex justify-content-center">
-            <div class="contact-banner w-50">
+            <div class="contact-banner">
                 <img src="{{ getimage(getOption('contact_banner')) }}" alt="">
             </div>
-            <div class="contact-info w-50 d-flex justify-content-center align-items-center p-5">
+            <div class="contact-info w-50 d-flex justify-content-center align-items-center">
                 <div class="devices-contact-info">
                     <div class="text-center">
                         <h3>Hire/Contact Us</h3>
@@ -204,119 +204,58 @@
 
     <!-- start package section -->
     <section class="package-section mt-5 mb-4">
-        <div class="packages container">
-            <div class="text-center mb-4">
-                <h1>Find Your Perfect Social Media Package</h1>
-                <h5>We've translated our service report into a simple, interactive guide. Compare our packages to
-                    find the ideal fit for your brand's journey and budget.</h5>
-            </div>
-            <div class="row justify-content-center package-item">
-                <!-- Repeat this block for each package -->
-                <div class="col-12 col-sm-12 col-md-6 col-lg-4 mb-4">
-                    <div class="package one">
-                        <div class="package-header text-center">
-                            <div class="fs-4 mt-3">
-                                <i class="fa-solid fa-star p-2"></i>
-                                <i class="fa-solid fa-star p-2"></i>
-                                <i class="fa-solid fa-star p-2"></i>
-                            </div>
-                            <h1>One star Package</h1>
-                            <h5>New Brands Starting Their Journey</h5>
-                        </div>
-                        <div class="package-body px-3">
-                            <div class="price pac-item text-center">
-                                <h1>BDT-5,000/Month</h1>
-                            </div>
-                            <div class="pac-item">
-                                <p>10 Basic Social Media Posts</p>
-                            </div>
-                            <div class="pac-item">
-                                <p>1 Edited Promotional Video</p>
-                            </div>
-                            <div class="pac-item">
-                                <p>Reach up to 20,000+ per month</p>
-                            </div>
-                            <div class="pac-item">
-                                <p>Report Per 15 Days & Consultancy</p>
-                            </div>
-                        </div>
-                        <div class="get-consult d-flex justify-content-center align-items-center">
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Get Consultant</a>
-                        </div>
-                    </div>
+        @foreach ($packageCategory as $category)
+            <div class="packages container">
+                <div class="text-center mb-4">
+                    <h1>{{ $category->title }}</h1>
+                    <h5>{{ $category->subtitle }}</h5>
                 </div>
-                <div class="col-12 col-sm-12 col-md-6 col-lg-4 mb-4">
-                    <div class="package three">
-                        <div class="package-header text-center">
-                            <p class="fs-4">
-                                <i class="fa-solid fa-star p-2"></i>
-                                <i class="fa-solid fa-star p-2"></i>
-                                <i class="fa-solid fa-star p-2"></i>
-                            </p>
-                            <h1>One star Package</h1>
-                            <h5>New Brands Starting Their Journey</h5>
-                        </div>
-                        <div class="package-body px-3">
-                            <div class="price pac-item text-center">
-                                <h1>BDT-5,000/Month</h1>
-                            </div>
-                            <div class="pac-item">
-                                <p>10 Basic Social Media Posts</p>
-                            </div>
-                            <div class="pac-item">
-                                <p>1 Edited Promotional Video</p>
-                            </div>
-                            <div class="pac-item">
-                                <p>Reach up to 20,000+ per month</p>
-                            </div>
-                            <div class="pac-item">
-                                <p>Report Per 15 Days & Consultancy</p>
-                            </div>
-                        </div>
-                        <div class="get-consult d-flex justify-content-center align-items-center">
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Get Consultant</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-12 col-md-6 col-lg-4 mb-4">
-                    <div class="package five">
-                        <div class="package-header text-center">
-                            <p class="fs-4">
-                                <i class="fa-solid fa-star p-2"></i>
-                                <i class="fa-solid fa-star p-2"></i>
-                                <i class="fa-solid fa-star p-2"></i>
-                            </p>
-                            <h1>One star Package</h1>
-                            <h5>New Brands Starting Their Journey</h5>
-                        </div>
-                        <div class="package-body px-3">
-                            <div class="price pac-item text-center">
-                                <h1>BDT-5,000/Month</h1>
-                            </div>
-                            <div class="pac-item">
-                                <p>10 Basic Social Media Posts</p>
-                            </div>
-                            <div class="pac-item">
-                                <p>1 Edited Promotional Video</p>
-                            </div>
-                            <div class="pac-item">
-                                <p>Reach up to 20,000+ per month</p>
-                            </div>
-                            <div class="pac-item">
-                                <p>Report Per 15 Days & Consultancy</p>
-                            </div>
-                        </div>
-                        <div class="get-consult d-flex justify-content-center align-items-center">
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Get Consultant</a>
-                        </div>
-                    </div>
-                </div>
+                <div class="row justify-content-center package-item">
+                    <!-- Repeat this block for each package -->
+                    @foreach ($category->package as $package)
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 mb-4">
+                            <div class="package {{ $package->package_name }}">
+                                <div class="package-header text-center">
+                                    {{-- ⭐ Dynamic Star Rating --}}
+                                    <div class="fs-4 mt-3">
+                                        @for ($i = 1; $i <= $package->star_rating; $i++)
+                                            <i class="fa-solid fa-star p-2"></i>
+                                        @endfor
+                                    </div>
+                                    <h1>{{ ucfirst($package->package_name) }} Star Package</h1>
+                                    <h5>{{ $package->package_subtitle }}</h5>
+                                </div>
+                                <div class="package-body px-3">
+                                    <div class="price pac-item text-center">
+                                       <h4>{{ $package->currency }} {{ number_format($package->price, 0) }}/{{ ucfirst($package->billing_period) }}</h4>
+                                    </div>
 
-                <!-- Copy and paste the above .col block to create more packages -->
+                                    {{-- 🧩 Display Feature Texts --}}
+                                    @foreach ($package->packageFeature as $feature)
+                                        <div class="pac-item">
+                                            <p><img class="pe-3" src="{{asset('storage/' . $feature->icon)}}" alt="" width="50" height="40">{{ $feature->feature_text }}</p>
+                                        </div>
+                                    @endforeach
+                                </div>
+                                <div class="get-consult d-flex justify-content-center align-items-center">
+                                    {{-- <a href="#" data-bs-toggle="modal" data-bs-target="#consultModal">Get
+                                        Consultant</a> --}}
+                                    <a href="#" class="open-modal-btn" data-bs-toggle="modal"
+                                        data-bs-target="#consultModal" data-package-id="{{ $package->id }}"
+                                        data-package-name="{{ $package->package_name }}"
+                                        data-package-price="{{ $package->currency }} {{ number_format($package->price, 2) }}/{{ $package->billing_period }}"
+                                        data-package-features='@json($package->packageFeature)'>
+                                        Get Consultant
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
             </div>
-        </div>
+        @endforeach
         <!-- ---------------- -->
-        <div class="packages container mt-4">
+        {{-- <div class="packages container mt-4">
             <div class="text-center mb-4">
                 <h1>Find Your Perfect Development Package</h1>
                 <h5>We've translated our service report into a simple, interactive guide. Compare our packages to
@@ -426,98 +365,98 @@
 
                 <!-- Copy and paste the above .col block to create more packages -->
             </div>
-        </div>
+        </div> --}}
         <!-- ----------------modal-------------------- -->
         <!-- Modal -->
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        <div class="modal fade" id="consultModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-xl">
                 <div class="modal-content">
-                    <form action="#" method="POST" id="consultation-form">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Request Consultation</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
-                        </div>
+                    {{-- <form action="" method="POST" id="consultation-form">
+                        @csrf --}}
+                    {{-- @method('POST'); --}}
 
-                        <div class="modal-body">
-                            <div class="row">
-                                <!-- Form Inputs -->
-                                <div class="col-lg-6 mb-4">
-                                    <input type="hidden" name="package_name" id="selected-package-name">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Request Consultation</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
 
-                                    <div class="mb-3">
-                                        <label for="full_name" class="form-label">Full Name</label>
-                                        <input type="text" class="form-control" id="full_name" name="full_name"
-                                            placeholder="Your Name" required>
-                                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <!-- Form Inputs -->
+                            <div class="col-lg-6 mb-4">
+                                <input type="hidden" name="package_id" id="selected-package-id">
 
-                                    <div class="mb-3">
-                                        <label for="email" class="form-label">Email</label>
-                                        <input type="email" class="form-control" id="email" name="email"
-                                            placeholder="name@example.com" required>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label for="phone" class="form-label">Phone</label>
-                                        <input type="tel" class="form-control" id="phone" name="phone"
-                                            placeholder="01XXXXXXXXX" required>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label for="address" class="form-label">Address</label>
-                                        <input type="text" class="form-control" id="address" name="address"
-                                            placeholder="Street, City" required>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label for="message" class="form-label">Additional Message</label>
-                                        <textarea class="form-control" id="message" name="message" rows="3" placeholder="Optional message..."></textarea>
-                                    </div>
-
-                                    <div class="form-check mb-3">
-                                        <input class="form-check-input" type="checkbox" value="1" id="consent"
-                                            name="consent" required>
-                                        <label class="form-check-label" for="consent">
-                                            I agree to the <a href="#">privacy policy</a> and terms of contact.
-                                        </label>
-                                    </div>
+                                <div class="mb-3">
+                                    <label for="full_name" class="form-label">Full Name</label>
+                                    <input type="text" class="form-control" id="full_name" name="full_name"
+                                        placeholder="Your Name" required>
                                 </div>
 
-                                <!-- Package Details -->
-                                <div class="col-lg-6 mb-5">
-                                    <div class="package-body px-3">
-                                        <div class="price pac-item text-center">
-                                            <h4 id="modal-package-title">One star Package</h4>
-                                            <h5 id="modal-package-price">BDT-5,000/Month</h5>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" name="email"
+                                        placeholder="name@example.com" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="phone" class="form-label">Phone</label>
+                                    <input type="tel" class="form-control" id="phone" name="phone"
+                                        placeholder="01XXXXXXXXX" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="address" class="form-label">Address</label>
+                                    <input type="text" class="form-control" id="address" name="address"
+                                        placeholder="Street, City" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">Additional Message</label>
+                                    <textarea class="form-control" id="message" name="message" rows="3" placeholder="Optional message..."></textarea>
+                                </div>
+
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" value="1" id="consent"
+                                        name="consent" required>
+                                    <label class="form-check-label" for="consent">
+                                        I agree to the <a href="#">privacy policy</a> and terms of contact.
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Package Details -->
+                            <div class="col-lg-6 mb-5">
+                                <div class="package-body px-3">
+                                    <div class="price pac-item text-center">
+                                        <h4 id="modal-package-title"></h4>
+                                        <h5 id="modal-package-price"></h5>
+                                    </div>
+                                    <div id="modal-package-features">
+                                        <div class="pac-item">
+                                            <p></p>
                                         </div>
-                                        <div id="modal-package-features">
-                                            <div class="pac-item">
-                                                <p>10 Basic Social Media Posts</p>
-                                            </div>
-                                            <div class="pac-item">
-                                                <p>1 Edited Promotional Video</p>
-                                            </div>
-                                            <div class="pac-item">
-                                                <p>Reach up to 20,000+ per month</p>
-                                            </div>
-                                            <div class="pac-item">
-                                                <p>Report Per 15 Days & Consultancy</p>
-                                            </div>
+                                        <div class="pac-item">
+                                            <p></p>
+                                        </div>
+                                        <div class="pac-item">
+                                            <p></p>
+                                        </div>
+                                        <div class="pac-item">
+                                            <p></p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-{{-- 
-                            <p class="mt-4"><strong>Note:</strong> Thank you! Our expert will contact you shortly.
-                            </p> --}}
                         </div>
+                     
+                    </div>
 
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Confirm</button>
-                        </div>
-                    </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary confirm">Confirm</button>
+                    </div>
+
                 </div>
 
             </div>
@@ -551,13 +490,78 @@
 @endpush
 
 @push('script')
-    
-         <!-- Product Schema -->
-            <script type="application/ld+json">
+    <!-- Product Schema -->
+    <script type="application/ld+json">
                         {
                         "@context": "https://schema.org/",
                         "@type": "Product",
                         {!! json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) !!}
                         }
             </script>
+
+
+    <!-- get consult -->
+
+    <script>
+        $(document).ready(function() {
+            $('.open-modal-btn').on('click', function() {
+                const name = $(this).data('package-name');
+                const id = $(this).data('package-id');
+                const price = $(this).data('package-price');
+                const features = $(this).data('package-features');
+
+                $('#selected-package-id').val(id);
+                $('#modal-package-title').text(name + ' Star Package');
+                $('#modal-package-price').text(price);
+
+                const $featureContainer = $('#modal-package-features');
+                $featureContainer.empty(); 
+
+                $.each(features, function(index, feature) {
+                    $featureContainer.append('<div class="pac-item"><p>' + feature.feature_text +
+                        '</p></div>');
+                });
+            });
+
+            $('.confirm').on('click', function(event) {
+                event.preventDefault();
+                const data = {
+                    package_id: $('#selected-package-id').val(),
+                    full_name: $('#full_name').val(),
+                    email: $('#email').val(),
+                    phone: $('#phone').val(),
+                    address: $('#address').val(),
+                    message: $('#message').val(),
+                    consent: $('#consent').is(':checked') ? 1 : 0,
+                };
+                $.ajax({
+                    url: "{{ url('/consult') }}",
+                    type: 'POST',
+                    data: data,
+
+                    success: function(response) {
+                        if (response.status === 'success') {
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'success',
+                                title: response.message,
+                                showConfirmButton: false,
+                                timer: 3000,
+                                customClass: {
+                                    container: 'custom-swal-container',
+                                },
+                            }).then(() => {
+                                
+                                window.location.href = "{{ url('/confirmetion') }}/" +
+                                    response.consult_id;
+                            });
+                        }
+                    },
+                    error: function(xhr) {
+                        console.log('Error:', xhr.responseJSON);
+                    }
+                });
+            });
+        });
+    </script>
 @endpush

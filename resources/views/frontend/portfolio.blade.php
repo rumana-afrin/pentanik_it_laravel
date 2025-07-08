@@ -2,7 +2,7 @@
 @section('content')
     <section class="portfolio-header">
         <div class="portfolio-title d-flex justify-content-center align-items-center">
-            <div class="title text-center p-5">
+            <div class="title text-center p-4">
                 <h1>Aimplifying IT Complexity Aimplifying Business success</h1>
             </div>
         </div>
@@ -10,7 +10,6 @@
     <section class="portfolio-body mb-4">
         <div class="portfolio-content d-flex justify-content-center align-items-center">
             <div class="success-menu text-center ps-5 pe-5 pt-0 pb-5">
-
                 <button class="p-2 rounded-2 mt-1" onclick="openSuccess('All')">All</button>
 
                 @foreach ($portfolioCategory as $item)

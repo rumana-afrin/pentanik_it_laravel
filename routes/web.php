@@ -13,7 +13,9 @@ use App\Http\Controllers\Admin\TeamController as AdminTeamController;
 use App\Http\Controllers\Admin\WorkProcessController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ConsultController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Frontend\AboutUsController;
 use App\Http\Controllers\Frontend\BlogDetailsController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\PageController as FrontendPageController;
@@ -124,6 +126,11 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::get('edit-package/{id}', [PackageController::class, 'edit'])->name('edit-package');
     Route::put('update-package/{id}', [PackageController::class, 'update'])->name('update-package');
     Route::delete('delete-package/{id}', [PackageController::class, 'destroy'])->name('delete-package');
+
+    //consult customer
+    Route::get('all-consult', [ConsultController::class, 'index'])->name('all-consult');
+    Route::get('show-consult/{id}', [ConsultController::class, 'show'])->name('show-consult');
+    Route::delete('delete-consult/{id}', [ConsultController::class, 'destroy'])->name('delete-consult');
 });
 
 //website route
@@ -134,9 +141,13 @@ Route::get('blog-details/{slug}', [BlogDetailsController::class, 'blogDetails'])
 // Route::get('portfolio', [PortfolioController::class, 'portfolio'])->name('portfolio');
 Route::get('/{slug}', [FrontendPageController::class, 'handle'])->name('dynamic-page');
 
-// Route::get('about-us', [AboutUsController::class, 'aboutUs'])->name('about-us');
+Route::get('about-us', [AboutUsController::class, 'aboutUs'])->name('about-us');
 // Route::get('blog', [BlogController::class, 'blog'])->name('blog');
 // Route::get('team', [TeamController::class, 'team'])->name('team');
+
+Route::post('/consult', [ConsultController::class, 'submit'])->name('consult.submit');
+Route::get('confirmetion/{id}', [ConsultController::class, 'confirmetion'])->name('consult.confirme');
+
 
 
 // Route::get('/clear-all', function () {

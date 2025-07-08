@@ -22,7 +22,7 @@
 
 .readmore-button button {
     background-color: rgb(3, 58, 102);
-    color: white;
+    color: rgb(255, 255, 255);
     border-radius: 5px;
 }
 
@@ -32,7 +32,18 @@
     border: 1px solid rgb(3, 58, 102);
     border-radius: 5px;
 }
-
+.readmore{
+    padding: 7px 6px !important;
+}    
+.readmore a{
+    color: white;
+}    
+.readmore a:hover{
+    color: rgb(15, 15, 15);
+} 
+.readmore-button:hover .readmore a{
+    color: rgb(15, 15, 15);
+}  
 .hero-title {
     text-shadow: 2px 2px 5px rgb(3, 58, 102);
 }
@@ -205,18 +216,19 @@
         width: 86%;
     }
 }
-
 /* contact sention */
 .contact-info {
     background-color: rgb(3, 58, 102);
     color: rgb(224, 224, 224);
+    padding: 10px;
 }
-
+.contact-banner {
+    width: 64%;
+}
 .contact-banner img {
     width: 100%;
     height: 100%;
 }
-
 .contact-number {
     background-color: rgb(255, 255, 255);
     width: 264px;
@@ -225,15 +237,12 @@
     font-weight: 600;
     padding: 5px;
 }
-
 .follow-us-image img {
     height: 36px;
 }
-
 .contact-icon img {
     width: 90%;
 }
-
 @media only screen and (max-width: 900px) {
     .devices-contact-section {
         width: 100% !important;

@@ -80,43 +80,12 @@
         <meta name="twitter:title" content="{{ getOption('home_twitter_title') }}">
         <meta name="twitter:description" content="{{ getOption('home_twitter_description') }}">
         <meta name="twitter:site" content="@yourtwitterhandle"> <!-- optional -->
+
+        <meta name="csrf-token" content="{{ csrf_token() }}">
     @endif
 
     @stack('style')
-    {{-- 
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            "name": "{{ getOption('home_meta_description', 'Pentanik IT') }}",
-            "image": "{{ getOption('business_logo') ? asset('storage/' . getOption('business_logo')) : asset('images/logo.png') }}",
-            "url": "{{ url('/') }}",
-            "telephone": "{{ getOption('business_phone', '+8801XXXXXXXXX') }}",
-            "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "{{ getOption('business_street', '46 West Shewrapara, Mirpur') }}",
-                "addressLocality": "{{ getOption('business_city', 'Dhaka') }}",
-                "postalCode": "{{ getOption('business_postal', '1216') }}",
-                "addressCountry": "{{ getOption('business_country', 'BD') }}"
-            },
-            "geo": {
-                "@type": "GeoCoordinates",
-                "latitude": {{ getOption('business_latitude', '23.7935') }},
-                "longitude": {{ getOption('business_longitude', '90.3654') }}
-            },
-            "openingHours": "{{ getOption('business_hours', 'Mo-Sa 09:00-18:00') }}",
-            "sameAs": [
-                @if(getOption('facebook_url'))
-                    "{{ getOption('facebook_url') }}"{{ getOption('linkedin_url') ? ',' : '' }}
-                @endif
-                @if(getOption('linkedin_url'))
-                    "{{ getOption('linkedin_url') }}"
-                @endif
-            ]
-        }
 
-
-    </script> --}}
 
 <!-- Organization Schema -->
 <script type="application/ld+json">

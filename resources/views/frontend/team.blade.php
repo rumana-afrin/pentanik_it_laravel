@@ -1,7 +1,7 @@
-@extends("frontend.layouts.web")
+@extends('frontend.layouts.web')
 @section('content')
-        <!-- start team banner section -->
-        {{-- <section>
+    <!-- start team banner section -->
+    {{-- <section>
             <div class="container-fluid p-0 m-0">
                 <div class="team-banner">
                     <!-- <img class="w-100" src="/img/team-banner-7.jpg" alt=""> -->
@@ -13,125 +13,123 @@
                 </div>
             </div>
         </section> --}}
-        <!-- end team banner section -->
+    <!-- end team banner section -->
 
-        <!-- start CEO section -->
-        <section class="auther-section mt-3">
-            <div class="team-title d-flex justify-content-center align-items-center">
-                <h2>Our Team</h2>
-            </div>
-            <div class="d-flex justify-content-center align-items-center mt-1">
-                <div class="ceo-section d-flex justify-content-center align-items-start">
-                    <div class="ceo-img">
-                        <img src="{{ getimage(getOption('ceo_image')) }}" alt="">
+    <!-- start CEO section -->
+    <section class="auther-section mt-3">
+        <div class="team-title d-flex justify-content-center align-items-center">
+            <h2>Our Team</h2>
+        </div>
+        <div class="d-flex justify-content-center align-items-center mt-1">
+            <div class="ceo-section d-flex justify-content-center align-items-center">
+                <div class="ceo-img d-flex justify-content-center align-items-center">
+                    <img src="{{ getimage(getOption('ceo_image')) }}" alt="">
+                </div>
+                <div class="ceo-info text-center">
+                    <div class="ceo-contact-info">
+                        <p class="fs-5 p-0 m-0">{{ getOption('ceo_name') }}</p>
+                        <p class="fs-5 p-0 m-0">{{ getOption('ceo_title') }}</p>
                     </div>
-                    <div class="ceo-info">
-                        <div class="info">
-                            <p>{{ getOption('short_summary') }}</p>
-                        </div>
-                        <div class="ceo-contact-info">
-                            <p class="fs-5 p-0 m-0">{{ getOption('ceo_name') }}</p>
-                            <p class="fs-5 p-0 m-0">{{ getOption('ceo_title') }}</p>
-                        </div>
+                    <div class="info">
+                        <p>{{ getOption('short_summary') }}</p>
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- end CEO section -->
+        </div>
+    </section>
+    <!-- end CEO section -->
 
-        <!-- start other member section -->
-        <section class="member-section pt-5">
-            <div class="team-title d-flex justify-content-center align-items-center mt-4">
-                <h2>Other Team Members</h2>
-            </div>
-            <div class="container team-container">
-                <div class="row m-0 p-0 g-5 d-flex justify-content-center align-items-start">
+    <!-- start other member section -->
+    <section class="member-section pt-5">
+        {{-- <div class="team-title d-flex justify-content-center align-items-center mt-4">
+                <h2 class="member-title text-center">Other Team Members</h2>
+            </div> --}}
+        <div class="team-container m-p custom-width">
+            <div class="row m-0 p-0 d-flex justify-content-center align-items-start">
 
-                    @foreach ($teams as $item)
-                    <div class="col-12 col-sm-6 col-lg-3 col-xl-3 flex-column align-items-center member-column">
-                        <div class="member-image">
-                            <img src="{{asset('storage/' . $item->image)}}" alt="">
+                @foreach ($teams as $item)
+                    <div class="col-4 col-sm-3 col-lg-3 col-xl-3 flex-column align-items-center member-column">
+                        <div class="member-image d-flex justify-content-center">
+                            <img src="{{ asset('storage/' . $item->image) }}" alt="">
                         </div>
                         <div class="member-info d-flex flex-column justify-content-center align-items-center mt-2">
-                            <p class="p-0 m-0 member-name">{{$item->name}}</p>
-                            <p class="p-0 m-0 member-designation">{{$item->designation}}</p>
-                            <p class="p-0 m-2 text-center member-info-content">{{$item->bio}}</p>
+                            <p class="p-0 m-0 member-name">{{ $item->name }}</p>
+                            <p class="p-0 m-0 member-designation">{{ $item->designation }}</p>
+                            {{-- <p class="p-0 m-2 text-center member-info-content">{{$item->bio}}</p> --}}
                         </div>
                     </div>
-                     @endforeach
+                @endforeach
 
-                </div>
             </div>
-        </section>
-        <!-- end other member section -->
+        </div>
+    </section>
+    <!-- end other member section -->
 
-        <!-- start sdvisory section -->
-        <section class="member-section pt-1">
-            <div class="team-title d-flex justify-content-center align-items-center mt-1">
-                <h2>Advisory Members</h2>
-            </div>
-            <div class="container team-container">
-                <div class="row m-0 p-0 g-5 d-flex justify-content-center align-items-start">
+    <!-- start sdvisory section -->
+    <section class="member-section pt-5">
+        <div class="team-title d-flex justify-content-center align-items-center mt-4">
+            <h2 class="advisory-title text-center">Advisory Members</h2>
+        </div>
+        <div class="custom-width team-container p-2 m-p">
+            <div class="row m-0 p-0 d-flex justify-content-center align-items-start">
 
-                    @foreach ($advisory as $advisoryItem)
-                    <div class="col-12 col-sm-6 col-lg-3 col-xl-3 flex-column align-items-center member-column">
-                        <div class="member-image">
-                            <img src="{{asset('storage/' . $advisoryItem->image)}}" alt="">
+                @foreach ($advisory as $advisoryItem)
+                    <div class="col-4 col-sm-3 col-lg-3 col-xl-3 flex-column align-items-center member-column">
+                        <div class="member-image d-flex justify-content-center">
+                            <img src="{{ asset('storage/' . $advisoryItem->image) }}" alt="">
                         </div>
                         <div class="member-info d-flex flex-column justify-content-center align-items-center mt-2">
-                            <p class="p-0 m-0 member-name">{{$advisoryItem->name}}</p>
-                            <p class="p-0 m-0 member-designation">{{$advisoryItem->designation}}</p>
-                            <p class="p-0 m-2 text-center member-info-content">{{$advisoryItem->bio}}</p>
+                            <p class="p-0 m-0 member-name">{{ $advisoryItem->name }}</p>
+                            <p class="p-0 m-0 member-designation">{{ $advisoryItem->designation }}</p>
+                            {{-- <p class="p-0 m-2 text-center member-info-content">{{$item->bio}}</p> --}}
                         </div>
                     </div>
-                     @endforeach
+                @endforeach
 
-                </div>
             </div>
-        </section>
-        <!-- end sdvisory section -->
+        </div>
+    </section>
+    <!-- end sdvisory section -->
 @endsection
 
 @push('script')
-<script>
-    {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "{{ getOption('ceo_name') }}",                                        
-  "honorificPrefix": "CEO",                    
-  "sameAs": [
-    "{{ getOption('social_link_fb') }}",
-    "{{ getOption('social_link_linkedin') }}",
-    "{{ getOption('social_link_youtube') }}",
-    "{{ getOption('social_link_twitter') }}"
-  ],
-  "image": "{{ getimage(getOption('ceo_image')) }}", 
-  "gender": "Male",    
+    <script>
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "{{ getOption('ceo_name') }}",
+            "honorificPrefix": "CEO",
+            "sameAs": [
+                "{{ getOption('social_link_fb') }}",
+                "{{ getOption('social_link_linkedin') }}",
+                "{{ getOption('social_link_youtube') }}",
+                "{{ getOption('social_link_twitter') }}"
+            ],
+            "image": "{{ getimage(getOption('ceo_image')) }}",
+            "gender": "Male",
 
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "{{ getOption('app_address') }}",
-    "addressLocality": "Dhaka",
-    "addressRegion": "Dhaka Division",
-    "postalCode": "{{ getOption('postal_code') }}",
-    "addressCountry": "BD"
-  },
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "{{ getOption('app_address') }}",
+                "addressLocality": "Dhaka",
+                "addressRegion": "Dhaka Division",
+                "postalCode": "{{ getOption('postal_code') }}",
+                "addressCountry": "BD"
+            },
 
-  "jobTitle": "businessman",
-  "worksFor": {
-    "@type": "Organization",
-    "name": "{{ getOption('company_name') }}"
-  },
+            "jobTitle": "businessman",
+            "worksFor": {
+                "@type": "Organization",
+                "name": "{{ getOption('company_name') }}"
+            },
 
-  "nationality": "Bangladeshi",
-  "description": "{{ getOption('short_summary') }}",
-  "identifier": "ceo-pentanik-it",     
-  "memberOf": [
-    {
-      "@type": "Organization",
-      "name": "Founder's Community Club Ltd"
-    }
-  ]
-}
-</script>
+            "nationality": "Bangladeshi",
+            "description": "{{ getOption('short_summary') }}",
+            "identifier": "ceo-pentanik-it",
+            "memberOf": [{
+                "@type": "Organization",
+                "name": "Founder's Community Club Ltd"
+            }]
+        }
+    </script>
 @endpush

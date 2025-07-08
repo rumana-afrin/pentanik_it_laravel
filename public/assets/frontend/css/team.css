@@ -7,25 +7,32 @@
 }
 
 .ceo-section {
-    width: 67vw;
+    width: 83vw;
     background-color: rgb(3, 58, 102);
     border-radius: 30px;
-}
-
-.ceo-img {
-    width: 40%;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
 }
 
 .ceo-info {
-    width: 60%;
-    padding: 30px 0px 0px 30px;
+    width: 93%;
     color: rgb(231, 231, 231);
+    margin-top: 10px;
+}
+
+.ceo-img {
+    width: 20%;
+    margin: 0 auto;
 }
 
 .ceo-img img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px 0px 0px 10px;
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    object-fit: cover;
+    padding: 10px 0px 0px 0px;
 }
 
 .ceo-contact-info p {
@@ -35,41 +42,45 @@
 
 .ceo-info .info p {
     font-size: 18px !important;
-
 }
 
-
-@media only screen and (max-width:1800px) {
+@media only screen and (max-width: 992px) {
     .ceo-section {
-        width: 93vw;
-    }
-}
-
-@media only screen and (max-width:992px) {
-    .team-banner {
-        height: 420px;
-    }
-
-    .team-banner img {
-        height: 395px;
-    }
-
-    .info {
-        font-size: 13px;
-    }
-
-    .ceo-img {
-        width: 50%;
+        width: 89vw;
     }
 
     .ceo-info {
-        width: 50%;
-        padding: 10px;
+        width: 93%;
         color: rgb(231, 231, 231);
     }
 
     .ceo-info .info p {
         font-size: 14px !important;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .ceo-img img {
+        width: 143%;
+        height: 143%;
+    }
+}
+
+@media only screen and (max-width: 676px) {
+    .ceo-section {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    .ceo-info {
+        width: 95%;
+        padding: 0px 0px 0px 1px;
+    }
+
+    .ceo-info .info p {
+        font-size: 16px !important;
     }
 }
 
@@ -79,17 +90,7 @@
         flex-direction: column !important;
         justify-content: center !important;
         align-items: center !important;
-    }
-
-    .ceo-img {
-        width: 100%;
-        background-color: rgb(255, 255, 255);
-        height: auto;
-    }
-
-    .ceo-img img {
-        width: 100%;
-        height: auto;
+        border-radius: 0px;
     }
 
     .info {
@@ -99,19 +100,23 @@
     .ceo-info {
         width: 100%;
         padding: 10px;
-        margin-top: 10px;
+        margin-top: 5px;
     }
 }
 
-/* member  section */
 .member-image {
     width: 100%;
 }
 
 .member-image img {
-    width: 100%;
-    height: 303px;
-    border-radius: 30px;
+    width: 49%;
+    height: 49%;
+    border-radius: 50%;
+}
+
+.member-image img:hover {
+    /* box-shadow: rgba(1, 64, 136, 0.74) 0px 5px 15px; */
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .member-info .member-name {
@@ -133,20 +138,40 @@
 
 .memeber-social-icon img {
     width: 24px;
-    /* or adjust as needed */
     margin: 0;
     display: block;
 }
 
 .member-column {
-    padding: 10px;
+    padding: 2px;
     margin-top: 10px;
     margin-bottom: 20px;
 }
 
 .member-column:hover {
-    background-color: rgb(245, 245, 245);
+    /* background-color: rgb(245, 245, 245); */
     text-shadow: 2px 2px 5px rgb(3, 58, 102);
+}
+
+.custom-width {
+    max-width: 86%;
+    margin: 0 auto;
+}
+
+@media only screen and (max-width: 786px) {
+    .member-image img {
+        width: 62%;
+    }
+
+    .member-info .member-name {
+        font-size: 10px;
+        font-weight: 800;
+    }
+
+    .member-info .member-designation {
+        font-size: 10px;
+        font-weight: 600;
+    }
 }
 
 @media only screen and (max-width:425px) {
@@ -154,10 +179,30 @@
         padding-left: 23px;
         padding-right: 23px;
     }
+
+    .custom-width {
+        max-width: 100%;
+        padding: 0 12px;
+    }
 }
+
 @media only screen and (max-width:365px) {
     .member-section {
         padding-left: 0px;
         padding-right: 0px;
+    }
+}
+
+.member-title,
+.advisory-title {
+    background-color: rgb(3, 58, 102);
+    color: white;
+    width: 83vw;
+    padding: 10px;
+}
+
+@media only screen and (max-width: 786px) {
+    .advisory-title {
+        width: 100vw;
     }
 }

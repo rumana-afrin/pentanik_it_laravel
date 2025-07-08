@@ -10,20 +10,10 @@ use Illuminate\Http\Request;
 
 class AboutUsController extends Controller
 {
-    public function aboutUs($slug)
+    public function aboutUs()
     {
-        // $data['aboutUs'] = Page::where('slug', $slug)->firstOrFail();
-        // $data['meta'] = $data['aboutUs']->seoMetaTag;
-
-        // if ($slug === 'portfolio') {
-        //     $data['portfolioMeta'] = Page::where('slug', $slug)->firstOrFail();
-        //     $data['meta'] = $data['portfolioMeta']->seoMetaTag;
-        //     $data['portfolio'] = Portfolio::all();
-        //     $data['portfolioCategory'] = PortfolioCategory::with('portfolio')->get();
-        //     // dd($data['portfolioCategory']);
-        //     return view('frontend.portfolio')->with($data);
-        // }
-
-        // return view('frontend.about-us')->with($data);
+           $data['aboutUs'] = Page::where('slug', 'about-us')->firstOrFail();
+            $data['meta'] = $data['aboutUs']->seoMetaTag;
+            return view('frontend.about-us')->with($data);
     }
 }

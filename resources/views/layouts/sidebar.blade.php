@@ -180,6 +180,20 @@
             </ul>
         </li><!-- End advisory Nav -->
 
+        <!-- start advisory Nav -->
+        <li class="nav-item">
+            <a class="nav-link {{ @$consultShowClass ? '' : 'collapsed' }}" data-bs-target="#consult-nav"
+                data-bs-toggle="collapse" href="#">
+                <i class="bx bx-note"></i><span>Consult Customer</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="consult-nav" class="nav-content collapse {{ @$consultShowClass }}" data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{ route('admin.all-consult') }}" class="{{ @$allConsultActiveClass }}"><i
+                            class="bi bi-circle"></i><span>All Consult</span></a>
+                </li>
+            </ul>
+        </li><!-- End advisory Nav -->
+
         <!-- start Package Nav -->
         <li class="nav-item">
             <a class="nav-link {{ @$packageCategoryShowClass ? '' : 'collapsed' }}" data-bs-target="#package-nav"

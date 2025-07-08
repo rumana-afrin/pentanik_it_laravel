@@ -59,8 +59,8 @@
                             </div>
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="price" class="form-label">Price</label>
-                                <input type="text" class="form-control" value="{{ old('price') }}" name="price"
-                                    id="price" placeholder="price">
+                                      <input type="number" class="form-control" value="{{ old('price') }}" name="price"
+                                    id="price" placeholder="price" step="0.01" min="0">
                             </div>
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="currency" class="form-label">Currency</label>

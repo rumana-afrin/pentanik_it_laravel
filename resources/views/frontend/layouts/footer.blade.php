@@ -29,7 +29,8 @@
          </div>
          <div class="footer-office-address">
              <div class="offce-address text-dark text-end">
-                 <p class="p-0 m-0"><span>Corporate Office:</span>{{ getOption('app_address') }}</p>
+                 <p class="p-0 m-0"><span class="fw-semibold">Corporate Office</span></p>
+                 <p class="p-0 m-0">{{ getOption('app_address') }}</p>
                  <p class="p-0 m-0"><span>Email:</span>{{ getOption('app_gmail') }}</p>
                  <p class="p-0 m-0"><span>Phone:</span>+{{ getOption('app_phone') }}</p>
              </div>

@@ -5,6 +5,9 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="{{ asset('assets/frontend//css/bootstrap.min.css') }}" />
 
+{{-- <link rel="stylesheet" href="{{ asset('assets/sweetalert/sweetalert2.css') }}" />
+<link rel="stylesheet" href="{{ asset('assets/sweetalert/sweetalert2.min.css') }}" /> --}}
+
 <link rel="stylesheet" href="{{ asset('assets/frontend/css/style.css') }}" />
 <link rel="stylesheet" href="{{ asset('assets/frontend/css/home.css') }}" />
 <link rel="stylesheet" href="{{ asset('assets/frontend/css/about.css') }}" />

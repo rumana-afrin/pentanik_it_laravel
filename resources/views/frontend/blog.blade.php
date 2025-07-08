@@ -2,10 +2,10 @@
 @section('content')
     <!-- start blog section -->
     <section class="blog-section">
-        <div class="blog-title d-flex justify-content-center align-items-center p-5">
+        <div class="blog-title d-flex justify-content-center align-items-center p-2">
             <h1>Blog</h1>
         </div>
-        <div class="container mb-5 mt-5">
+        <div class="container mb-5">
             <div class="row gy-4 gx-4">
 
                 @foreach ($blogs as $blog)
