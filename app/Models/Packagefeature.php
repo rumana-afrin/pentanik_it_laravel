@@ -13,4 +13,8 @@ class Packagefeature extends Model
     {
         return $this->belongsTo(Package::class);
     }
+    public function icon()
+    {
+        return $this->hasOne(FeatureIcon::class, 'package_feature_id');
+    }
 }

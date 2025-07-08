@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('packagefeatures', function (Blueprint $table) {
+        Schema::create('feature_icons', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('package_id')->constrained('packages')->onDelete('cascade');
-            $table->string('feature_text');
+            $table->foreignId('package_feature_id')->constrained('packagefeatures')->onDelete('cascade');
+            $table->string('icon')->nullable();
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('packagefeatures');
+        Schema::dropIfExists('feature_icons');
     }
 };

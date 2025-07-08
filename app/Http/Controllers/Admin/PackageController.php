@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Helpers\CoreConstant;
 use App\Http\Controllers\Controller;
+use App\Models\FeatureIcon;
 use App\Models\Package;
 use App\Models\PackageCategory;
 use App\Models\Packagefeature;
@@ -56,37 +57,68 @@ class PackageController extends Controller
         $package->display_order = $request->display_order ?? 0;
         $package->save();
 
-        if ($package && $request->has('package_feature')) {
-            $featureTexts = $request->package_feature;
-            $icons = $request->file('icon');
-            $insertData = [];
+        $featureTexts = $request->package_feature;
+        $icons = $request->file('icon');
 
-            foreach ($featureTexts as $index => $featureText) {
-                $iconPath = null;
+        foreach ($featureTexts as $index => $featureText) {
+            $feature = Packagefeature::create([
+                'package_id' => $package->id,
+                'feature_text' => $featureText,
+            ]);
 
-                if ($icons && isset($icons[$index])) {
-                    $file = $icons[$index];
-                    $orginalName = time() . '.' . $file->getClientOriginalName();
-                    $fileName = pathinfo($orginalName, PATHINFO_FILENAME);
-                    $extension = pathinfo($orginalName, PATHINFO_EXTENSION);
-                    $imageName = preg_replace('/\s+/', '', $fileName);
-                    $file_name = preg_replace('/[^A-Za-z0-9\-]/', '', $imageName);
-                    $image_name = $file_name . '.' . $extension;
+            if ($icons && isset($icons[$index])) {
+                // $file = $icons[$index];
+                // $originalName = time() . '_' . $file->getClientOriginalName();
+                // $fileName = pathinfo($originalName, PATHINFO_FILENAME);
+                // $extension = pathinfo($originalName, PATHINFO_EXTENSION);
+                // $cleanName = preg_replace('/[^A-Za-z0-9\-]/', '', preg_replace('/\s+/', '', $fileName));
+                // $finalName = $cleanName . '.' . $extension;
 
-                    $iconPath = $file->storeAs('upload', $image_name, 'public');
-                }
+                // $imagePath = $file->storeAs('icon', $finalName, 'public');
 
-                $insertData[] = [
-                    'package_id' => $package->id,
-                    'feature_text' => $featureText,
-                    'icon' => $iconPath,
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ];
+                  $file = $icons[$index];
+
+                $fileName = uniqid() . '_' . preg_replace('/\s+/', '', $file->getClientOriginalName());
+                $imagePath = $file->storeAs('icon', $fileName, 'public');
+
+                FeatureIcon::create([
+                    'package_feature_id' => $feature->id,
+                    'icon' => $imagePath,
+                ]);
             }
-
-            Packagefeature::insert($insertData);
         }
+
+        // if ($package && $request->has('package_feature')) {
+        //     $featureTexts = $request->package_feature;
+        //     $icons = $request->file('icon');
+        //     $insertData = [];
+
+        //     foreach ($featureTexts as $index => $featureText) {
+        //         $iconPath = null;
+
+        //         if ($icons && isset($icons[$index])) {
+        //             $file = $icons[$index];
+        //             $orginalName = time() . '.' . $file->getClientOriginalName();
+        //             $fileName = pathinfo($orginalName, PATHINFO_FILENAME);
+        //             $extension = pathinfo($orginalName, PATHINFO_EXTENSION);
+        //             $imageName = preg_replace('/\s+/', '', $fileName);
+        //             $file_name = preg_replace('/[^A-Za-z0-9\-]/', '', $imageName);
+        //             $image_name = $file_name . '.' . $extension;
+
+        //             $iconPath = $file->storeAs('upload', $image_name, 'public');
+        //         }
+
+        //         $insertData[] = [
+        //             'package_id' => $package->id,
+        //             'feature_text' => $featureText,
+        //             'icon' => $iconPath,
+        //             'created_at' => now(),
+        //             'updated_at' => now(),
+        //         ];
+        //     }
+
+        //     Packagefeature::insert($insertData);
+        // }
 
         return redirect()->route('admin.all-package')->with('success', CoreConstant::CREATED_SUCCESSFULLY);
     }
@@ -96,7 +128,8 @@ class PackageController extends Controller
         $data['packageCategoryShowClass'] = 'show';
         $data['allpackageActiveClass'] = 'active';
         $data['packageCategory'] = PackageCategory::all();
-        $data['package'] = Package::with('packageFeature')->findOrfail($id);
+        $data['package'] = Package::with('packageFeature.icon')->findOrfail($id);
+        // dd($data['package']);
         return view('package.package.edit')->with($data);
     }
 
@@ -126,44 +159,64 @@ class PackageController extends Controller
         $package->display_order = $request->display_order ?? 0;
         $package->save();
 
-        if ($package && $request->has('package_feature')) {
-            $featureTexts = $request->package_feature;
-            $icons = $request->file('icon');
-            $insertData = [];
-            $package->packageFeature()->delete();
+        // 🔁 Delete removed features and icons
+        $currentFeatureIds = $package->packageFeature()->pluck('id')->toArray();
+        // dd($currentFeatureIds);
+        $submittedFeatureIds = array_filter($request->feature_id ?? []);
+        $featuresToDelete = array_diff($currentFeatureIds, $submittedFeatureIds);
 
-            foreach ($featureTexts as $index => $featureText) {
-                $iconPath = null;
-
-                if ($icons && isset($icons[$index])) {
-                    $package->packageFeature()->delete(['icon' => null]);
-
-                    $file = $icons[$index];
-                    $orginalName = time() . '.' . $file->getClientOriginalName();
-                    $fileName = pathinfo($orginalName, PATHINFO_FILENAME);
-                    $extension = pathinfo($orginalName, PATHINFO_EXTENSION);
-                    $imageName = preg_replace('/\s+/', '', $fileName);
-                    $file_name = preg_replace('/[^A-Za-z0-9\-]/', '', $imageName);
-                    $image_name = $file_name . '.' . $extension;
-
-                    foreach ($package->packageFeature as $feature) {
-                        if ($feature->icon && Storage::disk('public')->exists($feature->icon)) {
-                            Storage::disk('public')->delete($feature->icon);
-                        }
-                    }
-                    $iconPath = $file->storeAs('upload', $image_name, 'public');
+        foreach ($featuresToDelete as $deletedId) {
+            $deletedFeature = Packagefeature::find($deletedId);
+            if ($deletedFeature) {
+                if ($deletedFeature->icon && Storage::disk('public')->exists($deletedFeature->icon->icon)) {
+                    Storage::disk('public')->delete($deletedFeature->icon->icon);
                 }
-                $insertData[] = [
+                $deletedFeature->icon()?->delete();
+                $deletedFeature->delete();
+            }
+        }
+
+        // 🔁 Update or Create features
+        $featureIds = $request->feature_id;
+        $featureTexts = $request->package_feature;
+        $icons = $request->file('icon');
+
+        foreach ($featureTexts as $index => $text) {
+            $featureId = $featureIds[$index] ?? null;
+
+            if ($featureId) {
+                $feature = Packagefeature::find($featureId);
+                if (!$feature) continue;
+                $feature->update(['feature_text' => $text]);
+            } else {
+                $feature = Packagefeature::create([
                     'package_id' => $package->id,
-                    'feature_text' => $featureText,
-                    'icon' => $iconPath,
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ];
+                    'feature_text' => $text,
+                ]);
             }
 
-            Packagefeature::insert($insertData);
+            if ($icons && isset($icons[$index])) {
+                $file = $icons[$index];
+
+                if ($feature->icon && Storage::disk('public')->exists($feature->icon->icon)) {
+                    Storage::disk('public')->delete($feature->icon->icon);
+                }
+
+                $fileName = uniqid() . '_' . preg_replace('/\s+/', '', $file->getClientOriginalName());
+                $path = $file->storeAs('icon', $fileName, 'public');
+
+                if ($feature->icon) {
+                    $feature->icon->update(['icon' => $path]);
+                } else {
+                    FeatureIcon::create([
+                        'package_feature_id' => $feature->id,
+                        'icon' => $path,
+                    ]);
+                }
+            }
         }
+
+
 
         // if ($package && $request->has('package_feature')) {
         //     $featureTexts = $request->package_feature;
