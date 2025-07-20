@@ -40,9 +40,6 @@
                                 <input type="text" class="form-control" name="sort_order" id="sort_order"
                                     placeholder="sort_order" value="{{ $serviceCategory->sort_order }}">
                             </div>
-
-
-
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="status" class="form-label">Status</label>
                                 <select class="form-select" name="status" id="status"
@@ -52,10 +49,8 @@
                                         Featured</option>
                                     <option value="regular" {{ $serviceCategory->status == 'regular' ? 'selected' : '' }}>
                                         Regular</option>
-
                                 </select>
                             </div>
-
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="is_active" class="form-label">Is Active?</label>
                                 <select class="form-select" name="is_active" id="is_active"
@@ -67,14 +62,12 @@
                                     </option>
                                 </select>
                             </div>
-
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="short_description" class="form-label">Short Description</label>
                                 <textarea name="short_description" class="form-control" id="short_description" placeholder="description" cols="30"
                                     rows="3">{{ $serviceCategory->short_description }}</textarea>
 
                             </div>
-
                             <div class="col-12 col-sm-12 col-md-6">
                                 <div class="repeater-container">
                                     <label for="slug" class="form-label">Feature</label>

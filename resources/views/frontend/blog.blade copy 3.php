@@ -16,6 +16,8 @@
                                     <h5 class="fw-semibold">Category</h5>
                                     <h5><i class="fa-solid fa-list"></i></h5>
                                 </div>
+
+                                {{-- @include('frontend.components.blog-menu') --}}
                                 <li class="sidebar-item border-bottom mt-3">
                                     <a href="{{ route('dynamic-page', ['slug' => 'blog']) }}"
                                         class="{{ request()->is('blog') ? 'active' : '' }}">All</a>
@@ -31,16 +33,19 @@
                         <div class="blog-menu-mobile">
                             <div class="border-bottom">
                                 <p class="d-flex justify-content-between align-items-center gap-1 my-account m-0">
-                                    <a class="text-decoration-none text-dark fw-semibold fs-4 stretched-link"
-                                        data-bs-toggle="collapse" href="#collapseExample" role="button"
-                                        aria-expanded="false" aria-controls="collapseExample">
+                                    <a class="text-decoration-none text-dark fw-semibold fs-4 stretched-link" data-bs-toggle="collapse"
+                                        href="#collapseExample" role="button" aria-expanded="false"
+                                        aria-controls="collapseExample">
                                         Blog Category
                                     </a>
                                     <i class="fa-solid fa-list"></i>
                                 </p>
+                                {{-- <p></p> --}}
                             </div>
+
                             <div class="collapse" id="collapseExample">
                                 <div class="">
+                                    {{-- @include('frontend.components.blog-menu') --}}
                                     @foreach ($blogs as $blog)
                                         <li class="sidebar-item border-bottom">
                                             <a href="{{ route('blog-category', $blog->slug) }}"
@@ -88,18 +93,23 @@
                             <div class="d-flex justify-content-center align-items-center">
                                 <nav aria-label="...">
                                     <ul class="pagination">
+                                        {{-- Previous Page Link --}}
                                         @if ($allBlogs->onFirstPage())
                                             <li class="page-item disabled m-2"><span class="page-link">Previous</span></li>
                                         @else
                                             <li class="page-item m-2"><a class="page-link"
                                                     href="{{ $allBlogs->previousPageUrl() }}">Previous</a></li>
                                         @endif
+
+                                        {{-- Page Numbers --}}
                                         @for ($i = 1; $i <= $allBlogs->lastPage(); $i++)
                                             <li class="page-item m-2 {{ $allBlogs->currentPage() == $i ? 'active' : '' }}">
                                                 <a class="page-link"
                                                     href="{{ $allBlogs->url($i) }}">{{ $i }}</a>
                                             </li>
                                         @endfor
+
+                                        {{-- Next Page Link --}}
                                         @if ($allBlogs->hasMorePages())
                                             <li class="page-item m-2"><a class="page-link"
                                                     href="{{ $allBlogs->nextPageUrl() }}">Next</a></li>
@@ -115,14 +125,14 @@
                 </div>
             </div>
         </div>
-    </section>
-@endsection
+    @endsection
     @push('style')
         <style>
             a.active {
                 color: #0354bd;
                 font-weight: bold;
             }
+
         </style>
     @endpush
 

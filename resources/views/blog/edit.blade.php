@@ -26,6 +26,17 @@
                             @method('PUT')
 
                             <div class="col-12 col-sm-12 col-md-6">
+                                <label for="blog_category_id" class="form-label">Blog Category</label>
+                                <select class="form-select" name="blog_category_id" id="blog_category_id"
+                                    aria-label="Default select example">
+                                    <option selected>selete category</option>
+                                    @foreach ($blogCategory as $item)
+                                        <option value="{{ $item->id }}" {{$blog->blogCategory->id === $item->id ? 'selected' : ''}}>{{ $item->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="col-12 col-sm-12 col-md-6">
                                 <label for="title" class="form-label">Title</label>
                                 <input type="text" name="title" class="form-control" id="title" placeholder="title"
                                     value="{{ $blog->title }}">
@@ -97,8 +108,7 @@
                                     aria-label="Default select example">
 
                                     <option value="draft" {{ $blog == 'draft' ? 'selected' : '' }}>Draft</option>
-                                    <option value="published" {{ $blog == 'published' ? 'selected' : '' }}>Published
-                                    </option>
+                                    <option value="published" {{ $blog == 'published' ? 'selected' : '' }}>Published</option>
                                     <option value="pending" {{ $blog == 'pending' ? 'selected' : '' }}>Pending</option>
 
                                 </select>

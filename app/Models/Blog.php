@@ -14,7 +14,7 @@ class Blog extends Model
     {
         return $this->hasMany(BlogTag::class);
     }
-    
+
     public function blogGallaryImage()
     {
         return $this->hasMany(BlogGalleryImage::class);
@@ -24,10 +24,12 @@ class Blog extends Model
     {
         return $this->morphOne(SeoMetaTag::class, 'taggable');
     }
-
       // Accessor for thumbnail image URL
     public function getThumbnailImageUrlAttribute()
     {
         return $this->thumbnail_image ? asset('storage/' . $this->thumbnail_image) : null;
+    }
+    public function blogCategory(){
+        return $this->belongsTo(BlogCategory::class);
     }
 }

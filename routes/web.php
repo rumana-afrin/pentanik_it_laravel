@@ -1,6 +1,6 @@
 <?php
-
 use App\Http\Controllers\Admin\AdvisoryController;
+use App\Http\Controllers\Admin\BlogCategoryController;
 use App\Http\Controllers\Admin\BlogController as AdminBlogController;
 use App\Http\Controllers\Admin\PackageCategoryController;
 use App\Http\Controllers\Admin\PackageController;
@@ -16,6 +16,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ConsultController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Frontend\AboutUsController;
+use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\BlogDetailsController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\PageController as FrontendPageController;
@@ -34,7 +35,6 @@ Route::post('register', [RegisterController::class, 'store'])->name('register.st
 //admin route
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function(){
     Route::get('dashboard',[DashboardController::class, 'index'])->name('dashboard');
-
     //user route
     Route::get('create-user',[UserController::class, 'create'])->name('create-user');
     Route::post('store-user',[UserController::class, 'store'])->name('store-user');
@@ -62,7 +62,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::get('edit-work-process/{id}', [WorkProcessController::class, 'edit'])->name('edit-work-process');
     Route::put('update-work-process/{id}', [WorkProcessController::class, 'update'])->name('update-work-process');
     Route::delete('delete-work-process/{id}', [WorkProcessController::class, 'destroy'])->name('delete-work-process');
-    
+
     //team route
     Route::get('all-team', [AdminTeamController::class, 'index'])->name('all-team');
     Route::get('create-team', [AdminTeamController::class, 'create'])->name('create-team');
@@ -70,7 +70,15 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::get('edit-team/{id}', [AdminTeamController::class, 'edit'])->name('edit-team');
     Route::put('update-team/{id}', [AdminTeamController::class, 'update'])->name('update-team');
     Route::delete('delete-team/{id}', [AdminTeamController::class, 'destroy'])->name('delete-team');
-   
+
+    //blog category route
+    Route::get('all-blog-category', [BlogCategoryController::class, 'index'])->name('all-blog-category');
+    Route::get('create-blog-category', [BlogCategoryController::class, 'create'])->name('create-blog-category');
+    Route::post('store-blog-category', [BlogCategoryController::class, 'store'])->name('store-blog-category');
+    Route::get('edit-blog-category/{id}', [BlogCategoryController::class, 'edit'])->name('edit-blog-category');
+    Route::put('update-blog-category/{id}', [BlogCategoryController::class, 'update'])->name('update-blog-category');
+    Route::delete('delete-blog-category/{id}', [BlogCategoryController::class, 'destroy'])->name('delete-blog-category');
+
     //blog route
     Route::get('all-blog', [AdminBlogController::class, 'index'])->name('all-blog');
     Route::get('create-blog', [AdminBlogController::class, 'create'])->name('create-blog');
@@ -86,7 +94,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::get('edit-portfolio-category/{id}', [PortfolioCategoryController::class, 'edit'])->name('edit-portfolio-category');
     Route::put('update-portfolio-category/{id}', [PortfolioCategoryController::class, 'update'])->name('update-portfolio-category');
     Route::delete('delete-portfolio-category/{id}', [PortfolioCategoryController::class, 'destroy'])->name('delete-portfolio-category');
-    
+
     //portfolio route
     Route::get('all-portfolio', [AdminPortfolioController::class, 'index'])->name('all-portfolio');
     Route::get('create-portfolio', [AdminPortfolioController::class, 'create'])->name('create-portfolio');
@@ -94,7 +102,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::get('edit-portfolio/{id}', [AdminPortfolioController::class, 'edit'])->name('edit-portfolio');
     Route::put('update-portfolio/{id}', [AdminPortfolioController::class, 'update'])->name('update-portfolio');
     Route::delete('delete-portfolio/{id}', [AdminPortfolioController::class, 'destroy'])->name('delete-portfolio');
-    
+
     //page route
     Route::get('all-page', [PageController::class, 'index'])->name('all-page');
     Route::get('create-page', [PageController::class, 'create'])->name('create-page');
@@ -133,23 +141,16 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::delete('delete-consult/{id}', [ConsultController::class, 'destroy'])->name('delete-consult');
 });
 
-//website route
+
 Route::get('/', [HomeController::class, 'home'])->name('home');
-// Route::get('home/{slug}', [HeaderPageController::class, 'pages'])->name('header-page');
-// Route::get('page/{slug}', [AditionalPageController::class, 'aditionalPage'])->name('aditional-page');
-Route::get('blog-details/{slug}', [BlogDetailsController::class, 'blogDetails'])->name('blog-details');
-// Route::get('portfolio', [PortfolioController::class, 'portfolio'])->name('portfolio');
-Route::get('/{slug}', [FrontendPageController::class, 'handle'])->name('dynamic-page');
-
 Route::get('about-us', [AboutUsController::class, 'aboutUs'])->name('about-us');
-// Route::get('blog', [BlogController::class, 'blog'])->name('blog');
-// Route::get('team', [TeamController::class, 'team'])->name('team');
-
 Route::post('/consult', [ConsultController::class, 'submit'])->name('consult.submit');
 Route::get('confirmetion/{id}', [ConsultController::class, 'confirmetion'])->name('consult.confirme');
+Route::get('blog/{slug}', [BlogController::class, 'blogCategory'])->name('blog-category');
+Route::get('{category_slug}/{blog_slug}', [BlogDetailsController::class, 'blogDetails'])->name('blog-details');
+Route::get('/{slug}', [FrontendPageController::class, 'handle'])->name('dynamic-page');
 
-
-
+//website route
 // Route::get('/clear-all', function () {
 //     Artisan::call('cache:clear');
 //     Artisan::call('config:clear');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Helpers\CoreConstant;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
+use App\Models\BlogCategory;
 use App\Models\BlogGalleryImage;
 use App\Models\BlogTag;
 use App\Models\SeoMetaTag;
@@ -26,18 +27,15 @@ class BlogController extends Controller
         $data['pageTitle'] = 'Blog';
         $data['blogShowClass'] = 'show';
         $data['createblogActiveClass'] = 'active';
-        // $data['serviceCategory'] = ServiceCategory::all();
+        $data['blogCategory'] = BlogCategory::all();
         return view('blog.create')->with($data);
     }
 
     public function store(Request $request)
     {
-        $data['pageTitle'] = 'Blog';
-        $data['blogShowClass'] = 'show';
-        $data['createblogActiveClass'] = 'active';
-
         // dd($request->all());
         $request->validate([
+            'blog_category_id' => 'required',
             'title' => 'required|string',
             'subtitle' => 'nullable|string',
             'slug' => 'required|string|unique:blogs',
@@ -49,6 +47,7 @@ class BlogController extends Controller
         ]);
 
         $blog = new Blog();
+        $blog->blog_category_id = $request->blog_category_id;
         $blog->title = $request->title;
         $blog->subtitle = $request->subtitle;
         $blog->slug = $request->slug;
@@ -69,7 +68,7 @@ class BlogController extends Controller
             $imageName = preg_replace('/\s+/', '', $fileName);
             $file_name = preg_replace('/[^A-Za-z0-9\-]/', '', $imageName);
             $name = $file_name . '.' . $extension;
-            $store = $image->storeAs('upload', $name, 'public');
+            $store = $image->storeAs('blog', $name, 'public');
             $blog->thumbnail_image = $store;
         }
         $blog->save();
@@ -85,10 +84,8 @@ class BlogController extends Controller
                         'tag_name' => $feature,
                     ];
                 }
-
                 BlogTag::insert($insertData);
             }
-
             if ($request->hasFile('gallary_image')) {
                 $images = $request->file('gallary_image');
                 foreach ($images as $file) {
@@ -135,7 +132,7 @@ class BlogController extends Controller
             $imageName = preg_replace('/\s+/', '', $fileName);
             $file_name = preg_replace('/[^A-Za-z0-9\-]/', '', $imageName);
             $name = $file_name . '.' . $extension;
-            $store = $image->storeAs('upload', $name, 'public');
+            $store = $image->storeAs('og_image', $name, 'public');
             $seo->og_image = $store;
         }
         if ($request->hasFile('twitter_image')) {
@@ -146,7 +143,7 @@ class BlogController extends Controller
             $imageName = preg_replace('/\s+/', '', $fileName);
             $file_name = preg_replace('/[^A-Za-z0-9\-]/', '', $imageName);
             $name = $file_name . '.' . $extension;
-            $store = $image->storeAs('upload', $name, 'public');
+            $store = $image->storeAs('twitter_image', $name, 'public');
             $seo->twitter_image = $store;
         }
 
@@ -160,20 +157,15 @@ class BlogController extends Controller
         $data['pageTitle'] = 'Blog';
         $data['blogShowClass'] = 'show';
         $data['allblogActiveClass'] = 'active';
+        $data['blogCategory'] = BlogCategory::all();
         $data['blog'] = Blog::with('blogTags', 'blogGallaryImage', 'seoMetaTag')->findOrFail($id);
         // dd($data['blog']);
         return view('blog.edit')->with($data);
     }
     public function update(Request $request, $id)
     {
-        $data['pageTitle'] = 'Blog';
-        $data['blogShowClass'] = 'show';
-        $data['allblogActiveClass'] = 'active';
-
-
-       
         $request->validate([
-            'title' => 'required|string',
+            'blog_category_id' => 'required',
             'subtitle' => 'nullable|string',
             'slug' => 'required|string|unique:blogs,slug,' . $id,
             'image_alt' => 'required|string',
@@ -184,6 +176,7 @@ class BlogController extends Controller
         ]);
 
         $blog = Blog::findOrfail($id);
+        $blog->blog_category_id = $request->blog_category_id;
         $blog->title = $request->title;
         $blog->subtitle = $request->subtitle;
         $blog->slug = $request->slug;
@@ -204,7 +197,7 @@ class BlogController extends Controller
             $imageName = preg_replace('/\s+/', '', $fileName);
             $file_name = preg_replace('/[^A-Za-z0-9\-]/', '', $imageName);
             $name = $file_name . '.' . $extension;
-            $store = $image->storeAs('upload', $name, 'public');
+            $store = $image->storeAs('blog', $name, 'public');
 
             if ($blog->thumbnail_image && Storage::disk('public')->exists($blog->thumbnail_image)) {
                 Storage::disk('public')->delete($blog->thumbnail_image);
@@ -283,7 +276,7 @@ class BlogController extends Controller
             $imageName = preg_replace('/\s+/', '', $fileName);
             $file_name = preg_replace('/[^A-Za-z0-9\-]/', '', $imageName);
             $name = $file_name . '.' . $extension;
-            $store = $image->storeAs('upload', $name, 'public');
+            $store = $image->storeAs('og_image', $name, 'public');
 
             if ($seo->og_image && Storage::disk('public')->exists($seo->og_image)) {
                 Storage::disk('public')->delete($seo->og_image);
@@ -299,7 +292,7 @@ class BlogController extends Controller
             $imageName = preg_replace('/\s+/', '', $fileName);
             $file_name = preg_replace('/[^A-Za-z0-9\-]/', '', $imageName);
             $name = $file_name . '.' . $extension;
-            $store = $image->storeAs('upload', $name, 'public');
+            $store = $image->storeAs('twitter_image', $name, 'public');
 
             if ($seo->twitter_image && Storage::disk('public')->exists($seo->twitter_image)) {
                 Storage::disk('public')->delete($seo->twitter_image);

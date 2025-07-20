@@ -10,7 +10,7 @@ function getDefaultImage(): string
 }
 function adminInfo()
 {
-    return Auth::user(); 
+    return Auth::user();
 }
 
 function adminImage()
@@ -40,7 +40,7 @@ function getOption($option_key)
 
 function getImage($file)
 {
-    Log::info("inge", ['file' => $file]);
+    // Log::info("inge", ['file' => $file]);
 
     if (!empty($file) && Storage::disk('public')->exists($file)) {
         return asset('storage/' . $file);

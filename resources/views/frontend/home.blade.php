@@ -7,18 +7,17 @@
                 <div class="hero-image d-flex justify-content-between align-items-center">
                     <div class="main-image">
                         <img src="{{ getimage(getOption('home_banner')) }}" alt="Hero image">
-
                         <!-- <picture>
-                                                                                                                    <source media="(max-width: 992px)" srcset="/img/hero-2.jpg" width="350" height="450">
-                                                                                                                    <source media="(max-width: 1200px)" srcset="/img/hero-6.png" width="500" height="450">
-                                                                                                                    <img src="/img/Artboard 15.png" alt="Hero Image" width="900" height="450">
-                                                                                                                    <img src="/img/hero-6.png" alt="Hero Image" width="650" height="450">
-                                                                                                                </picture> -->
+                                <source media="(max-width: 992px)" srcset="/img/hero-2.jpg" width="350" height="450">
+                                <source media="(max-width: 1200px)" srcset="/img/hero-6.png" width="500" height="450">
+                                <img src="/img/Artboard 15.png" alt="Hero Image" width="900" height="450">
+                                <img src="/img/hero-6.png" alt="Hero Image" width="650" height="450">
+                            </picture> -->
                     </div>
 
                 </div>
                 <div class="hero-info">
-                    <div class="ps-5 info-conatainer">
+                    <div class="info-conatainer">
                         <div class="heroinfo">
                             <p class="wave-text">
                                 <span>SMART</span><span>&nbsp SOLUTION</span>
@@ -33,7 +32,8 @@
                         <div class="d-flex justify-content-start align-items-center heroinfo mt-5">
                             <!-- <div> -->
                             <div class="readmore-button">
-                                <button class="btn readmore"><a class="text-decoration-none" href="{{route('about-us')}}">Read More</a></button>
+                                <button class="btn readmore"><a class="text-decoration-none"
+                                        href="{{ route('about-us') }}">Read More</a></button>
                             </div>
                             <div class="hero-icon d-flex justify-content-center align-items-center ms-4">
                                 <div class="hero-icon2 d-flex justify-content-center align-items-center">
@@ -76,7 +76,7 @@
                 <div class="row d-flex justify-content-center m-0">
 
                     @foreach ($services as $item)
-                        <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 d-flex justify-content-center service-card">
+                        {{-- <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 d-flex justify-content-center service-card">
                             <div class="card-left-side">
                                 <img src="{{ asset('assets/frontend/img/Screenshot_1.png') }}" alt="" width="74"
                                     height="67">
@@ -89,6 +89,27 @@
                                         <li>{{ $feature->name }}</li>
                                     @endforeach
                                 </ul>
+                            </div>
+                        </div> --}}
+
+
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 d-flex justify-content-center service-card">
+                            <div class="p-3 w-100 h-100 d-flex flex-column">
+                                <div class="card-left-side d-flex align-items-center gap-3 mb-3">
+                                    <img src="{{ asset('assets/frontend/img/Screenshot_1.png') }}" alt="Service Icon"
+                                        width="74" height="67">
+                                    <h5 class="mb-0"><a href="#"
+                                            class="service-title text-decoration-none">{{ $item->name }}</a></h5>
+                                </div>
+
+                                <div class="card-right-side flex-grow-1">
+                                    <p>{{ $item->short_description }}</p>
+                                    <ul class="ps-3">
+                                        @foreach ($item->features as $feature)
+                                            <li>{{ $feature->name }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     @endforeach
@@ -205,7 +226,7 @@
     <!-- start package section -->
     <section class="package-section mt-5 mb-4">
         @foreach ($packageCategory as $category)
-            <div class="packages container">
+            <div class="packages container pe-0 ps-0">
                 <div class="text-center mb-4">
                     <h1>{{ $category->title }}</h1>
                     <h5>{{ $category->subtitle }}</h5>
@@ -222,18 +243,22 @@
                                             <i class="fa-solid fa-star p-2"></i>
                                         @endfor
                                     </div>
-                                    <h1>{{ ucfirst($package->package_name) }} Star Package</h1>
+                                    <h2>{{ ucfirst($package->package_name) }} Star Package</h2>
                                     <h5>{{ $package->package_subtitle }}</h5>
                                 </div>
                                 <div class="package-body px-3">
                                     <div class="price pac-item text-center">
-                                       <h4>{{ $package->currency }} {{ number_format($package->price, 0) }}/{{ ucfirst($package->billing_period) }}</h4>
+                                        <h4>{{ $package->currency }}
+                                            {{ number_format($package->price, 0) }}/{{ ucfirst($package->billing_period) }}
+                                        </h4>
                                     </div>
 
                                     {{-- 🧩 Display Feature Texts --}}
                                     @foreach ($package->packageFeature as $feature)
                                         <div class="pac-item">
-                                            <p><img class="pe-3" src="{{asset('storage/' . $feature->icon)}}" alt="" width="50" height="40">{{ $feature->feature_text }}</p>
+                                            <p><img class="pe-3" src="{{ asset('storage/' . $feature->icon->icon) }}"
+                                                    alt="" width="30"
+                                                    height="30">{{ $feature->feature_text }}</p>
                                         </div>
                                     @endforeach
                                 </div>
@@ -255,117 +280,7 @@
             </div>
         @endforeach
         <!-- ---------------- -->
-        {{-- <div class="packages container mt-4">
-            <div class="text-center mb-4">
-                <h1>Find Your Perfect Development Package</h1>
-                <h5>We've translated our service report into a simple, interactive guide. Compare our packages to
-                    find the ideal fit for your brand's journey and budget.</h5>
-            </div>
-            <div class="row justify-content-center package-item">
-                <!-- Repeat this block for each package -->
-                <div class="col-12 col-sm-12 col-md-6 col-lg-4 mb-4">
-                    <div class="package one">
-                        <div class="package-header text-center">
-                            <div class="fs-4 mt-3">
-                                <i class="fa-solid fa-star p-2"></i>
-                                <i class="fa-solid fa-star p-2"></i>
-                                <i class="fa-solid fa-star p-2"></i>
-                            </div>
-                            <h1>One star Package</h1>
-                            <h5>New Brands Starting Their Journey</h5>
-                        </div>
-                        <div class="package-body px-3">
-                            <div class="price pac-item text-center">
-                                <h1>BDT-5,000/Month</h1>
-                            </div>
-                            <div class="pac-item">
-                                <p>10 Basic Social Media Posts</p>
-                            </div>
-                            <div class="pac-item">
-                                <p>1 Edited Promotional Video</p>
-                            </div>
-                            <div class="pac-item">
-                                <p>Reach up to 20,000+ per month</p>
-                            </div>
-                            <div class="pac-item">
-                                <p>Report Per 15 Days & Consultancy</p>
-                            </div>
-                        </div>
-                        <div class="get-consult d-flex justify-content-center align-items-center">
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Get Consultant</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-12 col-md-6 col-lg-4 mb-4">
-                    <div class="package three">
-                        <div class="package-header text-center">
-                            <div class="fs-4 mt-3">
-                                <i class="fa-solid fa-star p-2"></i>
-                                <i class="fa-solid fa-star p-2"></i>
-                                <i class="fa-solid fa-star p-2"></i>
-                            </div>
-                            <h1>One star Package</h1>
-                            <h5>New Brands Starting Their Journey</h5>
-                        </div>
-                        <div class="package-body px-3">
-                            <div class="price pac-item text-center">
-                                <h1>BDT-5,000/Month</h1>
-                            </div>
-                            <div class="pac-item">
-                                <p>10 Basic Social Media Posts</p>
-                            </div>
-                            <div class="pac-item">
-                                <p>1 Edited Promotional Video</p>
-                            </div>
-                            <div class="pac-item">
-                                <p>Reach up to 20,000+ per month</p>
-                            </div>
-                            <div class="pac-item">
-                                <p>Report Per 15 Days & Consultancy</p>
-                            </div>
-                        </div>
-                        <div class="get-consult d-flex justify-content-center align-items-center">
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Get Consultant</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-12 col-md-6 col-lg-4 mb-4">
-                    <div class="package five">
-                        <div class="package-header text-center">
-                            <p class="fs-4">
-                                <i class="fa-solid fa-star p-2"></i>
-                                <i class="fa-solid fa-star p-2"></i>
-                                <i class="fa-solid fa-star p-2"></i>
-                            </p>
-                            <h1>One star Package</h1>
-                            <h5>New Brands Starting Their Journey</h5>
-                        </div>
-                        <div class="package-body px-3">
-                            <div class="price pac-item text-center">
-                                <h1>BDT-5,000/Month</h1>
-                            </div>
-                            <div class="pac-item">
-                                <p>10 Basic Social Media Posts</p>
-                            </div>
-                            <div class="pac-item">
-                                <p>1 Edited Promotional Video</p>
-                            </div>
-                            <div class="pac-item">
-                                <p>Reach up to 20,000+ per month</p>
-                            </div>
-                            <div class="pac-item">
-                                <p>Report Per 15 Days & Consultancy</p>
-                            </div>
-                        </div>
-                        <div class="get-consult d-flex justify-content-center align-items-center">
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Get Consultant</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Copy and paste the above .col block to create more packages -->
-            </div>
-        </div> --}}
+   
         <!-- ----------------modal-------------------- -->
         <!-- Modal -->
         <div class="modal fade" id="consultModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -449,7 +364,7 @@
                                 </div>
                             </div>
                         </div>
-                     
+
                     </div>
 
                     <div class="modal-footer">
@@ -515,7 +430,7 @@
                 $('#modal-package-price').text(price);
 
                 const $featureContainer = $('#modal-package-features');
-                $featureContainer.empty(); 
+                $featureContainer.empty();
 
                 $.each(features, function(index, feature) {
                     $featureContainer.append('<div class="pac-item"><p>' + feature.feature_text +
@@ -551,7 +466,7 @@
                                     container: 'custom-swal-container',
                                 },
                             }).then(() => {
-                                
+
                                 window.location.href = "{{ url('/confirmetion') }}/" +
                                     response.consult_id;
                             });

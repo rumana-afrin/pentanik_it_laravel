@@ -18,14 +18,4 @@ class Package extends Model
             return $this->hasMany(Packagefeature::class);
         }
 
-
-    //      public function getStarIconsAttribute()
-    // {
-    //     $stars = '';
-    //     for ($i = 1; $i <= $this->star_rating; $i++) {
-    //         $stars .= '<i class="fa-solid fa-star"></i>';
-    //     }
-    //     return $stars;
-    // }
-
 }

@@ -18,46 +18,28 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">All Blogs</h5>
+                        <h5 class="card-title">All Blog Category</h5>
 
                         <!-- Table with stripped rows -->
                         <table class="table table-striped">
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Title</th>
-                                    <th scope="col">Subtitle</th>
-                                    <th scope="col">Slug </th>
-                                    <th scope="col">Excerpt</th>
-                                    {{-- <th scope="col">Content</th> --}}
-                                    <th scope="col">Author Name</th>
-                                    {{-- <th scope="col">Stutas</th> --}}
-                                    <th scope="col">Image</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Slug</th>
                                     <th scope="col">Order</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-
-
-                                @foreach ($blogs as $item)
+                                @foreach ($blogCategory as $item)
                                     <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
-                                        <td>{{ $item->title }}</td>
-                                        <td>{{ $item->subtitle }}</td>
+                                        <td>{{ $item->name }}</td>
                                         <td>{{ $item->slug }}</td>
-                                        <td>{{ $item->excerpt }}</td>
-                                        {{-- <td>{{ $item->content }}</td> --}}
-                                        <td>{{ $item->author_name }}</td>
-                                        {{-- <td>{{ $item->status }}</td> --}}
-                                        <td>
-                                            <img src="{{ asset('storage/' . $item->thumbnail_image) }}" alt=""
-                                                width="100" height="100">
-                                        </td>
                                         <td>{{ $item->sort_order }}</td>
-                                        {{-- <td> <p class="feature">{{ $item->is_featured == 1 ? 'YES' : 'NO'}}</p> </td> --}}
                                         <td>
-                                            <a href="{{ route('admin.edit-blog', $item->id) }}" class="mr-1"
+                                            <a href="{{ route('admin.edit-blog-category', $item->id) }}" class="mr-1"
                                                 title="Edit">
                                                 <img src="{{ asset('assets/backend/edit-2.svg') }}" alt="edit">
                                             </a>
@@ -65,12 +47,11 @@
                                                 data-formid="delete_row_form_{{ $item->id }}">
                                                 <img src="{{ asset('assets/backend/trash-2.svg') }}" alt="trash">
                                             </a>
-                                            <form action="{{ route('admin.delete-blog', $item->id) }}" method="post"
+                                            <form action="{{ route('admin.delete-blog-category', $item->id) }}" method="post"
                                                 id="delete_row_form_{{ $item->id }}">
                                                 {{ method_field('DELETE') }}
                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                             </form>
-
                                         </td>
                                     </tr>
                                 @endforeach

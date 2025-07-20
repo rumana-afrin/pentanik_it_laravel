@@ -76,93 +76,24 @@
                                     name="billing_period" id="billing_period" placeholder="billing period">
                             </div>
 
-                            {{-- features --}}
-                            {{-- <div class="col-12 col-sm-12 col-md-6">
-                                <div class="repeater-container">
-                                    <label for="icon" class="form-label">Package Feature</label>
-                                    @if (count($package->packageFeature) > 0)
-                                        @foreach ($package->packageFeature as $item)
-                                            <div class="repeater mt-2" id="repeater">
-                                                <div class="repeater-item d-flex align-items-center">
-                                                    <input class="form-control image-input" type="text"
-                                                        name="package_feature[]" placeholder="package feature"
-                                                        value="{{ $item->feature_text }}" />
+                            <div class="col-12 col-sm-12 col-md-12">
+                                <label for="billing_period" class="form-label">Package Feature</label>
 
-                                                    <button type="button" class="remove-btn btn btn-primary ms-4"
-                                                        onclick="removeItem(event, this)">
-                                                        <a href="" class="mr-1" title="Edit">
-                                                            <img src="{{ asset('assets/backend/image/minus.png') }}"
-                                                                alt="">
-                                                        </a>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        @endforeach
-                                    @else
-                                        <div class="repeater" id="repeater">
-                                            <div class="repeater-item d-flex align-items-center">
-                                                <input class="form-control image-input" type="text"
-                                                    name="package_feature[]" placeholder="package feature" />
-                                                <button type="button" class="remove-btn btn btn-primary ms-4"
-                                                    onclick="removeItem(event, this)">
-                                                    <a href="" class="mr-1" title="Edit">
-                                                        <img src="{{ asset('assets/backend/image/minus.png') }}"
-                                                            alt="">
-                                                    </a>
-                                                </button>
-                                            </div>
-
-                                        </div>
-                                    @endif
-                                </div>
-                                <button type="button" class="add-btn btn btn-primary mt-4"
-                                    onclick="addRepeaterItem(event)">Add Feature</button>
-                            </div> --}}
-                            {{-- features --}}
-
-                            {{-- icon --}}
-                            {{-- <div class="col-12 col-sm-12 col-md-6">
-                                <div class="icon-repeater-container">
-                                    <label for="icon" class="form-label">Icon</label>
-
+                                <div class="feature-icon-container">
                                     @if (count($package->packageFeature) > 0)
                                         @foreach ($package->packageFeature as $feature)
-                                            
-                                            <input type="hidden" name="feature_id[]" value="{{ $feature->id }}">
-                                            @if ($feature->icon)
-                                                <div class="icon" id="icon">
-                                                    <div class="repeater-item d-flex align-items-center">
-                                                        <div class="upload-img-box me-5">
-                                                            <img id="updateImageUrl"
-                                                                src="{{ asset('storage/' . $feature->icon->icon) }}">
-
-                                                            <input class="form-control" type="file" name="icon[]"
-                                                                id="icon" accept="image/*"
-                                                                onchange="previewFile(this)">
-                                                            <div class="upload-img-box-icon">
-                                                                <i class="bi bi-camera-fill"></i>
-                                                                <p class="m-0"></p>
-                                                            </div>
-                                                        </div>
-
-                                                        <button type="button" class="remove-btn btn btn-primary ms-4"
-                                                            onclick="removeItem(event, this)">
-                                                            <a href="" class="mr-1" title="Edit">
-                                                                <img src="{{ asset('assets/backend/image/minus.png') }}"
-                                                                    alt="">
-                                                            </a>
-                                                        </button>
-                                                    </div>
+                                            <div class="feature-icon-row d-flex gap-4 align-items-start mt-2">
+                                                {{-- Feature Text --}}
+                                                <div class="flex-grow-1">
+                                                    <input type="hidden" name="feature_id[]" value="{{ $feature->id }}">
+                                                    <input class="form-control" type="text" name="package_feature[]"
+                                                        placeholder="Package Feature"
+                                                        value="{{ $feature->feature_text }}" />
                                                 </div>
-                                            @endif
-                                        @endforeach
-                                    @else
-                                        <div class="icon" id="icon">
-                                            <div class="repeater-item d-flex align-items-center">
-
-                                                <div class="upload-img-box me-5">
-                                                    <img id="updateImageUrl" src="">
-
+                                                {{-- Feature Icon --}}
+                                                <div class="upload-img-box">
+                                                    <img id="updateImageUrl"
+                                                        src="{{ $feature->icon ? asset('storage/' . $feature->icon->icon) : getDefaultImage() }}">
                                                     <input class="form-control" type="file" name="icon[]"
                                                         id="icon" accept="image/*" onchange="previewFile(this)">
                                                     <div class="upload-img-box-icon">
@@ -171,78 +102,25 @@
                                                     </div>
                                                 </div>
 
-                                                <button type="button" class="remove-btn btn btn-primary ms-4"
-                                                    onclick="removeItem(event, this)">
-                                                    <a href="" class="mr-1" title="Edit">
+                                                {{-- Button --}}
+                                                <div>
+                                                    <button type="button" class="remove-btn btn btn-primary ms-2"
+                                                        onclick="removeItem(event, this)">
                                                         <img src="{{ asset('assets/backend/image/minus.png') }}"
                                                             alt="">
-                                                    </a>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    @endif
-
-                                </div>
-                                <button type="button" class="add-btn btn btn-primary mt-4"
-                                    onclick="addIconItem(event)">Add Feature</button>
-                            </div> --}}
-                            {{-- icon --}}
-
-                             <div class="col-12 col-sm-12 col-md-12">
-                                <label for="billing_period" class="form-label">Package Feature</label>
-                               
-                            <div class="feature-icon-container">
-                                @if (count($package->packageFeature) > 0)
-                                    @foreach ($package->packageFeature as $feature)
-                                        <div class="feature-icon-row d-flex gap-4 align-items-start mt-2">
-                                            {{-- Feature Text --}}
-                                            <div class="flex-grow-1">
-                                                <input type="hidden" name="feature_id[]" value="{{ $feature->id }}">
-                                                <input class="form-control" type="text" name="package_feature[]"
-                                                    placeholder="Package Feature" value="{{ $feature->feature_text }}" />
-                                            </div>
-
-                                            {{-- Icon --}}
-                                            {{-- <div class="upload-img-box">
-                                                @if ($feature->icon)
-                                                    <img src="{{ asset('storage/' . $feature->icon->icon) }}"
-                                                        style="max-height: 60px;">
-                                                @endif
-
-                                                <input class="form-control mt-2" type="file" name="icon[]"
-                                                    accept="image/*" />
-                                            </div> --}}
-
-                                            <div class="upload-img-box">
-                                                <img id="updateImageUrl" src="{{ asset('storage/' . $feature->icon->icon) }}">
-                                                <input class="form-control" type="file" name="icon[]" id="icon"
-                                                    accept="image/*" onchange="previewFile(this)">
-                                                <div class="upload-img-box-icon">
-                                                    <i class="bi bi-camera-fill"></i>
-                                                    <p class="m-0"></p>
+                                                    </button>
                                                 </div>
                                             </div>
+                                        @endforeach
+                                    @endif
+                                </div>
 
-                                            {{-- Remove Button --}}
-                                            <div>
-                                                <button type="button" class="remove-btn btn btn-danger ms-2"
-                                                    onclick="removeItem(event, this)">
-                                                    <img src="{{ asset('assets/backend/image/minus.png') }}"
-                                                        alt="">
-                                                </button>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                @endif
-                            </div>
-
-                            {{-- Add Feature Button --}}
-                            <button type="button" class="add-btn btn btn-primary mt-4" onclick="addFeatureIconRow()">Add
-                                Feature</button>
+                                {{-- Add Feature Button --}}
+                                <button type="button" class="add-btn btn btn-primary mt-4"
+                                    onclick="addFeatureIconRow()">Add
+                                    Feature</button>
 
                             </div>
-
-
 
                             <div class="text-center mt-5">
                                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -274,61 +152,6 @@
 
 @push('script')
     <script>
-        // function addRepeaterItem() {
-        //     const repeater = document.querySelector('.repeater-container');;
-        //     const newItem = document.createElement('div');
-        //     newItem.className = 'repeater';
-        //     newItem.innerHTML = `
-    //                 <div class="repeater-item d-flex align-items-center mt-3">
-    //                         <input class="form-control image-input" type="text" name="package_feature[]" placeholder="package feature"/>
-    //                         <button type="button" class="remove-btn btn btn-primary ms-4" onclick="removeItem(event, this)">
-    //                             <a href="" class="mr-1" title="Edit">
-    //                                 <img src="{{ asset('assets/backend/image/minus.png') }}" alt="">
-    //                             </a>
-    //                         </button>
-    //                 </div>
-
-    //             `;
-
-        //     repeater.appendChild(newItem);
-        // }
-
-        // function removeItem(event, button) {
-        //     event.preventDefault();
-        //     const repeaterItem = button.closest('.repeater-item');
-        //     const wrapper = button.closest('.hello');
-        //     if (wrapper) {
-        //         wrapper.remove();
-        //     }
-        //     repeaterItem.remove();
-        // }
-
-        // icon
-        // function addIconItem() {
-        //     const repeaterIcon = document.querySelector('.icon-repeater-container');
-        //     const iconItem = document.createElement('div');
-        //     iconItem.className = 'icon';
-        //     iconItem.innerHTML = `
-    //                 <div class="repeater-item d-flex align-items-center mt-2">
-    //                         <div class="upload-img-box me-5">
-    //                             <img id="updateImageUrl" src="">
-    //                             <input class="form-control" type="file" name="icon[]" id="icon"
-    //                                 accept="image/*" onchange="previewFile(this)">
-    //                             <div class="upload-img-box-icon">
-    //                                 <i class="bi bi-camera-fill"></i>
-    //                                 <p class="m-0"></p>
-    //                             </div>
-    //                         </div> 
-    //                         <button type="button" class="remove-btn btn btn-primary ms-4" onclick="removeItem(event, this)">
-    //                             <a href="" class="mr-1" title="Edit">
-    //                                 <img src="{{ asset('assets/backend/image/minus.png') }}" alt="">
-    //                             </a>
-    //                         </button>
-    //                 </div>                       
-    //             `;
-        //     repeaterIcon.appendChild(iconItem);
-        // }
-
         function addFeatureIconRow() {
             const container = document.querySelector('.feature-icon-container');
 
@@ -352,7 +175,7 @@
                             </div>
 
         <div>
-            <button type="button" class="remove-btn btn btn-danger ms-2" onclick="removeItem(event, this)">
+            <button type="button" class="remove-btn btn btn-primary ms-2" onclick="removeItem(event, this)">
                 <img src="/assets/backend/image/minus.png" alt="">
             </button>
         </div>

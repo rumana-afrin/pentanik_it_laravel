@@ -27,7 +27,7 @@
 }
 
 .readmore-button {
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255); 
     color: rgb(61, 61, 61);
     border: 1px solid rgb(3, 58, 102);
     border-radius: 5px;
@@ -76,7 +76,9 @@
     height: 30px;
     background-color: rgb(250, 251, 252);
 }
-
+.info-conatainer {
+        padding-left: 50px;
+    }
 /* @keyframes wave {
 
     0%,
@@ -95,13 +97,21 @@
     }
 }  */
 
+@media only screen and (max-width: 992px) {
+   .hero-image {
+    max-width: 51%;
+}
+.hero-info {
+    max-width: 50%;
+}
+}
+
 @media only screen and (max-width: 768px) {
     .hero-container {
         min-width: 100% !important;
         background-color: rgb(236, 235, 235);
         margin: 0;
         padding: 0;
-        /* padding: 30px; */
         text-align: center;
         display: flex;
         justify-content: center;
@@ -110,11 +120,6 @@
     .info-conatainer {
         padding-left: 0px !important;
     }
-
-    /* 
-    .hero-image {
-        display: none !important;
-    } */
     .hero-section {
         display: flex !important;
         flex-direction: column;
@@ -181,12 +186,12 @@
 .service-card:hover {
     box-shadow: rgba(3, 58, 102, 0.2) 0px 8px 24px;
 }
-
+/* 
 .card-right-side {
     padding-left: 14px;
-}
+} */
 
-.card-right-side h5 a {
+.card-left-side h5 a {
     text-decoration: none;
     color: rgb(39, 39, 39);
     font-weight: 600;
@@ -364,11 +369,15 @@
     border-bottom: 1px dashed rgb(65, 65, 65);
     padding: 8px 0;
 }
+.pac-item:last-child {
+    border-bottom: none;
+}
 
 .pac-item p {
     margin-left: 0px;
     margin-bottom: 0;
-    padding: 11px;}
+    padding: 11px;
+}
 
 .get-consult {
     background-color: rgb(141, 20, 20);

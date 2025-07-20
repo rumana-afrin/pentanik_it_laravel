@@ -35,19 +35,16 @@
             height: 70vh;
 
         }
-
         @media only screen and (max-width: 1100px) {
             .consult-contnet {
                 width: 80%;
             }
         }
-
         @media only screen and (max-width: 700px) {
             .consult-contnet {
                 width: 90%;
             }
         }
-
         @media only screen and (max-width: 633px) {
             .customer-details {
                 width: 88%;

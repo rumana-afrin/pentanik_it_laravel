@@ -159,10 +159,9 @@ class PackageController extends Controller
         $package->display_order = $request->display_order ?? 0;
         $package->save();
 
-        // 🔁 Delete removed features and icons
         $currentFeatureIds = $package->packageFeature()->pluck('id')->toArray();
-        // dd($currentFeatureIds);
         $submittedFeatureIds = array_filter($request->feature_id ?? []);
+        
         $featuresToDelete = array_diff($currentFeatureIds, $submittedFeatureIds);
 
         foreach ($featuresToDelete as $deletedId) {
@@ -176,7 +175,6 @@ class PackageController extends Controller
             }
         }
 
-        // 🔁 Update or Create features
         $featureIds = $request->feature_id;
         $featureTexts = $request->package_feature;
         $icons = $request->file('icon');

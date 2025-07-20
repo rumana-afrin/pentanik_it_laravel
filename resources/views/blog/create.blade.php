@@ -26,6 +26,17 @@
                             @method('POST')
 
                             <div class="col-12 col-sm-12 col-md-6">
+                                <label for="blog_category_id" class="form-label">Blog Category</label>
+                                <select class="form-select" name="blog_category_id" id="blog_category_id"
+                                    aria-label="Default select example">
+                                    <option value="" selected>selete category</option>
+                                    @foreach ($blogCategory as $item)
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="col-12 col-sm-12 col-md-6">
                                 <label for="title" class="form-label">Title</label>
                                 <input type="text" name="title" class="form-control" id="title"
                                     placeholder="title">
@@ -61,9 +72,10 @@
                                 </div>
                             </div>
 
-                             <div class="col-12 col-sm-12 col-md-6">
+                            <div class="col-12 col-sm-12 col-md-6">
                                 <label for="image_alt" class="form-label">Image alt text</label>
-                                <input type="text" class="form-control" name="image_alt" id="image_alt" placeholder="alt">
+                                <input type="text" class="form-control" name="image_alt" id="image_alt"
+                                    placeholder="alt">
                             </div>
 
                             <div class="col-12 col-sm-12 col-md-6">
@@ -88,8 +100,7 @@
 
                                 <div class="multi-input-container">
                                     <div id="tags"></div>
-                                    <input type="text" id="tagInput"
-                                        placeholder="Type and press Enter..." />
+                                    <input type="text" id="tagInput" placeholder="Type and press Enter..." />
                                 </div>
 
                             </div>
@@ -157,8 +168,8 @@
                             </div>
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="meta_description" class="form-label">Meta Description</label>
-                               <textarea class="form-control" id="meta_description" name="meta_description"
-                                        placeholder="meta description" cols="30" rows="3"></textarea>
+                                <textarea class="form-control" id="meta_description" name="meta_description" placeholder="meta description"
+                                    cols="30" rows="3"></textarea>
                             </div>
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="meta_keywords" class="form-label">Meta Keywords</label>
@@ -184,10 +195,10 @@
                             </div>
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="og_description" class="form-label">Og Description</label>
-                                <textarea class="form-control" id="og_description" name="og_description"
-                                        placeholder="open graph description" cols="30" rows="3"></textarea>
+                                <textarea class="form-control" id="og_description" name="og_description" placeholder="open graph description"
+                                    cols="30" rows="3"></textarea>
                             </div>
-                          
+
                             <div class="col-12 col-sm-12 col-md-6">
                                 <label for="og_image" class="form-label">Og Image</label>
                                 <div class="upload-img-box">
@@ -200,44 +211,44 @@
                                     </div>
                                 </div>
                             </div>
-                             <div class="col-12 col-sm-12 col-md-6">
+                            <div class="col-12 col-sm-12 col-md-6">
                                 <label for="og_type" class="form-label">Og Type</label>
                                 <input type="text" class="form-control" name="og_type" id="og_type"
                                     placeholder="og_type">
                             </div>
-                             {{-- <div class="col-12 col-sm-12 col-md-6">
+                            {{-- <div class="col-12 col-sm-12 col-md-6">
                                 <label for="og_url" class="form-label">Og URl</label>
                                 <input type="url" class="form-control" name="og_url" id="og_url"
                                     placeholder="og url">
                             </div> --}}
-                             <div class="col-12 col-sm-12 col-md-6">
+                            <div class="col-12 col-sm-12 col-md-6">
                                 <label for="og_site_name" class="form-label">Og Site Name</label>
                                 <input type="text" class="form-control" name="og_site_name" id="og_site_name"
                                     placeholder="og_site_name">
                             </div>
 
-                             <div class="col-12 col-sm-12 col-md-6">
+                            <div class="col-12 col-sm-12 col-md-6">
                                 <label for="twitter_card" class="form-label">Twitter Card</label>
                                 <input type="text" class="form-control" name="twitter_card" id="twitter_card"
                                     placeholder="twitter_card">
                             </div>
-                             <div class="col-12 col-sm-12 col-md-6">
+                            <div class="col-12 col-sm-12 col-md-6">
                                 <label for="twitter_title" class="form-label">Twitter Title</label>
                                 <input type="text" class="form-control" name="twitter_title" id="twitter_title"
                                     placeholder="twitter_title">
                             </div>
-                             <div class="col-12 col-sm-12 col-md-6">
+                            <div class="col-12 col-sm-12 col-md-6">
                                 <label for="twitter_description" class="form-label">Twitter Description</label>
-                                 <textarea class="form-control" id="og_description" name="og_description" placeholder="open graph description"
+                                <textarea class="form-control" id="og_description" name="og_description" placeholder="open graph description"
                                     cols="30" rows="3"></textarea>
                             </div>
-                             <div class="col-12 col-sm-12 col-md-6">
+                            <div class="col-12 col-sm-12 col-md-6">
                                 <label for="twitter_site" class="form-label">Twitter Site</label>
                                 <input type="text" class="form-control" name="twitter_site" id="twitter_site"
                                     placeholder="@/yourtwitterhandle">
                             </div>
 
-                                   <div class="col-12 col-sm-12 col-md-6">
+                            <div class="col-12 col-sm-12 col-md-6">
                                 <label for="twitter_image" class="form-label">Twitter Image</label>
                                 <div class="upload-img-box">
                                     <img id="updateImageUrl" src="">
@@ -314,7 +325,7 @@
 
                                         <button type="button" class="btn-close closebtn" aria-label="Close" onclick="removeRepeaterItem(this)"></button>
                                     </div>
-                                    
+
                                 </div>
                                 `;
 
@@ -324,46 +335,43 @@
         function removeRepeaterItem(button) {
             button.closest('.hello').remove();
         }
-//start tag
-document.addEventListener('DOMContentLoaded', function () {
-    const tagInput = document.getElementById('tagInput');
-    const tagsContainer = document.getElementById('tags');
+        //start tag
+        document.addEventListener('DOMContentLoaded', function() {
+            const tagInput = document.getElementById('tagInput');
+            const tagsContainer = document.getElementById('tags');
 
-    tagInput.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter') {
-            e.preventDefault();
-            const tagValue = tagInput.value.trim();
-            if (tagValue) {
-                addTag(tagValue);
-                tagInput.value = '';
+            tagInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    const tagValue = tagInput.value.trim();
+                    if (tagValue) {
+                        addTag(tagValue);
+                        tagInput.value = '';
+                    }
+                }
+            });
+
+            function addTag(value) {
+                const span = document.createElement('span');
+                span.className = 'tag';
+                span.innerHTML = `${value} <span class="remove" style="cursor:pointer;">×</span>`;
+
+                // Hidden input to submit
+                const hiddenInput = document.createElement('input');
+                hiddenInput.type = 'hidden';
+                hiddenInput.name = 'tag[]';
+                hiddenInput.value = value;
+                span.appendChild(hiddenInput);
+
+                // Add remove function
+                span.querySelector('.remove').addEventListener('click', function() {
+                    span.remove();
+                });
+
+                tagsContainer.appendChild(span);
             }
-        }
-    });
-
-    function addTag(value) {
-        const span = document.createElement('span');
-        span.className = 'tag';
-        span.innerHTML = `${value} <span class="remove" style="cursor:pointer;">×</span>`;
-
-        // Hidden input to submit
-        const hiddenInput = document.createElement('input');
-        hiddenInput.type = 'hidden';
-        hiddenInput.name = 'tag[]';
-        hiddenInput.value = value;
-        span.appendChild(hiddenInput);
-
-        // Add remove function
-        span.querySelector('.remove').addEventListener('click', function () {
-            span.remove();
         });
 
-        tagsContainer.appendChild(span);
-    }
-});
-
-//end blog tag
-
-
-
+        //end blog tag
     </script>
 @endpush

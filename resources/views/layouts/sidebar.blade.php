@@ -84,7 +84,7 @@
         <li class="nav-item">
             <a class="nav-link {{ @$teamShowClass ? '' : 'collapsed' }}" data-bs-target="#team-nav"
                 data-bs-toggle="collapse" href="#">
-                <i class="bx bx-cog"></i><span>Team</span><i class="bi bi-chevron-down ms-auto"></i>
+                <i class="bx bx-group"></i><span>Team</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="team-nav" class="nav-content collapse  {{ @$teamShowClass }}" data-bs-parent="#sidebar-nav">
                 <li>
@@ -105,6 +105,15 @@
                 <i class="bx bx-spreadsheet"></i><span>Blog</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="blog-nav" class="nav-content collapse  {{ @$blogShowClass }}" data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{ route('admin.all-blog-category') }}" class="{{ @$allBlogCategoryActiveClass }}"><i
+                            class="bi bi-circle"></i><span>All Category</span></a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.create-blog-category') }}"
+                        class="{{ @$createBlogCategoryActiveClass }}"><i class="bi bi-circle"></i><span>Add
+                            Category</span></a>
+                </li>
                 <li>
                     <a href="{{ route('admin.all-blog') }}" class="{{ @$allblogActiveClass }}"><i
                             class="bi bi-circle"></i><span>All Blog</span></a>
@@ -166,9 +175,10 @@
         <li class="nav-item">
             <a class="nav-link {{ @$advisoryShowClass ? '' : 'collapsed' }}" data-bs-target="#advisory-nav"
                 data-bs-toggle="collapse" href="#">
-                <i class="bx bx-note"></i><span>Advisory</span><i class="bi bi-chevron-down ms-auto"></i>
+                <i class="bx bx-group"></i><span>Advisory</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
-            <ul id="advisory-nav" class="nav-content collapse  {{ @$advisoryShowClass }}" data-bs-parent="#sidebar-nav">
+            <ul id="advisory-nav" class="nav-content collapse  {{ @$advisoryShowClass }}"
+                data-bs-parent="#sidebar-nav">
                 <li>
                     <a href="{{ route('admin.all-advisory') }}" class="{{ @$allAdvisoryActiveClass }}"><i
                             class="bi bi-circle"></i><span>All Advisory</span></a>
@@ -184,9 +194,11 @@
         <li class="nav-item">
             <a class="nav-link {{ @$consultShowClass ? '' : 'collapsed' }}" data-bs-target="#consult-nav"
                 data-bs-toggle="collapse" href="#">
-                <i class="bx bx-note"></i><span>Consult Customer</span><i class="bi bi-chevron-down ms-auto"></i>
+                <i class="bx bx-notification"></i><span>Consult Customer</span><i
+                    class="bi bi-chevron-down ms-auto"></i>
             </a>
-            <ul id="consult-nav" class="nav-content collapse {{ @$consultShowClass }}" data-bs-parent="#sidebar-nav">
+            <ul id="consult-nav" class="nav-content collapse {{ @$consultShowClass }}"
+                data-bs-parent="#sidebar-nav">
                 <li>
                     <a href="{{ route('admin.all-consult') }}" class="{{ @$allConsultActiveClass }}"><i
                             class="bi bi-circle"></i><span>All Consult</span></a>
@@ -198,16 +210,19 @@
         <li class="nav-item">
             <a class="nav-link {{ @$packageCategoryShowClass ? '' : 'collapsed' }}" data-bs-target="#package-nav"
                 data-bs-toggle="collapse" href="#">
-                <i class="bx bx-note"></i><span>Package</span><i class="bi bi-chevron-down ms-auto"></i>
+                <i class="bx bx-package"></i><span>Package</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
-            <ul id="package-nav" class="nav-content collapse  {{ @$packageCategoryShowClass }}" data-bs-parent="#sidebar-nav">
+            <ul id="package-nav" class="nav-content collapse  {{ @$packageCategoryShowClass }}"
+                data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="{{ route('admin.all-package-category') }}" class="{{ @$allpackageCategoryActiveClass }}"><i
-                            class="bi bi-circle"></i><span>All Package Category</span></a>
+                    <a href="{{ route('admin.all-package-category') }}"
+                        class="{{ @$allpackageCategoryActiveClass }}"><i class="bi bi-circle"></i><span>All Package
+                            Category</span></a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.create-package-category') }}" class="{{ @$createpackageCategoryActiveClass }}"><i
-                            class="bi bi-circle"></i><span>Add Package Category</span></a>
+                    <a href="{{ route('admin.create-package-category') }}"
+                        class="{{ @$createpackageCategoryActiveClass }}"><i class="bi bi-circle"></i><span>Add
+                            Package Category</span></a>
                 </li>
                 <li>
                     <a href="{{ route('admin.all-package') }}" class="{{ @$allpackageActiveClass }}"><i
