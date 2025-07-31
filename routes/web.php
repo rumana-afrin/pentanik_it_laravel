@@ -2,6 +2,7 @@
 use App\Http\Controllers\Admin\AdvisoryController;
 use App\Http\Controllers\Admin\BlogCategoryController;
 use App\Http\Controllers\Admin\BlogController as AdminBlogController;
+use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\PackageCategoryController;
 use App\Http\Controllers\Admin\PackageController;
 use App\Http\Controllers\Admin\PageController;
@@ -134,6 +135,14 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::get('edit-package/{id}', [PackageController::class, 'edit'])->name('edit-package');
     Route::put('update-package/{id}', [PackageController::class, 'update'])->name('update-package');
     Route::delete('delete-package/{id}', [PackageController::class, 'destroy'])->name('delete-package');
+
+    //page faq
+    Route::get('all-faq', [FaqController::class, 'index'])->name('all-faq');
+    Route::get('create-faq', [FaqController::class, 'create'])->name('create-faq');
+    Route::post('store-faq', [FaqController::class, 'store'])->name('store-faq');
+    Route::get('edit-faq/{id}', [FaqController::class, 'edit'])->name('edit-faq');
+    Route::put('update-faq/{id}', [FaqController::class, 'update'])->name('update-faq');
+    Route::delete('delete-faq/{id}', [FaqController::class, 'destroy'])->name('delete-faq');
 
     //consult customer
     Route::get('all-consult', [ConsultController::class, 'index'])->name('all-consult');

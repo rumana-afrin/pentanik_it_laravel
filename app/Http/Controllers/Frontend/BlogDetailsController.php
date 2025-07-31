@@ -12,7 +12,7 @@ class BlogDetailsController extends Controller
     public function blogDetails($category_slug, $blog_slug)
     {
 // dd($blog_slug);
-        $data['blog'] = Blog::where('slug', $blog_slug)->firstOrFail();
+        $data['blog'] = Blog::where('slug', $blog_slug)->with('blogFaq')->firstOrFail();
         // dd($data['blog']);
         $data['blogs'] = Blog::with('blogCategory')->latest()->get();
         $data['meta'] = $data['blog']->seoMetaTag;

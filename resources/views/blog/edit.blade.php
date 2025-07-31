@@ -31,7 +31,9 @@
                                     aria-label="Default select example">
                                     <option selected>selete category</option>
                                     @foreach ($blogCategory as $item)
-                                        <option value="{{ $item->id }}" {{$blog->blogCategory->id === $item->id ? 'selected' : ''}}>{{ $item->name }}</option>
+                                        <option value="{{ $item->id }}"
+                                            {{ $blog->blogCategory->id === $item->id ? 'selected' : '' }}>
+                                            {{ $item->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -108,7 +110,8 @@
                                     aria-label="Default select example">
 
                                     <option value="draft" {{ $blog == 'draft' ? 'selected' : '' }}>Draft</option>
-                                    <option value="published" {{ $blog == 'published' ? 'selected' : '' }}>Published</option>
+                                    <option value="published" {{ $blog == 'published' ? 'selected' : '' }}>Published
+                                    </option>
                                     <option value="pending" {{ $blog == 'pending' ? 'selected' : '' }}>Pending</option>
 
                                 </select>
@@ -135,7 +138,7 @@
                                 {{-- </div> --}}
                             </div>
 
-
+                            {{-- Image --}}
                             <div class="col-12 col-sm-12 col-md-12">
                                 <div class="repeater-container">
                                     <label for="gallary_image" class="form-label">Gallary Image</label>
@@ -144,14 +147,14 @@
                                         <div class="d-flex justify-content-center" id="repeater">
                                             @foreach ($blog->blogGallaryImage as $item)
                                                 <div class="hello d-flex justify-content-center">
-
+                                                    <input type="hidden" name="image_id[]" value="{{ $item->id }}">
                                                     <div class="repeater-item d-flex align-items-center me-3">
                                                         <div class="upload-img-box gallarybox">
                                                             <img id="updateImageUrl"
                                                                 src="{{ $item->gallary_image ? asset('storage/' . $item->gallary_image) : getDefaultImage() }}">
                                                             <input class="form-control" type="file"
                                                                 name="gallary_image[]" id="gallary_image"
-                                                                accept="image/*" onchange="previewImage(this)">
+                                                                accept="image/*" onchange="previewFile(this)">
                                                             <div class="upload-img-box-icon">
                                                                 <i class="bi bi-camera-fill"></i>
                                                                 <p class="m-0"></p>
@@ -180,6 +183,9 @@
                                                             <i class="bi bi-camera-fill"></i>
                                                             <p class="m-0"></p>
                                                         </div>
+                                                          <button type="button" class="btn-close closebtn"
+                                                                aria-label="Close"
+                                                                onclick="removeRepeaterItem(this)"></button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -191,6 +197,60 @@
                                         onclick="addRepeaterItem(event)">Add Gallary</button>
                                 </div>
                             </div>
+                            {{-- Image --}}
+
+                            {{-- faq --}}
+                            <div class="col-12 col-sm-12 col-md-12">
+                                <div class="repeater-container">
+                                    <label for="faq" class="form-label">FAQ</label>
+                                    @if (count($blog->blogFaq) > 0)
+                                        <div class="faq" id="faq">
+                                            @foreach ($blog->blogFaq as $item)
+                                                <div class="repeater-item d-flex align-items-start mt-3">
+
+                                                    <input class="form-control image-input me-3" type="text"
+                                                        id="faq" name="question[]" placeholder="question"
+                                                        value="{{ $item->question }}" />
+
+                                                    <textarea class="form-control" name="answer[]" id="faq" placeholder="answer" cols="30" rows="3">{{ $item->answer }}</textarea>
+                                                    {{-- 
+
+                                                    <input class="form-control image-input" type="text"
+                                                        name="question[]" placeholder="question" value="{{$item->answer}}"/> --}}
+
+                                                    <button type="button" class="remove-btn btn btn-primary ms-4"
+                                                        onclick="removeItem(event, this)">
+                                                        <a href="" class="mr-1" title="Edit">
+                                                            <img src="{{ asset('assets/backend/image/minus.png') }}"
+                                                                alt="">
+                                                        </a>
+                                                    </button>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    @else
+                                        <div class="faq" id="faq">
+                                            <div class="repeater-item d-flex align-items-start">
+
+                                                <input class="form-control image-input me-3" type="text"
+                                                    id="faq" name="question[]" placeholder="question" />
+                                                <textarea class="form-control" name="answer[]" id="faq" placeholder="answer" cols="30" rows="3"></textarea>
+
+                                                <button type="button" class="remove-btn btn btn-primary ms-4"
+                                                    onclick="removeItem(event, this)">
+                                                    <a href="" class="mr-1" title="Edit">
+                                                        <img src="{{ asset('assets/backend/image/minus.png') }}"
+                                                            alt="">
+                                                    </a>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    @endif
+                                    <button type="button" class="add-btn btn btn-primary mt-4"
+                                        onclick="addIconItem(event)">Add FAQ</button>
+                                </div>
+                            </div>
+                            {{-- faq --}}
 
                             {{-- seo --}}
                             <div class="col-12 col-sm-12 col-md-6">
@@ -344,29 +404,29 @@
 
 @push('script')
     <script>
-        function addRepeaterItem(event) {
-            event.preventDefault();
+        // function addRepeaterItem(event) {
+        //     event.preventDefault();
 
-            const repeater = document.getElementById('repeater'); // Correct container reference
+        //     const repeater = document.getElementById('repeater'); // Correct container reference
 
-            const newItem = document.createElement('div');
-            newItem.className = 'hello d-flex justify-content-center';
-            newItem.innerHTML = `
-            <div class="repeater-item d-flex align-items-center me-3 position-relative">
-                <div class="upload-img-box gallarybox">
-                    <img src="" class="preview-img" />
-                    <input class="form-control" type="file" name="gallary_image[]" accept="image/*" onchange="previewFile(this)">
-                    <div class="upload-img-box-icon">
-                        <i class="bi bi-camera-fill"></i>
-                        <p class="m-0"></p>
-                    </div>
-                    <button type="button" class="btn-close closebtn" aria-label="Close" onclick="removeRepeaterItem(this)"></button>
-                </div>
-            </div>
-        `;
+        //     const newItem = document.createElement('div');
+        //     newItem.className = 'hello d-flex justify-content-center';
+        //     newItem.innerHTML = `
+    //     <div class="repeater-item d-flex align-items-center me-3 position-relative">
+    //         <div class="upload-img-box gallarybox">
+    //             <img src="" class="preview-img" />
+    //             <input class="form-control" type="file" name="gallary_image[]" accept="image/*" onchange="previewFile(this)">
+    //             <div class="upload-img-box-icon">
+    //                 <i class="bi bi-camera-fill"></i>
+    //                 <p class="m-0"></p>
+    //             </div>
+    //             <button type="button" class="btn-close closebtn" aria-label="Close" onclick="removeRepeaterItem(this)"></button>
+    //         </div>
+    //     </div>
+    // `;
 
-            repeater.appendChild(newItem);
-        }
+        //     repeater.appendChild(newItem);
+        // }
 
         function removeRepeaterItem(button) {
             const wrapper = button.closest('.hello');
@@ -375,16 +435,85 @@
             }
         }
 
-        function previewImage(input) {
-            const file = input.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    input.closest('.upload-img-box').querySelector('.preview-img').src = e.target.result;
-                };
-                reader.readAsDataURL(file);
-            }
+        // function previewImage(input) {
+        //     const file = input.files[0];
+        //     if (file) {
+        //         const reader = new FileReader();
+        //         reader.onload = function(e) {
+        //             input.closest('.upload-img-box').querySelector('.preview-img').src = e.target.result;
+        //         };
+        //         reader.readAsDataURL(file);
+        //     }
+        // }
+
+
+
+        function addRepeaterItem() {
+            const repeater = document.getElementById('repeater');
+            const newItem = document.createElement('div');
+            newItem.className = 'repeater hello';
+            newItem.innerHTML = `
+                        <div class="repeater-item d-flex align-items-center me-3 position-relative"">
+                                <div class="upload-img-box gallarybox">
+                                         <img id="updateImageUrl" src="">
+                                         <input class="form-control" type="file" name="gallary_image[]" id="image" accept="image/*" onchange="previewFile(this)">
+                                         <div class="upload-img-box-icon">
+                                            <i class="bi bi-camera-fill"></i>
+                                            <p class="m-0"></p>
+                                        </div>
+
+                                         <button type="button" class="btn-close closebtn" aria-label="Close" onclick="removeRepeaterItem(this)"></button>
+                                    </div>
+                        </div>
+                                                                
+                    `;
+
+            repeater.appendChild(newItem);
         }
+
+        // function removeRepeaterItem(button) {
+        //     button.closest('.repeater').remove();
+        // }
+
+        function removeItem(event, button) {
+            event.preventDefault();
+            const repeaterItem = button.closest('.repeater-item');
+            const wrapper = button.closest('.repeater');
+            if (wrapper) {
+                wrapper.remove();
+            }
+            repeaterItem.remove();
+        }
+
+        // FAQ
+        function addIconItem() {
+            const repeaterIcon = document.getElementById('faq');
+            const iconItem = document.createElement('div');
+            iconItem.className = 'faq';
+            iconItem.innerHTML = `
+                        <div class="repeater-item d-flex align-items-start mt-3">
+                                                        <input class="form-control image-input me-3" type="text" id="faq"
+                                                        name="question[]" placeholder="question"/>
+
+                                                    <textarea class="form-control" name="answer[]" id="faq" placeholder="answer" cols="30" rows="3"></textarea>
+
+
+                                            <button type="button" class="remove-btn btn btn-primary ms-4"
+                                                onclick="removeItem(event, this)">
+                                                <a href="" class="mr-1" title="Edit">
+                                                    <img src="{{ asset('assets/backend/image/minus.png') }}"
+                                                        alt="">
+                                                </a>
+                                            </button>
+                        </div>
+                                                                
+                    `;
+
+            repeaterIcon.appendChild(iconItem);
+        }
+
+
+
         //start tag
         document.addEventListener('DOMContentLoaded', function() {
             const tagInput = document.getElementById('tagInput');

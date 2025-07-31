@@ -235,8 +235,26 @@
             </ul>
         </li><!-- End Package Nav -->
 
-        <li class="nav-heading">Pages</li>
+        <li class="nav-item">
+            <a class="nav-link {{ @$faqShowClass ? '' : 'collapsed' }}" data-bs-target="#faq-nav"
+                data-bs-toggle="collapse" href="#">
+                <i class="bx bx-package"></i><span>FAQ</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="faq-nav" class="nav-content collapse  {{ @$faqShowClass }}"
+                data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{ route('admin.all-faq') }}"
+                        class="{{ @$allfaqActiveClass }}"><i class="bi bi-circle"></i><span>All FAQ</span></a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.create-faq') }}"
+                        class="{{ @$createfaqActiveClass }}"><i class="bi bi-circle"></i><span>Add FAQ</span></a>
+                </li>
+              
+            </ul>
+        </li><!-- End Package Nav -->
 
+        <li class="nav-heading">Pages</li>
         <li class="nav-item">
             <a class="nav-link collapsed" href="users-profile.html">
                 <i class="bi bi-person"></i>

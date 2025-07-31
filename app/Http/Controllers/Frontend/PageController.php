@@ -7,6 +7,7 @@ use App\Models\Advisory;
 use App\Models\Page;
 use App\Models\Blog;
 use App\Models\BlogCategory;
+use App\Models\Faq;
 use App\Models\Portfolio;
 use App\Models\PortfolioCategory;
 use App\Models\Team;
@@ -47,6 +48,7 @@ class PageController extends Controller
             $data['allBlogs'] = Blog::with('blogCategory')->paginate(6);
             $data['page'] = Page::where('slug', $slug)->firstOrFail();
             $data['meta'] = $data['page']->seoMetaTag;
+ 
             return view('frontend.blog')->with($data);
         } else {
             $data['aboutUs'] = Page::where('slug', $slug)->firstOrFail();
@@ -54,6 +56,7 @@ class PageController extends Controller
             return view('frontend.about-us')->with($data);
         }
     }
+    
     // private function headerPage($slug)
     // {
     //     // Logic for header pages
@@ -80,6 +83,7 @@ class PageController extends Controller
     //         return view('frontend.about-us')->with($data);
     //     }
     // }  
+
     private function additionalPage($slug)
     {
         if ($slug === 'team-member') {
@@ -88,9 +92,33 @@ class PageController extends Controller
             $data['page'] = Page::where('slug', $slug)->firstOrFail();
             $data['meta'] = $data['page']->seoMetaTag;
             return view('frontend.team')->with($data);
+        } elseif ($slug === 'faq') {
+            $data['page'] = Page::where('slug', $slug)->firstOrFail();
+            $data['meta'] = $data['page']->seoMetaTag;
+            $data['faq'] = Faq::where('category', $slug)->get();
+            $mainEntity = [];
+
+            foreach ($data['faq'] as $faq) {
+                $mainEntity[] = [
+                    '@type' => 'Question',
+                    'name' => $faq->question,
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text' => $faq->answer
+                    ]
+                ];
+            }
+
+            $data['schema'] = [
+                '@context' => 'https://schema.org',
+                '@type' => 'FAQPage',
+                'mainEntity' => $mainEntity
+            ];
+            return view('frontend.faq')->with($data);
+        } else {
+            $data['page'] = Page::where('slug', $slug)->firstOrFail();
+            $data['meta'] = $data['page']->seoMetaTag;
+            return view('frontend.aditional-page')->with($data);
         }
-        $data['page'] = Page::where('slug', $slug)->firstOrFail();
-        $data['meta'] = $data['page']->seoMetaTag;
-        return view('frontend.aditional-page')->with($data);
     }
 }

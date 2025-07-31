@@ -93,43 +93,43 @@
 @endsection
 
 @push('script')
-    <script>
-        {
-            "@context": "https://schema.org",
-            "@type": "Person",
-            "name": "{{ getOption('ceo_name') }}",
-            "honorificPrefix": "CEO",
-            "sameAs": [
-                "{{ getOption('social_link_fb') }}",
-                "{{ getOption('social_link_linkedin') }}",
-                "{{ getOption('social_link_youtube') }}",
-                "{{ getOption('social_link_twitter') }}"
+    <script type="application/ld+json">
+        {!! json_encode([
+            "@context" => "https://schema.org",
+            "@type" => "Person",
+            "name" => getOption('ceo_name'),
+            "honorificPrefix" => "CEO",
+            "sameAs" => array_filter([
+                getOption('social_link_fb'),
+                getOption('social_link_linkedin'),
+                getOption('social_link_youtube'),
+                getOption('social_link_twitter'),
+            ]),
+            "image" => getimage(getOption('ceo_image')),
+            "gender" => "Male",
+            "address" => [
+                "@type" => "PostalAddress",
+                "streetAddress" => getOption('app_address'),
+                "addressLocality" => "Dhaka",
+                "addressRegion" => "Dhaka Division",
+                "postalCode" => getOption('postal_code'),
+                "addressCountry" => "BD"
             ],
-            "image": "{{ getimage(getOption('ceo_image')) }}",
-            "gender": "Male",
-
-            "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "{{ getOption('app_address') }}",
-                "addressLocality": "Dhaka",
-                "addressRegion": "Dhaka Division",
-                "postalCode": "{{ getOption('postal_code') }}",
-                "addressCountry": "BD"
-            },
-
-            "jobTitle": "businessman",
-            "worksFor": {
-                "@type": "Organization",
-                "name": "{{ getOption('company_name') }}"
-            },
-
-            "nationality": "Bangladeshi",
-            "description": "{{ getOption('short_summary') }}",
-            "identifier": "ceo-pentanik-it",
-            "memberOf": [{
-                "@type": "Organization",
-                "name": "Founder's Community Club Ltd"
-            }]
-        }
+            "jobTitle" => "businessman",
+            "worksFor" => [
+                "@type" => "Organization",
+                "name" => getOption('company_name')
+            ],
+            "nationality" => "Bangladeshi",
+            "description" => getOption('short_summary'),
+            "identifier" => "ceo-pentanik-it",
+            "memberOf" => [
+                [
+                    "@type" => "Organization",
+                    "name" => "Founder's Community Club Ltd"
+                ]
+            ]
+        ], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) !!}
     </script>
+
 @endpush

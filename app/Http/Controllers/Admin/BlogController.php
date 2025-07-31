@@ -6,6 +6,7 @@ use App\Helpers\CoreConstant;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\BlogCategory;
+use App\Models\BlogFaq;
 use App\Models\BlogGalleryImage;
 use App\Models\BlogTag;
 use App\Models\SeoMetaTag;
@@ -104,6 +105,21 @@ class BlogController extends Controller
                     ]);
                 }
             }
+
+            if ($request->has('question') && $request->has('answer')) {
+                $questions = $request->question;
+                $answers = $request->answer;
+
+                foreach ($questions as $index => $question) {
+                    if (!empty($question) && !empty($answers[$index])) {
+                        BlogFaq::create([
+                            'blog_id' => $blog->id,
+                            'question' => $question,
+                            'answer' => $answers[$index],
+                        ]);
+                    }
+                }
+            }
         }
 
         //seo meta
@@ -158,12 +174,14 @@ class BlogController extends Controller
         $data['blogShowClass'] = 'show';
         $data['allblogActiveClass'] = 'active';
         $data['blogCategory'] = BlogCategory::all();
-        $data['blog'] = Blog::with('blogTags', 'blogGallaryImage', 'seoMetaTag')->findOrFail($id);
+        $data['blog'] = Blog::with('blogTags', 'blogGallaryImage', 'blogFaq', 'seoMetaTag')->findOrFail($id);
         // dd($data['blog']);
         return view('blog.edit')->with($data);
     }
     public function update(Request $request, $id)
     {
+
+        // dd($request->all());
         $request->validate([
             'blog_category_id' => 'required',
             'subtitle' => 'nullable|string',
@@ -187,7 +205,6 @@ class BlogController extends Controller
         $blog->sort_order = $request->sort_order;
         $blog->status = "published";
         $blog->is_featured = $request->is_featured;
-
 
         if ($request->hasFile('thumbnail_image')) {
             $image = $request->file('thumbnail_image');
@@ -219,35 +236,82 @@ class BlogController extends Controller
                         'tag_name' => $tag,
                     ];
                 }
-
                 BlogTag::insert($insertData);
             }
 
-            if ($request->hasFile('gallary_image')) {
-                $blog->blogGallaryImage()->delete();
+            if ($request->hasFile('gallary_image') || $request->input('image_id')) {
 
-                $galleries = BlogGalleryImage::where('blog_id', $blog->id)->get();
-                foreach ($galleries as $image) {
-                    if ($image->gallary_image && Storage::disk('public')->exists($image->gallary_image)) {
-                        Storage::disk('public')->delete($image->gallary_image);
+                $existingIds = $request->input('image_id'); //24,25,26,27
+                $newImages = $request->file('gallary_image');
+                // dd($newImages);
+
+                $oldImages = BlogGalleryImage::where('blog_id', $blog->id)->get(); //24,25,26,27
+
+                foreach ($oldImages as $oldImage) {
+                    if (!$existingIds || !in_array($oldImage->id, $existingIds)) {
+                        if ($oldImage->gallary_image && Storage::disk('public')->exists($oldImage->gallary_image)) {
+                            Storage::disk('public')->delete($oldImage->gallary_image);
+                        }
+                        $oldImage->delete();
                     }
                 }
-                $images = $request->file('gallary_image');
-                foreach ($images as $file) {
-                    $orginalName = time() . '.' . $file->getClientOriginalName();
-                    $fileName = pathinfo($orginalName, PATHINFO_FILENAME);
-                    $extension = pathinfo($orginalName, PATHINFO_EXTENSION);
-                    $imageName = preg_replace('/\s+/', '', $fileName);
-                    $file_name = preg_replace('/[^A-Za-z0-9\-]/', '', $imageName);
-                    $image_name = $file_name . '.' . $extension;
+                if ($newImages) {
+                    foreach ($newImages as $index => $file) {
+                        $imageId = $existingIds[$index] ?? null;
 
-                    $image_store = $file->storeAs('gallary_image', $image_name, 'public');
+                        $orginalName = time() . '.' . $file->getClientOriginalName();
+                        $fileName = pathinfo($orginalName, PATHINFO_FILENAME);
+                        $extension = pathinfo($orginalName, PATHINFO_EXTENSION);
+                        $imageName = preg_replace('/\s+/', '', $fileName);
+                        $file_name = preg_replace('/[^A-Za-z0-9\-]/', '', $imageName);
+                        $image_name = $file_name . '.' . $extension;
 
-                    BlogGalleryImage::create([
-                        'blog_id' => $blog->id,
-                        'gallary_image' => $image_store,
-                    ]);
+                        $image_store = $file->storeAs('gallary_image', $image_name, 'public');
+
+                        if ($imageId) {
+                            $oldImage = BlogGalleryImage::find($imageId);
+                            if ($oldImage && Storage::disk('public')->exists($oldImage->gallary_image)) {
+                                Storage::disk('public')->delete($oldImage->gallary_image);
+                            }
+                            $oldImage->update([
+                                'gallary_image' => $image_store,
+                            ]);
+                        } else {
+                            BlogGalleryImage::create([
+                                'blog_id' => $blog->id,
+                                'gallary_image' => $image_store,
+                            ]);
+                        }
+                    }
                 }
+            }else{
+                $oldImages = BlogGalleryImage::where('blog_id', $blog->id)->get(); //24,25,26,27
+
+                foreach ($oldImages as $oldImage) {
+                    
+                        if ($oldImage->gallary_image && Storage::disk('public')->exists($oldImage->gallary_image)) {
+                            Storage::disk('public')->delete($oldImage->gallary_image);
+                        }
+                        $oldImage->delete();
+                    
+                }
+            }
+
+            if ($request->has('question') && $request->has('answer')) {
+                $questions = $request->question;
+                $answers = $request->answer;
+                $blog->blogFaq()->delete();
+                foreach ($questions as $index => $question) {
+                    if (!empty($question) && !empty($answers[$index])) {
+                        BlogFaq::create([
+                            'blog_id' => $blog->id,
+                            'question' => $question,
+                            'answer' => $answers[$index],
+                        ]);
+                    }
+                }
+            } elseif (!$request->has('question')) {
+                $blog->blogFaq()->delete();
             }
         }
 
@@ -334,9 +398,15 @@ class BlogController extends Controller
 
             $seo->delete();
         }
+
+
+        $faq = BlogFaq::where('blog_id', $data->id)->get();
+        foreach ($faq as $item) {
+
+            $item->delete();
+        }
         $data->delete();
 
-
-        return redirect()->route('admin.all-team')->with('success', CoreConstant::DELETED_SUCCESSFULLY);
+        return redirect()->route('admin.all-blog')->with('success', CoreConstant::DELETED_SUCCESSFULLY);
     }
 }

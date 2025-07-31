@@ -407,12 +407,12 @@
 @push('script')
     <!-- Product Schema -->
     <script type="application/ld+json">
-                        {
-                        "@context": "https://schema.org/",
-                        "@type": "Product",
-                        {!! json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) !!}
-                        }
-            </script>
+        {
+        "@context": "https://schema.org/",
+        "@type": "Product",
+        {!! json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) !!}
+        }
+    </script>
 
 
     <!-- get consult -->

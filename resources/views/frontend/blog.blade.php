@@ -117,40 +117,12 @@
         </div>
     </section>
 @endsection
-    @push('style')
-        <style>
-            a.active {
-                color: #0354bd;
-                font-weight: bold;
-            }
-        </style>
-    @endpush
+@push('style')
+    <style>
+        a.active {
+            color: #0354bd;
+            font-weight: bold;
+        }
+    </style>
+@endpush
 
-    {{--
-    <!-- এটা Article page এর জন্য -->
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Article Title",
-  "author": {
-    "@type": "Person",
-    "name": "Author Name"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Publisher Name",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "logo.png"
-    }
-  },
-  "datePublished": "2024-01-01",
-  "dateModified": "2024-06-01",
-  "image": "article-image.jpg",
-  "articleBody": "Full article text...",
-  "wordCount": "1500",
-  "articleSection": "Technology",
-  "keywords": "TV, Samsung, Review"
-}
-</script> --}}

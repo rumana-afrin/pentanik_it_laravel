@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class PortfolioController extends Controller
 {
-    public function portfolio(){
-        return view('frontend.portfolio');
-    }
+    // public function portfolio(){
+    //     return view('frontend.portfolio');
+    // }
 }

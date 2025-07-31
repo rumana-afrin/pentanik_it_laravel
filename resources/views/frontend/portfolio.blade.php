@@ -54,31 +54,28 @@
     </section>
 @endsection
 
-
-@push('style')
-    <style>
-        /* .portfolio-overlay {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color: rgba(51, 51, 51, 0.4);
-                display: none;
-                align-items: center;
-                justify-content: center;
-                z-index: 10;
+@push('script')
+    <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "CreativeWork",
+                "name": "Pentanik IT Portfolio",
+                "description": "Explore our portfolio showcasing successful projects in web development, design, and IT solutions.",
+                "url": "https://pentanikit.com/portfolio",
+                "author": {
+                    "@type": "Organization",
+                    "name": "Pentanik IT"
+                },
+                "hasPart": [
+                    @foreach ($portfolio as $item)
+                    {
+                    "@type": "CreativeWork",
+                    "name": "{{ $item->title ?? 'Portfolio Project' }}",
+                    "image": "{{ asset('storage/' . $item->featured_image) }}",
+                "description": "{{ Str::limit(strip_tags($item->description ?? ''), 150) }}"
+                    }@if (!$loop->last),@endif
+                    @endforeach
+                ]
             }
-
-            .content:hover .portfolio-overlay {
-                display: flex;
-            }
-
-            .overlay-text {
-                color: white;
-                font-size: 1.5rem;
-                font-weight: bold;
-                text-align: center;
-            } */
-    </style>
+</script>
 @endpush

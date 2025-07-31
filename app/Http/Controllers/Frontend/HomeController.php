@@ -17,17 +17,15 @@ class HomeController extends Controller
       $services = $data['services'];
       $data['workProcess'] = WorkProcess::all();
       $data['packageCategory'] = PackageCategory::with('package.packageFeature')->where('status', 1)->orderBy('display_order', 'asc')->get();
-   //    $data['packageCategory'] = PackageCategory::with('package.packageFeature')
-   //  ->where('status', 1)
-   //  ->orderBy('display_order', 'asc')
-   //  ->get();
-
+      //    $data['packageCategory'] = PackageCategory::with('package.packageFeature')
+      //  ->where('status', 1)
+      //  ->orderBy('display_order', 'asc')
+      //  ->get();
       // $data['pages'] = Page::select('slug', 'title')->get();
       $graphData = [];
 
       foreach ($services as $service) {
          $graphData[] = [
-            
             '@type' => 'Product',
             'name' => $service->name,
             'description' => $service->short_description,

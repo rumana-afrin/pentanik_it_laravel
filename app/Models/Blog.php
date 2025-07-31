@@ -32,4 +32,9 @@ class Blog extends Model
     public function blogCategory(){
         return $this->belongsTo(BlogCategory::class);
     }
+
+    public function blogFaq()
+    {
+        return $this->hasMany(BlogFaq::class);
+    }
 }

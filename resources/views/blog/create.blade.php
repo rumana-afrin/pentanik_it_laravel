@@ -133,8 +133,8 @@
                                 <textarea class="tinymce-editor @error('content') is-invalid @enderror" name="content" id="content"></textarea>
                             </div>
 
-
-                            <div class="col-12 col-sm-12 col-md-12">
+                            {{-- gallary image --}}
+                            {{-- <div class="col-12 col-sm-12 col-md-12">
                                 <div class="repeater-container">
                                     <label for="gallary_image" class="form-label">Gallary Image</label>
 
@@ -152,13 +152,66 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        {{-- @endif --}}
+                                    </div>
+
+                                    <button type="button" class="add-btn btn btn-primary mt-4"
+                                        onclick="addRepeaterItem(event)">Add Gallary</button>
+                                </div>
+                            </div> --}}
+                            {{-- gallary image --}}
+                            
+
+                            {{-- Image --}}
+                            <div class="col-12 col-sm-12 col-md-12">
+                                <div class="repeater-container">
+                                    <label for="package_feature" class="form-label">Gallary Image</label>
+                                    <div class="repeater d-flex align-items-center justify-content-center me-3" id="repeater">
+                                        <div class="repeater-item me-3">
+                                             <div class="upload-img-box gallarybox">
+                                                    <img id="updateImageUrl" src="">
+                                                    <input class="form-control" type="file" name="gallary_image[]"
+                                                        id="gallary_image" accept="image/*" onchange="previewFile(this)">
+                                                    <div class="upload-img-box-icon">
+                                                        <i class="bi bi-camera-fill"></i>
+                                                        <p class="m-0"></p>
+                                                    </div>
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <button type="button" class="add-btn btn btn-primary mt-4"
                                         onclick="addRepeaterItem(event)">Add Gallary</button>
                                 </div>
                             </div>
+                            {{-- Image --}}
+
+                            {{-- faq --}}
+                            <div class="col-12 col-sm-12 col-md-12">
+                                <div class="repeater-container">
+                                    <label for="faq" class="form-label">FAQ</label>
+                                    <div class="faq" id="faq">
+                                        <div class="repeater-item d-flex align-items-start">
+
+                                              <input class="form-control image-input me-3" type="text" id="faq"
+                                                        name="question[]" placeholder="question"/>
+                                              <textarea class="form-control" name="answer[]" id="faq" placeholder="answer" cols="30" rows="3"></textarea>
+                                              
+                                            <button type="button" class="remove-btn btn btn-primary ms-4"
+                                                onclick="removeItem(event, this)">
+                                                <a href="" class="mr-1" title="Edit">
+                                                    <img src="{{ asset('assets/backend/image/minus.png') }}"
+                                                        alt="">
+                                                </a>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <button type="button" class="add-btn btn btn-primary mt-4"
+                                        onclick="addFaqItem(event)">Add FAQ</button>
+                                </div>
+                            </div>
+                            {{-- faq --}}
+
 
                             {{-- seo --}}
                             <div class="col-12 col-sm-12 col-md-6">
@@ -310,31 +363,97 @@
 
 @push('script')
     <script>
-        function addRepeaterItem() {
+        // function addRepeaterItem() {
+        //     const newItem = document.createElement('div');
+        //     newItem.className = 'hello';
+        //     newItem.innerHTML = `
+        //                         <div class="repeater-item d-flex align-items-center me-3 position-relative">
+        //                             <div class="upload-img-box gallarybox">
+        //                                 <img id="updateImageUrl" src="">
+        //                                 <input class="form-control" type="file" name="gallary_image[]" id="image" accept="image/*" onchange="previewFile(this)">
+        //                                 <div class="upload-img-box-icon">
+        //                                     <i class="bi bi-camera-fill"></i>
+        //                                     <p class="m-0"></p>
+        //                                 </div>
+
+        //                                 <button type="button" class="btn-close closebtn" aria-label="Close" onclick="removeRepeaterItem(this)"></button>
+        //                             </div>
+
+        //                         </div>
+        //                         `;
+
+        //     repeater.appendChild(newItem);
+        // }
+
+        // function removeRepeaterItem(button) {
+        //     button.closest('.hello').remove();
+        // }
+
+ function addRepeaterItem() {
+            const repeater = document.getElementById('repeater');
             const newItem = document.createElement('div');
-            newItem.className = 'hello';
+            newItem.className = 'repeater';
             newItem.innerHTML = `
-                                <div class="repeater-item d-flex align-items-center me-3 position-relative">
-                                    <div class="upload-img-box gallarybox">
-                                        <img id="updateImageUrl" src="">
-                                        <input class="form-control" type="file" name="gallary_image[]" id="image" accept="image/*" onchange="previewFile(this)">
-                                        <div class="upload-img-box-icon">
+                        <div class="repeater-item d-flex align-items-center me-3 position-relative"">
+                                <div class="upload-img-box gallarybox">
+                                         <img id="updateImageUrl" src="">
+                                         <input class="form-control" type="file" name="gallary_image[]" id="image" accept="image/*" onchange="previewFile(this)">
+                                         <div class="upload-img-box-icon">
                                             <i class="bi bi-camera-fill"></i>
                                             <p class="m-0"></p>
                                         </div>
 
-                                        <button type="button" class="btn-close closebtn" aria-label="Close" onclick="removeRepeaterItem(this)"></button>
+                                         <button type="button" class="btn-close closebtn" aria-label="Close" onclick="removeRepeaterItem(this)"></button>
                                     </div>
-
-                                </div>
-                                `;
+                        </div>
+                                                                
+                    `;
 
             repeater.appendChild(newItem);
         }
 
         function removeRepeaterItem(button) {
-            button.closest('.hello').remove();
+            button.closest('.repeater').remove();
         }
+
+        function removeItem(event, button) {
+            event.preventDefault();
+            const repeaterItem = button.closest('.repeater-item');
+            const wrapper = button.closest('.repeater');
+            if (wrapper) {
+                wrapper.remove();
+            }
+            repeaterItem.remove();
+        }
+
+        // FAQ
+        function addFaqItem() {
+            const repeaterIcon = document.getElementById('faq');
+            const iconItem = document.createElement('div');
+            iconItem.className = 'faq';
+            iconItem.innerHTML = `
+                        <div class="repeater-item d-flex align-items-start mt-3">
+                                                        <input class="form-control image-input me-3" type="text" id="faq"
+                                                        name="question[]" placeholder="question"/>
+
+                                                    <textarea class="form-control" name="answer[]" id="faq" placeholder="answer" cols="30" rows="3"></textarea>
+
+
+                                            <button type="button" class="remove-btn btn btn-primary ms-4"
+                                                onclick="removeItem(event, this)">
+                                                <a href="" class="mr-1" title="Edit">
+                                                    <img src="{{ asset('assets/backend/image/minus.png') }}"
+                                                        alt="">
+                                                </a>
+                                            </button>
+                        </div>
+                                                                
+                    `;
+
+            repeaterIcon.appendChild(iconItem);
+        }
+
+        
         //start tag
         document.addEventListener('DOMContentLoaded', function() {
             const tagInput = document.getElementById('tagInput');

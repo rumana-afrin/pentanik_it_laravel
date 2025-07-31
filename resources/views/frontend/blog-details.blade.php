@@ -18,7 +18,20 @@
                         </p>
                     </div>
                     <div class="blog-details mt-5">{!! $blog->content !!}</div>
+
+                    {{-- faq --}}
+                    <div class="blog-faq mt-5">
+                        @foreach ($blog->blogFaq as $item)
+                            <div class="faq">
+                                <h3>
+                                    {{ $item->question }}
+                                </h3>
+                                <p>{{ $item->answer }}</p>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
+
             </div>
             <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-4">
 
@@ -56,3 +69,55 @@
         </div>
     </div>
 @endsection
+@push('style')
+    <style>
+        .blog-faq {
+            font-family: emoji;
+        }
+    </style>
+@endpush
+
+@push('script')
+    {{-- BlogPosting Schema --}}
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "{{ $blog->title }}",
+            "description": "{{ $blog->subtitle }}",
+            "image": "{{ asset('storage/' . $blog->thumbnail_image) }}",
+            "author": {
+                "@type": "Person",
+                "name": "{{ $blog->author_name }}"
+            },
+            "datePublished": "{{ $blog->created_at->toIso8601String() }}",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "{{ url()->current() }}"
+            }
+        }
+    </script>
+
+    {{-- FAQPage Schema --}}
+    @if ($blog->blogFaq->count() > 0)
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": [
+                    @foreach ($blog->blogFaq as $index => $item)
+                        {
+                            "@type": "Question",
+                            "name": @json($item->question),
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": @json($item->answer)
+                            }
+                        }@if (!$loop->last),@endif
+                    @endforeach
+                ]
+            }
+        </script>
+    @endif
+@endpush
+
